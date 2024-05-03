@@ -1,0 +1,8 @@
+[package]
+name = "bfm-apb4"
+version = "0.0.0"
+authors = []
+edition = "2021"
+
+[dependencies]
+bfm = { path = "../../../library/bfm/apb4" }

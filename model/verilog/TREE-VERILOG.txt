@@ -1,0 +1,223 @@
+code
+├── algebra
+│   ├── matrix
+│   │   ├── model_matrix_convolution.sv
+│   │   ├── model_matrix_differentiation.sv
+│   │   ├── model_matrix_integration.sv
+│   │   ├── model_matrix_inverse.sv
+│   │   ├── model_matrix_multiplication.sv
+│   │   ├── model_matrix_product.sv
+│   │   ├── model_matrix_softmax.sv
+│   │   ├── model_matrix_summation.sv
+│   │   ├── model_matrix_transpose.sv
+│   │   ├── model_matrix_vector_convolution.sv
+│   │   ├── model_matrix_vector_product.sv
+│   │   └── model_transpose_vector_product.sv
+│   ├── tensor
+│   │   ├── model_tensor_convolution.sv
+│   │   ├── model_tensor_differentiation.sv
+│   │   ├── model_tensor_integration.sv
+│   │   ├── model_tensor_inverse.sv
+│   │   ├── model_tensor_matrix_convolution.sv
+│   │   ├── model_tensor_matrix_product.sv
+│   │   ├── model_tensor_product.sv
+│   │   ├── model_tensor_softmax.sv
+│   │   └── model_tensor_transpose.sv
+│   └── vector
+│       ├── model_dot_product.sv
+│       ├── model_vector_convolution.sv
+│       ├── model_vector_cosine_similarity.sv
+│       ├── model_vector_differentiation.sv
+│       ├── model_vector_integration.sv
+│       ├── model_vector_module.sv
+│       ├── model_vector_multiplication.sv
+│       ├── model_vector_softmax.sv
+│       └── model_vector_summation.sv
+├── architecture
+│   ├── mpsoc
+│   │   └── model_mpsoc.sv
+│   ├── pu
+│   │   └── model_pu.sv
+│   └── soc
+│       └── model_soc.sv
+├── arithmetic
+│   ├── fixed
+│   │   ├── matrix
+│   │   │   ├── model_matrix_fixed_adder.sv
+│   │   │   ├── model_matrix_fixed_divider.sv
+│   │   │   ├── model_matrix_fixed_multiplier.sv
+│   │   │   └── model_matrix_fixed_subtractor.sv
+│   │   ├── scalar
+│   │   │   ├── model_scalar_fixed_adder.sv
+│   │   │   ├── model_scalar_fixed_divider.sv
+│   │   │   ├── model_scalar_fixed_multiplier.sv
+│   │   │   └── model_scalar_fixed_subtractor.sv
+│   │   ├── tensor
+│   │   │   ├── model_tensor_fixed_adder.sv
+│   │   │   ├── model_tensor_fixed_divider.sv
+│   │   │   ├── model_tensor_fixed_multiplier.sv
+│   │   │   └── model_tensor_fixed_subtractor.sv
+│   │   └── vector
+│   │       ├── model_vector_fixed_adder.sv
+│   │       ├── model_vector_fixed_divider.sv
+│   │       ├── model_vector_fixed_multiplier.sv
+│   │       └── model_vector_fixed_subtractor.sv
+│   ├── float
+│   │   ├── matrix
+│   │   │   ├── model_matrix_float_adder.sv
+│   │   │   ├── model_matrix_float_divider.sv
+│   │   │   ├── model_matrix_float_multiplier.sv
+│   │   │   └── model_matrix_float_subtractor.sv
+│   │   ├── scalar
+│   │   │   ├── model_scalar_float_adder.sv
+│   │   │   ├── model_scalar_float_divider.sv
+│   │   │   ├── model_scalar_float_multiplier.sv
+│   │   │   └── model_scalar_float_subtractor.sv
+│   │   ├── tensor
+│   │   │   ├── model_tensor_float_adder.sv
+│   │   │   ├── model_tensor_float_divider.sv
+│   │   │   ├── model_tensor_float_multiplier.sv
+│   │   │   └── model_tensor_float_subtractor.sv
+│   │   └── vector
+│   │       ├── model_vector_float_adder.sv
+│   │       ├── model_vector_float_divider.sv
+│   │       ├── model_vector_float_multiplier.sv
+│   │       └── model_vector_float_subtractor.sv
+│   └── integer
+│       ├── matrix
+│       │   ├── model_matrix_integer_adder.sv
+│       │   ├── model_matrix_integer_divider.sv
+│       │   ├── model_matrix_integer_multiplier.sv
+│       │   └── model_matrix_integer_subtractor.sv
+│       ├── scalar
+│       │   ├── model_scalar_integer_adder.sv
+│       │   ├── model_scalar_integer_divider.sv
+│       │   ├── model_scalar_integer_multiplier.sv
+│       │   └── model_scalar_integer_subtractor.sv
+│       ├── tensor
+│       │   ├── model_tensor_integer_adder.sv
+│       │   ├── model_tensor_integer_divider.sv
+│       │   ├── model_tensor_integer_multiplier.sv
+│       │   └── model_tensor_integer_subtractor.sv
+│       └── vector
+│           ├── model_vector_integer_adder.sv
+│           ├── model_vector_integer_divider.sv
+│           ├── model_vector_integer_multiplier.sv
+│           └── model_vector_integer_subtractor.sv
+├── math
+│   ├── matrix
+│   │   ├── model_matrix_cosh_function.sv
+│   │   ├── model_matrix_exponentiator_function.sv
+│   │   ├── model_matrix_logarithm_function.sv
+│   │   ├── model_matrix_logistic_function.sv
+│   │   ├── model_matrix_oneplus_function.sv
+│   │   ├── model_matrix_sinh_function.sv
+│   │   └── model_matrix_tanh_function.sv
+│   ├── scalar
+│   │   ├── model_scalar_cosh_function.sv
+│   │   ├── model_scalar_exponentiator_function.sv
+│   │   ├── model_scalar_logarithm_function.sv
+│   │   ├── model_scalar_logistic_function.sv
+│   │   ├── model_scalar_oneplus_function.sv
+│   │   ├── model_scalar_sinh_function.sv
+│   │   └── model_scalar_tanh_function.sv
+│   └── vector
+│       ├── model_vector_cosh_function.sv
+│       ├── model_vector_exponentiator_function.sv
+│       ├── model_vector_logarithm_function.sv
+│       ├── model_vector_logistic_function.sv
+│       ├── model_vector_oneplus_function.sv
+│       ├── model_vector_sinh_function.sv
+│       └── model_vector_tanh_function.sv
+├── nn
+│   ├── ann
+│   │   ├── components
+│   │   │   ├── model_masked_multi_head_attention.sv
+│   │   │   ├── model_masked_scaled_dot_product_attention.sv
+│   │   │   ├── model_multi_head_attention.sv
+│   │   │   └── model_scaled_dot_product_attention.sv
+│   │   ├── controller
+│   │   │   ├── fnn
+│   │   │   │   ├── convolutional
+│   │   │   │   │   └── model_fnn.sv
+│   │   │   │   └── standard
+│   │   │   │       └── model_fnn.sv
+│   │   │   └── lstm
+│   │   │       ├── convolutional
+│   │   │       │   └── model_lstm.sv
+│   │   │       └── standard
+│   │   │           └── model_lstm.sv
+│   │   ├── functions
+│   │   │   ├── model_layer_norm.sv
+│   │   │   └── model_positional_encoding.sv
+│   │   ├── inputs
+│   │   │   ├── model_inputs_vector.sv
+│   │   │   ├── model_keys_vector.sv
+│   │   │   ├── model_queries_vector.sv
+│   │   │   └── model_values_vector.sv
+│   │   └── top
+│   │       ├── model_controller.sv
+│   │       ├── model_decoder.sv
+│   │       └── model_encoder.sv
+│   ├── fnn
+│   │   ├── convolutional
+│   │   │   └── model_controller.sv
+│   │   └── standard
+│   │       └── model_controller.sv
+│   └── lstm
+│       ├── convolutional
+│       │   ├── model_activation_gate_vector.sv
+│       │   ├── model_controller.sv
+│       │   ├── model_forget_gate_vector.sv
+│       │   ├── model_hidden_gate_vector.sv
+│       │   ├── model_input_gate_vector.sv
+│       │   ├── model_output_gate_vector.sv
+│       │   └── model_state_gate_vector.sv
+│       └── standard
+│           ├── model_activation_gate_vector.sv
+│           ├── model_controller.sv
+│           ├── model_forget_gate_vector.sv
+│           ├── model_hidden_gate_vector.sv
+│           ├── model_input_gate_vector.sv
+│           ├── model_output_gate_vector.sv
+│           └── model_state_gate_vector.sv
+├── pkg
+│   ├── model_ann_controller_verilog_pkg.sv
+│   ├── model_arithmetic_verilog_pkg.sv
+│   ├── model_fnn_controller_verilog_pkg.sv
+│   ├── model_lstm_controller_verilog_pkg.sv
+│   ├── model_math_verilog_pkg.sv
+│   ├── model_ntm_core_verilog_pkg.sv
+│   ├── model_pnn_controller_verilog_pkg.sv
+│   └── model_state_verilog_pkg.sv
+├── state
+│   ├── feedback
+│   │   ├── model_state_matrix_feedforward.sv
+│   │   ├── model_state_matrix_input.sv
+│   │   ├── model_state_matrix_output.sv
+│   │   └── model_state_matrix_state.sv
+│   ├── outputs
+│   │   ├── model_state_vector_output.sv
+│   │   └── model_state_vector_state.sv
+│   ├── pnn
+│   │   ├── convolutional
+│   │   │   └── model_controller.sv
+│   │   └── standard
+│   │       └── model_controller.sv
+│   └── top
+│       └── model_state_top.sv
+└── trainer
+    ├── differentiation
+    │   ├── model_trainer_matrix_differentiation.sv
+    │   └── model_trainer_vector_differentiation.sv
+    ├── fnn
+    │   └── model_trainer.sv
+    ├── lstm
+    │   ├── model_activation_trainer.sv
+    │   ├── model_forget_trainer.sv
+    │   ├── model_input_trainer.sv
+    │   └── model_output_trainer.sv
+    └── pnn
+        └── model_trainer.sv
+
+60 directories, 160 files

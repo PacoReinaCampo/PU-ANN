@@ -1,0 +1,41 @@
+library
+├── bfm
+│   ├── ahb3
+│   │   ├── peripheral_design.cpp
+│   │   └── peripheral_design.hpp
+│   ├── apb4
+│   │   ├── peripheral_design.cpp
+│   │   └── peripheral_design.hpp
+│   ├── axi4
+│   │   ├── peripheral_design.cpp
+│   │   └── peripheral_design.hpp
+│   ├── bb
+│   │   ├── peripheral_design.cpp
+│   │   └── peripheral_design.hpp
+│   ├── biu
+│   │   ├── peripheral_design.cpp
+│   │   └── peripheral_design.hpp
+│   └── wb
+│       ├── peripheral_design.cpp
+│       └── peripheral_design.hpp
+└── core
+    ├── ahb3
+    │   ├── peripheral_design.cpp
+    │   └── peripheral_design.hpp
+    ├── apb4
+    │   ├── peripheral_design.cpp
+    │   └── peripheral_design.hpp
+    ├── axi4
+    │   ├── peripheral_design.cpp
+    │   └── peripheral_design.hpp
+    ├── bb
+    │   ├── peripheral_design.cpp
+    │   └── peripheral_design.hpp
+    ├── biu
+    │   ├── peripheral_design.cpp
+    │   └── peripheral_design.hpp
+    └── wb
+        ├── peripheral_design.cpp
+        └── peripheral_design.hpp
+
+14 directories, 24 files

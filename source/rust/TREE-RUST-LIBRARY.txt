@@ -1,0 +1,77 @@
+library
+├── bfm
+│   ├── ahb3
+│   │   └── src
+│   │       ├── code
+│   │       │   ├── mod.rs
+│   │       │   └── peripheral_design.rs
+│   │       └── lib.rs
+│   ├── apb4
+│   │   └── src
+│   │       ├── code
+│   │       │   ├── mod.rs
+│   │       │   └── peripheral_design.rs
+│   │       └── lib.rs
+│   ├── axi4
+│   │   └── src
+│   │       ├── code
+│   │       │   ├── mod.rs
+│   │       │   └── peripheral_design.rs
+│   │       └── lib.rs
+│   ├── bb
+│   │   └── src
+│   │       ├── code
+│   │       │   ├── mod.rs
+│   │       │   └── peripheral_design.rs
+│   │       └── lib.rs
+│   ├── biu
+│   │   └── src
+│   │       ├── code
+│   │       │   ├── mod.rs
+│   │       │   └── peripheral_design.rs
+│   │       └── lib.rs
+│   └── wb
+│       └── src
+│           ├── code
+│           │   ├── mod.rs
+│           │   └── peripheral_design.rs
+│           └── lib.rs
+└── core
+    ├── ahb3
+    │   └── src
+    │       ├── code
+    │       │   ├── mod.rs
+    │       │   └── peripheral_design.rs
+    │       └── lib.rs
+    ├── apb4
+    │   └── src
+    │       ├── code
+    │       │   ├── mod.rs
+    │       │   └── peripheral_design.rs
+    │       └── lib.rs
+    ├── axi4
+    │   └── src
+    │       ├── code
+    │       │   ├── mod.rs
+    │       │   └── peripheral_design.rs
+    │       └── lib.rs
+    ├── bb
+    │   └── src
+    │       ├── code
+    │       │   ├── mod.rs
+    │       │   └── peripheral_design.rs
+    │       └── lib.rs
+    ├── biu
+    │   └── src
+    │       ├── code
+    │       │   ├── mod.rs
+    │       │   └── peripheral_design.rs
+    │       └── lib.rs
+    └── wb
+        └── src
+            ├── code
+            │   ├── mod.rs
+            │   └── peripheral_design.rs
+            └── lib.rs
+
+38 directories, 36 files

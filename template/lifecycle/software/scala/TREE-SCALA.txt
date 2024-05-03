@@ -1,0 +1,61 @@
+code
+├── classes
+│   ├── philosophers
+│   │   └── ntm_philosophers.scala
+│   ├── soldiers
+│   │   └── ntm_soldiers.scala
+│   └── workers
+│       └── ntm_workers.scala
+└── computing
+    ├── advanced_computer_architecture
+    │   ├── multi_processor_system_on_chip
+    │   │   └── multi_processor_system_on_chip.scala
+    │   ├── processing_unit
+    │   │   ├── mimd.scala
+    │   │   ├── misd.scala
+    │   │   ├── simd.scala
+    │   │   └── sisd.scala
+    │   └── system_on_chip
+    │       ├── bus_on_chip.scala
+    │       └── network_on_chip.scala
+    ├── computer_architecture
+    │   ├── harvard_architecture
+    │   │   ├── pu_or1k.scala
+    │   │   └── pu_riscv.scala
+    │   └── von_neumann_architecture
+    │       ├── pu_msp430.scala
+    │       └── pu_riscv.scala
+    ├── information
+    │   ├── bit
+    │   │   └── bit.scala
+    │   ├── combinational_logic
+    │   │   ├── arithmetic_circuits.scala
+    │   │   └── logic_circuits.scala
+    │   ├── finite_state_machine
+    │   │   └── finite_state_machine.scala
+    │   ├── logic_gate
+    │   │   ├── and_gate.scala
+    │   │   ├── nand_gate.scala
+    │   │   ├── nor_gate.scala
+    │   │   ├── not_gate.scala
+    │   │   ├── or_gate.scala
+    │   │   ├── xnor_gate.scala
+    │   │   ├── xor_gate.scala
+    │   │   └── yes_gate.scala
+    │   └── pushdown_automaton
+    │       └── pushdown_automaton.scala
+    └── neural_network
+        ├── attention_neural_network
+        │   └── attention_neural_network.scala
+        ├── differentiable_neural_computer_neural_network
+        │   └── differentiable_neural_computer_neural_network.scala
+        ├── feedforward_neural_network
+        │   └── feedforward_neural_network.scala
+        ├── long_short_term_memory_neural_network
+        │   └── long_short_term_memory_neural_network.scala
+        ├── neural_turing_machine_neural_network
+        │   └── neural_turing_machine_neural_network.scala
+        └── perceptron_neural_network
+            └── perceptron_neural_network.scala
+
+25 directories, 33 files

@@ -1,0 +1,8 @@
+[package]
+name = "core-bb"
+version = "0.0.0"
+authors = []
+edition = "2021"
+
+[dependencies]
+core = { path = "../../../library/core/bb" }
