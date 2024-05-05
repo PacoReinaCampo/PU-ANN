@@ -1,8 +1,0 @@
-[package]
-name = "bfm-wb"
-version = "0.0.0"
-authors = []
-edition = "2021"
-
-[dependencies]
-bfm = { path = "../../../library/bfm/wb" }

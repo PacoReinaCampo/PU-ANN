@@ -1,8 +1,0 @@
-[package]
-name = "core-axi4"
-version = "0.0.0"
-authors = []
-edition = "2021"
-
-[dependencies]
-core = { path = "../../../library/core/axi4" }

@@ -1,6 +1,22 @@
 [workspace]
 members = [
-"library/bfm/ahb3",
+"library/arithmetic",
 
-"application/bfm/ahb3"
+"library/algebra",
+"library/math",
+
+#"library/state",
+
+"application/arithmetic/scalar",
+"application/arithmetic/vector",
+"application/arithmetic/matrix",
+"application/arithmetic/tensor",
+
+"application/algebra/scalar",
+"application/algebra/vector",
+"application/algebra/matrix",
+"application/algebra/tensor",
+"application/math/scalar",
+"application/math/vector",
+"application/math/matrix"
 ]

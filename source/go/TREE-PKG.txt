@@ -1,0 +1,50 @@
+library
+├── algebra
+│   ├── MatrixMath
+│   ├── ScalarMath
+│   ├── TensorMath
+│   └── VectorMath
+├── arithmetic
+│   ├── MatrixArithmetic
+│   ├── ScalarArithmetic
+│   ├── TensorArithmetic
+│   └── VectorArithmetic
+├── math
+│   ├── MatrixMath
+│   ├── ScalarMath
+│   └── VectorMath
+├── nn
+│   ├── ann
+│   │   ├── components
+│   │   ├── controller
+│   │   │   ├── fnn
+│   │   │   └── lstm
+│   │   ├── functions
+│   │   ├── inputs
+│   │   └── top
+│   ├── dnc
+│   │   ├── memory
+│   │   ├── read_heads
+│   │   ├── top
+│   │   ├── trained
+│   │   └── write_heads
+│   ├── fnn
+│   │   ├── convolutional
+│   │   └── standard
+│   └── lstm
+│       ├── convolutional
+│       └── standard
+├── state
+│   ├── feedback
+│   ├── outputs
+│   └── top
+└── trainer
+    ├── differentiation
+    ├── fnn
+    └── lstm
+        ├── activation
+        ├── forget
+        ├── input
+        └── output
+
+47 directories, 0 files

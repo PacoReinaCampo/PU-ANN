@@ -1,0 +1,57 @@
+library
+├── algebra
+│   ├── ntm_algebra.h
+│   ├── matrix
+│   ├── scalar
+│   ├── tensor
+│   └── vector
+├── arithmetic
+│   ├── ntm_arithmetic.h
+│   ├── matrix
+│   ├── scalar
+│   ├── tensor
+│   └── vector
+├── math
+│   ├── ntm_math.h
+│   ├── matrix
+│   ├── scalar
+│   └── vector
+├── nn
+│   ├── ntm_controller.h
+│   ├── ann
+│   │   ├── components
+│   │   ├── controller
+│   │   │   ├── fnn
+│   │   │   └── lstm
+│   │   ├── functions
+│   │   ├── inputs
+│   │   └── top
+│   ├── dnc
+│   │   ├── dnc.h
+│   │   ├── memory
+│   │   ├── read_heads
+│   │   ├── top
+│   │   ├── trained
+│   │   └── write_heads
+│   ├── fnn
+│   │   ├── convolutional
+│   │   └── standard
+│   └── lstm
+│       ├── convolutional
+│       └── standard
+├── state
+│   ├── ntm_state.h
+│   ├── feedback
+│   ├── outputs
+│   └── top
+└── trainer
+    ├── ntm_trainer.h
+    ├── differentiation
+    ├── fnn
+    └── lstm
+        ├── activation
+        ├── forget
+        ├── input
+        └── output
+
+47 directories, 7 files

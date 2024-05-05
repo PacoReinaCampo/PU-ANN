@@ -1,8 +1,0 @@
-[package]
-name = "core-ahb3"
-version = "0.0.0"
-authors = []
-edition = "2021"
-
-[dependencies]
-core = { path = "../../../library/core/ahb3" }

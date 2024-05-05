@@ -9,14 +9,14 @@
 ##                  |_|                                                          ##
 ##                                                                               ##
 ##                                                                               ##
-##              Peripheral for MPSoC                                             ##
+##              QueenField                                                       ##
 ##              Multi-Processor System on Chip                                   ##
 ##                                                                               ##
 ###################################################################################
 
 ###################################################################################
 ##                                                                               ##
-## Copyright (c) 2015-2016 by the author(s)                                      ##
+## Copyright (c) 2022-2025 by the author(s)                                      ##
 ##                                                                               ##
 ## Permission is hereby granted, free of charge, to any person obtaining a copy  ##
 ## of this software and associated documentation files (the "Software"), to deal ##
@@ -42,5 +42,8 @@
 ##                                                                               ##
 ###################################################################################
 
-tree -P '*.ad*' application > TREE-ADA-APPLICATION.txt
-tree -P '*.ad*' library > TREE-ADA-LIBRARY.txt
+tree -P '*.adb' library > TREE-ADA.txt
+
+tree -f -i -P '*.adb' library > CREATE-ADA.sh
+sed -i '/.adb/!d' CREATE-ADA.sh
+sed -i 's/^/touch /g' CREATE-ADA.sh
