@@ -186,6 +186,25 @@ library
 │   │       ├── ntm_input_gate_vector.rs
 │   │       ├── ntm_output_gate_vector.rs
 │   │       └── ntm_state_gate_vector.rs
+│   ├── ntm
+│   │   ├── memory
+│   │   │   ├── ntm_addressing.rs
+│   │   │   ├── ntm_matrix_content_based_addressing.rs
+│   │   │   └── ntm_vector_content_based_addressing.rs
+│   │   ├── ntm.rs
+│   │   ├── read_heads
+│   │   │   └── ntm_reading.rs
+│   │   ├── top
+│   │   │   ├── ntm_interface_matrix.rs
+│   │   │   ├── ntm_interface_top.rs
+│   │   │   ├── ntm_interface_vector.rs
+│   │   │   ├── ntm_output_vector.rs
+│   │   │   └── ntm_top.rs
+│   │   ├── trained
+│   │   │   └── ntm_trained_top.rs
+│   │   └── write_heads
+│   │       ├── ntm_erasing.rs
+│   │       └── ntm_writing.rs
 │   ├── ntm_fnn_controller.rs
 │   └── ntm_lstm_controller.rs
 ├── state
@@ -253,4 +272,4 @@ library
     ├── ntm_fnn.rs
     └── ntm_lstm.rs
 
-51 directories, 202 files
+57 directories, 215 files

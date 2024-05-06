@@ -149,6 +149,26 @@ make x86
 #make clean
 #make x86
 
+#cd ../../../application/nn/ntm/memory
+#make clean
+#make x86
+
+#cd ../../../application/nn/ntm/read_heads
+#make clean
+#make x86
+
+#cd ../../../application/nn/ntm/top
+#make clean
+#make x86
+
+#cd ../../../application/nn/ntm/trained
+#make clean
+#make x86
+
+#cd ../../../application/nn/ntm/write_heads
+#make clean
+#make x86
+
 
 #cd ../../../application/state/feedback
 #make clean

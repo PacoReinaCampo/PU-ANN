@@ -52,9 +52,16 @@ library
 │   ├── fnn
 │   │   ├── convolutional
 │   │   └── standard
-│   └── lstm
-│       ├── convolutional
-│       └── standard
+│   ├── lstm
+│   │   ├── convolutional
+│   │   └── standard
+│   └── ntm
+│       ├── ntm.hpp
+│       ├── memory
+│       ├── read_heads
+│       ├── top
+│       ├── trained
+│       └── write_heads
 ├── state
 │   ├── ntm_state.hpp
 │   ├── feedback
@@ -71,4 +78,4 @@ library
         ├── input
         └── output
 
-63 directories, 8 files
+69 directories, 9 files

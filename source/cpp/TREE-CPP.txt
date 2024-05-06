@@ -179,6 +179,25 @@ library
 │   │       ├── ntm_input_gate_vector.cpp
 │   │       ├── ntm_output_gate_vector.cpp
 │   │       └── ntm_state_gate_vector.cpp
+│   ├── ntm
+│   │   ├── memory
+│   │   │   ├── ntm_addressing.cpp
+│   │   │   ├── ntm_matrix_content_based_addressing.cpp
+│   │   │   └── ntm_vector_content_based_addressing.cpp
+│   │   ├── ntm.cpp
+│   │   ├── read_heads
+│   │   │   └── ntm_reading.cpp
+│   │   ├── top
+│   │   │   ├── ntm_interface_matrix.cpp
+│   │   │   ├── ntm_interface_top.cpp
+│   │   │   ├── ntm_interface_vector.cpp
+│   │   │   ├── ntm_output_vector.cpp
+│   │   │   └── ntm_top.cpp
+│   │   ├── trained
+│   │   │   └── ntm_trained_top.cpp
+│   │   └── write_heads
+│   │       ├── ntm_erasing.cpp
+│   │       └── ntm_writing.cpp
 │   ├── ntm_fnn_controller.cpp
 │   └── ntm_lstm_controller.cpp
 ├── state
@@ -241,4 +260,4 @@ library
     ├── ntm_fnn.cpp
     └── ntm_lstm.cpp
 
-63 directories, 178 files
+69 directories, 191 files

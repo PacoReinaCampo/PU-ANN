@@ -63,9 +63,9 @@ java application/algebra/matrix/test_matrix_algebra.scala
 java application/algebra/scalar/test_scalar_algebra.scala
 java application/algebra/tensor/test_tensor_algebra.scala
 java application/algebra/vector/test_vector_algebra.scala
-java application/math/function/matrix/test_matrix_math.scala
-java application/math/function/scalar/test_scalar_math.scala
-java application/math/function/vector/test_vector_math.scala
+java application/math/matrix/test_matrix_math.scala
+java application/math/scalar/test_scalar_math.scala
+java application/math/vector/test_vector_math.scala
 java application/ntm/memory/ntm_addressing.scala
 java application/ntm/read_heads/ntm_reading.scala
 java application/ntm/top/ntm_top.scala

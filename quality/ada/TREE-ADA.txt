@@ -82,23 +82,41 @@ library
 │   │   │   └── ntm_controller.adb
 │   │   └── standard
 │   │       └── ntm_controller.adb
-│   └── lstm
-│       ├── convolutional
-│       │   ├── ntm_activation_gate_vector.adb
-│       │   ├── ntm_controller.adb
-│       │   ├── ntm_forget_gate_vector.adb
-│       │   ├── ntm_hidden_gate_vector.adb
-│       │   ├── ntm_input_gate_vector.adb
-│       │   ├── ntm_output_gate_vector.adb
-│       │   └── ntm_state_gate_vector.adb
-│       └── standard
-│           ├── ntm_activation_gate_vector.adb
-│           ├── ntm_controller.adb
-│           ├── ntm_forget_gate_vector.adb
-│           ├── ntm_hidden_gate_vector.adb
-│           ├── ntm_input_gate_vector.adb
-│           ├── ntm_output_gate_vector.adb
-│           └── ntm_state_gate_vector.adb
+│   ├── lstm
+│   │   ├── convolutional
+│   │   │   ├── ntm_activation_gate_vector.adb
+│   │   │   ├── ntm_controller.adb
+│   │   │   ├── ntm_forget_gate_vector.adb
+│   │   │   ├── ntm_hidden_gate_vector.adb
+│   │   │   ├── ntm_input_gate_vector.adb
+│   │   │   ├── ntm_output_gate_vector.adb
+│   │   │   └── ntm_state_gate_vector.adb
+│   │   └── standard
+│   │       ├── ntm_activation_gate_vector.adb
+│   │       ├── ntm_controller.adb
+│   │       ├── ntm_forget_gate_vector.adb
+│   │       ├── ntm_hidden_gate_vector.adb
+│   │       ├── ntm_input_gate_vector.adb
+│   │       ├── ntm_output_gate_vector.adb
+│   │       └── ntm_state_gate_vector.adb
+│   └── ntm
+│       ├── memory
+│       │   ├── ntm_addressing.adb
+│       │   ├── ntm_matrix_content_based_addressing.adb
+│       │   └── ntm_vector_content_based_addressing.adb
+│       ├── read_heads
+│       │   └── ntm_reading.adb
+│       ├── top
+│       │   ├── ntm_interface_matrix.adb
+│       │   ├── ntm_interface_top.adb
+│       │   ├── ntm_interface_vector.adb
+│       │   ├── ntm_output_vector.adb
+│       │   └── ntm_top.adb
+│       ├── trained
+│       │   └── ntm_trained_top.adb
+│       └── write_heads
+│           ├── ntm_erasing.adb
+│           └── ntm_writing.adb
 ├── state
 │   ├── feedback
 │   │   └── ntm_state_feedback.adb
@@ -152,4 +170,4 @@ library
             ├── ntm_lstm_output_v_trainer.adb
             └── ntm_lstm_output_w_trainer.adb
 
-47 directories, 105 files
+53 directories, 117 files

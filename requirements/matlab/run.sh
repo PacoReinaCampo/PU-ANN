@@ -143,6 +143,19 @@ cd application/nn/ann/top; octave ntm_controller_test.m; cd ../../../..
 cd application/nn/ann/top; octave ntm_decoder_test.m; cd ../../../..
 cd application/nn/ann/top; octave ntm_encoder_test.m; cd ../../../..
 
+cd application/nn/ntm/memory; octave ntm_addressing_test.m; cd ../../../..
+cd application/nn/ntm/memory; octave ntm_matrix_content_based_addressing_test.m; cd ../../../..
+cd application/nn/ntm/memory; octave ntm_vector_content_based_addressing_test.m; cd ../../../..
+cd application/nn/ntm/read_heads; octave ntm_reading_test.m; cd ../../../..
+cd application/nn/ntm/top; octave ntm_interface_matrix_test.m; cd ../../../..
+cd application/nn/ntm/top; octave ntm_interface_top_test.m; cd ../../../..
+cd application/nn/ntm/top; octave ntm_interface_vector_test.m; cd ../../../..
+cd application/nn/ntm/top; octave ntm_output_vector_test.m; cd ../../../..
+cd application/nn/ntm/top; octave ntm_top_test.m; cd ../../../..
+cd application/nn/ntm/write_heads; octave ntm_erasing_test.m; cd ../../../..
+cd application/nn/ntm/write_heads; octave ntm_writing_test.m; cd ../../../..
+#cd application/nn/ntm/trained; octave ntm_trained_top_test.m; cd ../../../..
+
 cd application/nn/dnc/memory; octave dnc_addressing_test.m; cd ../../../..
 cd application/nn/dnc/memory; octave dnc_allocation_weighting_test.m; cd ../../../..
 cd application/nn/dnc/memory; octave dnc_backward_weighting_test.m; cd ../../../..

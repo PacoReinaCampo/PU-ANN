@@ -83,23 +83,41 @@ library
 │   │   │   └── ntm_controller.scala
 │   │   └── standard
 │   │       └── ntm_controller.scala
-│   └── lstm
-│       ├── convolutional
-│       │   ├── ntm_activation_gate_vector.scala
-│       │   ├── ntm_controller.scala
-│       │   ├── ntm_forget_gate_vector.scala
-│       │   ├── ntm_hidden_gate_vector.scala
-│       │   ├── ntm_input_gate_vector.scala
-│       │   ├── ntm_output_gate_vector.scala
-│       │   └── ntm_state_gate_vector.scala
-│       └── standard
-│           ├── ntm_activation_gate_vector.scala
-│           ├── ntm_controller.scala
-│           ├── ntm_forget_gate_vector.scala
-│           ├── ntm_hidden_gate_vector.scala
-│           ├── ntm_input_gate_vector.scala
-│           ├── ntm_output_gate_vector.scala
-│           └── ntm_state_gate_vector.scala
+│   ├── lstm
+│   │   ├── convolutional
+│   │   │   ├── ntm_activation_gate_vector.scala
+│   │   │   ├── ntm_controller.scala
+│   │   │   ├── ntm_forget_gate_vector.scala
+│   │   │   ├── ntm_hidden_gate_vector.scala
+│   │   │   ├── ntm_input_gate_vector.scala
+│   │   │   ├── ntm_output_gate_vector.scala
+│   │   │   └── ntm_state_gate_vector.scala
+│   │   └── standard
+│   │       ├── ntm_activation_gate_vector.scala
+│   │       ├── ntm_controller.scala
+│   │       ├── ntm_forget_gate_vector.scala
+│   │       ├── ntm_hidden_gate_vector.scala
+│   │       ├── ntm_input_gate_vector.scala
+│   │       ├── ntm_output_gate_vector.scala
+│   │       └── ntm_state_gate_vector.scala
+│   └── ntm
+│       ├── memory
+│       │   ├── ntm_addressing.scala
+│       │   ├── ntm_matrix_content_based_addressing.scala
+│       │   └── ntm_vector_content_based_addressing.scala
+│       ├── read_heads
+│       │   └── ntm_reading.scala
+│       ├── top
+│       │   ├── ntm_interface_matrix.scala
+│       │   ├── ntm_interface_top.scala
+│       │   ├── ntm_interface_vector.scala
+│       │   ├── ntm_output_vector.scala
+│       │   └── ntm_top.scala
+│       ├── trained
+│       │   └── ntm_trained_top.scala
+│       └── write_heads
+│           ├── ntm_erasing.scala
+│           └── ntm_writing.scala
 ├── state
 │   ├── feedback
 │   │   └── ntm_state_feedback.scala
@@ -153,4 +171,4 @@ library
             ├── ntm_lstm_output_v_trainer.scala
             └── ntm_lstm_output_w_trainer.scala
 
-47 directories, 106 files
+53 directories, 118 files

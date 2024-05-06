@@ -123,6 +123,21 @@ make clean
 #cd ../../../application/nn/lstm/standard
 #make clean
 
+#cd ../../../application/nn/ntm/memory
+#make clean
+
+#cd ../../../application/nn/ntm/read_heads
+#make clean
+
+#cd ../../../application/nn/ntm/top
+#make clean
+
+#cd ../../../application/nn/ntm/trained
+#make clean
+
+#cd ../../../application/nn/ntm/write_heads
+#make clean
+
 
 #cd ../../../application/state/feedback
 #make clean

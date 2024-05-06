@@ -158,6 +158,18 @@ rm -rf nn/lstm/standard/ntm_hidden_gate_vector.run
 rm -rf nn/lstm/standard/ntm_input_gate_vector.run
 rm -rf nn/lstm/standard/ntm_output_gate_vector.run
 rm -rf nn/lstm/standard/ntm_state_gate_vector.run
+rm -rf nn/ntm/memory/ntm_addressing.run
+rm -rf nn/ntm/memory/ntm_matrix_content_based_addressing.run
+rm -rf nn/ntm/memory/ntm_vector_content_based_addressing.run
+rm -rf nn/ntm/read_heads/ntm_reading.run
+rm -rf nn/ntm/top/ntm_interface_matrix.run
+rm -rf nn/ntm/top/ntm_interface_top.run
+rm -rf nn/ntm/top/ntm_interface_vector.run
+rm -rf nn/ntm/top/ntm_output_vector.run
+rm -rf nn/ntm/top/ntm_top.run
+rm -rf nn/ntm/trained/ntm_trained_top.run
+rm -rf nn/ntm/write_heads/ntm_erasing.run
+rm -rf nn/ntm/write_heads/ntm_writing.run
 rm -rf state/feedback/ntm_state_matrix_feedforward.run
 rm -rf state/feedback/ntm_state_matrix_input.run
 rm -rf state/feedback/ntm_state_matrix_output.run
@@ -320,6 +332,18 @@ g++ nn/lstm/standard/ntm_hidden_gate_vector_testbench.cpp nn/lstm/standard/ntm_h
 g++ nn/lstm/standard/ntm_input_gate_vector_testbench.cpp nn/lstm/standard/ntm_input_gate_vector_design.cpp -o nn/lstm/standard/ntm_input_gate_vector.run -lsystemc
 g++ nn/lstm/standard/ntm_output_gate_vector_testbench.cpp nn/lstm/standard/ntm_output_gate_vector_design.cpp -o nn/lstm/standard/ntm_output_gate_vector.run -lsystemc
 g++ nn/lstm/standard/ntm_state_gate_vector_testbench.cpp nn/lstm/standard/ntm_state_gate_vector_design.cpp -o nn/lstm/standard/ntm_state_gate_vector.run -lsystemc
+g++ nn/ntm/memory/ntm_addressing_testbench.cpp nn/ntm/memory/ntm_addressing_design.cpp -o nn/ntm/memory/ntm_addressing.run -lsystemc
+g++ nn/ntm/memory/ntm_matrix_content_based_addressing_testbench.cpp nn/ntm/memory/ntm_matrix_content_based_addressing_design.cpp -o nn/ntm/memory/ntm_matrix_content_based_addressing.run -lsystemc
+g++ nn/ntm/memory/ntm_vector_content_based_addressing_testbench.cpp nn/ntm/memory/ntm_vector_content_based_addressing_design.cpp -o nn/ntm/memory/ntm_vector_content_based_addressing.run -lsystemc
+g++ nn/ntm/read_heads/ntm_reading_testbench.cpp nn/ntm/read_heads/ntm_reading_design.cpp -o nn/ntm/read_heads/ntm_reading.run -lsystemc
+g++ nn/ntm/top/ntm_interface_matrix_testbench.cpp nn/ntm/top/ntm_interface_matrix_design.cpp -o nn/ntm/top/ntm_interface_matrix.run -lsystemc
+g++ nn/ntm/top/ntm_interface_top_testbench.cpp nn/ntm/top/ntm_interface_top_design.cpp -o nn/ntm/top/ntm_interface_top.run -lsystemc
+g++ nn/ntm/top/ntm_interface_vector_testbench.cpp nn/ntm/top/ntm_interface_vector_design.cpp -o nn/ntm/top/ntm_interface_vector.run -lsystemc
+g++ nn/ntm/top/ntm_output_vector_testbench.cpp nn/ntm/top/ntm_output_vector_design.cpp -o nn/ntm/top/ntm_output_vector.run -lsystemc
+g++ nn/ntm/top/ntm_top_testbench.cpp nn/ntm/top/ntm_top_design.cpp -o nn/ntm/top/ntm_top.run -lsystemc
+g++ nn/ntm/trained/ntm_trained_top_testbench.cpp nn/ntm/trained/ntm_trained_top_design.cpp -o nn/ntm/trained/ntm_trained_top.run -lsystemc
+g++ nn/ntm/write_heads/ntm_erasing_testbench.cpp nn/ntm/write_heads/ntm_erasing_design.cpp -o nn/ntm/write_heads/ntm_erasing.run -lsystemc
+g++ nn/ntm/write_heads/ntm_writing_testbench.cpp nn/ntm/write_heads/ntm_writing_design.cpp -o nn/ntm/write_heads/ntm_writing.run -lsystemc
 g++ state/feedback/ntm_state_matrix_feedforward_testbench.cpp state/feedback/ntm_state_matrix_feedforward_design.cpp -o state/feedback/ntm_state_matrix_feedforward.run -lsystemc
 g++ state/feedback/ntm_state_matrix_input_testbench.cpp state/feedback/ntm_state_matrix_input_design.cpp -o state/feedback/ntm_state_matrix_input.run -lsystemc
 g++ state/feedback/ntm_state_matrix_output_testbench.cpp state/feedback/ntm_state_matrix_output_design.cpp -o state/feedback/ntm_state_matrix_output.run -lsystemc

@@ -133,23 +133,41 @@ library
 │   │   │   └── ntm_controller.c
 │   │   └── standard
 │   │       └── ntm_controller.c
-│   └── lstm
-│       ├── convolutional
-│       │   ├── ntm_activation_gate_vector.c
-│       │   ├── ntm_controller.c
-│       │   ├── ntm_forget_gate_vector.c
-│       │   ├── ntm_hidden_gate_vector.c
-│       │   ├── ntm_input_gate_vector.c
-│       │   ├── ntm_output_gate_vector.c
-│       │   └── ntm_state_gate_vector.c
-│       └── standard
-│           ├── ntm_activation_gate_vector.c
-│           ├── ntm_controller.c
-│           ├── ntm_forget_gate_vector.c
-│           ├── ntm_hidden_gate_vector.c
-│           ├── ntm_input_gate_vector.c
-│           ├── ntm_output_gate_vector.c
-│           └── ntm_state_gate_vector.c
+│   ├── lstm
+│   │   ├── convolutional
+│   │   │   ├── ntm_activation_gate_vector.c
+│   │   │   ├── ntm_controller.c
+│   │   │   ├── ntm_forget_gate_vector.c
+│   │   │   ├── ntm_hidden_gate_vector.c
+│   │   │   ├── ntm_input_gate_vector.c
+│   │   │   ├── ntm_output_gate_vector.c
+│   │   │   └── ntm_state_gate_vector.c
+│   │   └── standard
+│   │       ├── ntm_activation_gate_vector.c
+│   │       ├── ntm_controller.c
+│   │       ├── ntm_forget_gate_vector.c
+│   │       ├── ntm_hidden_gate_vector.c
+│   │       ├── ntm_input_gate_vector.c
+│   │       ├── ntm_output_gate_vector.c
+│   │       └── ntm_state_gate_vector.c
+│   └── ntm
+│       ├── memory
+│       │   ├── ntm_addressing.c
+│       │   ├── ntm_matrix_content_based_addressing.c
+│       │   └── ntm_vector_content_based_addressing.c
+│       ├── read_heads
+│       │   └── ntm_reading.c
+│       ├── top
+│       │   ├── ntm_interface_matrix.c
+│       │   ├── ntm_interface_top.c
+│       │   ├── ntm_interface_vector.c
+│       │   ├── ntm_output_vector.c
+│       │   └── ntm_top.c
+│       ├── trained
+│       │   └── ntm_trained_top.c
+│       └── write_heads
+│           ├── ntm_erasing.c
+│           └── ntm_writing.c
 ├── state
 │   ├── feedback
 │   │   ├── ntm_state_matrix_feedforward.c
@@ -207,4 +225,4 @@ library
             ├── ntm_lstm_output_v_trainer.c
             └── ntm_lstm_output_w_trainer.c
 
-47 directories, 160 files
+53 directories, 172 files
