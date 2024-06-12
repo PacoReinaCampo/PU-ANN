@@ -1,0 +1,117 @@
+digraph Project {
+  // Introduction
+  graph [rankdir = LR];
+  node[shape=record];
+
+  // Peripheral Blocks
+  subgraph "cluster PeripheralBlocks" { label = "Peripheral Blocks";
+    MPSoC_DBG[label="MPSoC_DBG\nPeripheral"];
+    MPSoC_DMA[label="MPSoC_DMA\nPeripheral"];
+    MPSoC_GPIO[label="MPSoC_GPIO\nPeripheral"];
+    MPSoC_MPI[label="MPSoC_MPI\nPeripheral"];
+    MPSoC_MPRAM[label="MPSoC_MPRAM\nPeripheral"];
+    MPSoC_MSI[label="MPSoC_MSI\nPeripheral"];
+    MPSoC_NoC[label="MPSoC_NoC\nPeripheral"];
+    MPSoC_SPRAM[label="MPSoC_SPRAM\nPeripheral"];
+    MPSoC_UART[label="MPSoC_UART\nPeripheral"];
+  }
+
+  // Architecture Blocks
+  subgraph "cluster ArchitectureBlocks" { label = "Architecture Blocks";
+    MPSoC_OR1K[label="MPSoC_OR1K\nArchitecture\nor1k64-pvt"];
+    SoC_OR1K[label="SoC_OR1K\nArchitecture\nor1k64-pv"];
+    PU_OR1K[label="PU_OR1K\nArchitecture\nor1k64-p"];
+  }
+
+  // Environment Blocks
+  subgraph "cluster EnvironmentBlocks" { label = "Environment Blocks";
+    MPSoC_DV[label="MPSoC_DV\nEnvironment\nor1k64-pvt"];
+    SoC_DV[label="SoC_DV\nEnvironment\nor1k64-pv"];
+    PU_DV[label="PU_DV\nEnvironment\nor1k64-p"];
+  }
+
+  // Accelerator Blocks
+  subgraph "cluster AcceleratorBlocks" { label = "Accelerator Blocks";
+    MPSoC_DNC[label="MPSoC_DNC\nAccelerator\nrv64-pvt-cnn"];
+    SoC_DNC[label="SoC_DNC\nAccelerator\nrv64-pv-cnn"];
+    PU_DNC[label="PU_DNC\nAccelerator\nrv64-p-cnn"];
+  }
+
+  // Target Blocks
+  subgraph "cluster TargetBlocks" { label = "Target Blocks";
+    MPSoC_EnergyTech[label="MPSoC_EnergyTech\nTarget"];
+    SoC_EnergyTech[label="SoC_EnergyTech\nTarget"];
+    PU_EnergyTech[label="PU_EnergyTech\nTarget"];
+
+    MPSoC_FinTech[label="MPSoC_FinTech\nTarget"];
+    SoC_FinTech[label="SoC_FinTech\nTarget"];
+    PU_FinTech[label="PU_FinTech\nTarget"];
+
+    MPSoC_DefenseTech[label="MPSoC_DefenseTech\nTarget"];
+    SoC_DefenseTech[label="SoC_DefenseTech\nTarget"];
+    PU_DefenseTech[label="PU_DefenseTech\nTarget"];
+  }
+
+  // Peripheral -> Architecture
+  MPSoC_DBG -> MPSoC_OR1K;
+  MPSoC_DMA -> MPSoC_OR1K;
+  MPSoC_GPIO -> MPSoC_OR1K;
+  MPSoC_MPI -> MPSoC_OR1K;
+  MPSoC_MPRAM -> MPSoC_OR1K;
+  MPSoC_MSI -> MPSoC_OR1K;
+  MPSoC_NoC -> MPSoC_OR1K;
+  MPSoC_SPRAM -> MPSoC_OR1K;
+  MPSoC_UART -> MPSoC_OR1K;
+
+  MPSoC_DBG -> SoC_OR1K;
+  MPSoC_DMA -> SoC_OR1K;
+  MPSoC_GPIO -> SoC_OR1K;
+  MPSoC_MPI -> SoC_OR1K;
+  MPSoC_MPRAM -> SoC_OR1K;
+  MPSoC_MSI -> SoC_OR1K;
+  MPSoC_NoC -> SoC_OR1K;
+  MPSoC_SPRAM -> SoC_OR1K;
+  MPSoC_UART -> SoC_OR1K;
+
+  MPSoC_DBG -> PU_OR1K;
+  MPSoC_DMA -> PU_OR1K;
+  MPSoC_GPIO -> PU_OR1K;
+  MPSoC_MPI -> PU_OR1K;
+  MPSoC_MPRAM -> PU_OR1K;
+  MPSoC_MSI -> PU_OR1K;
+  MPSoC_SPRAM -> PU_OR1K;
+  MPSoC_UART -> PU_OR1K;
+
+  // Architecture -> Environment
+  PU_OR1K -> PU_DV;
+
+  SoC_OR1K -> SoC_DV;
+
+  MPSoC_OR1K -> MPSoC_DV;
+
+  // Environment -> Accelerator
+  PU_DV -> PU_DNC;
+
+  SoC_DV -> SoC_DNC;
+
+  MPSoC_DV -> MPSoC_DNC;
+
+  // Accelerator -> Target
+  PU_DNC -> PU_EnergyTech;
+
+  SoC_DNC -> SoC_EnergyTech;
+
+  MPSoC_DNC -> MPSoC_EnergyTech;
+
+  PU_DNC -> PU_FinTech;
+
+  SoC_DNC -> SoC_FinTech;
+
+  MPSoC_DNC -> MPSoC_FinTech;
+
+  PU_DNC -> PU_DefenseTech;
+
+  SoC_DNC -> SoC_DefenseTech;
+
+  MPSoC_DNC -> MPSoC_DefenseTech;
+}
