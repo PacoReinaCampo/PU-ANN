@@ -1,5 +1,7 @@
 ## INSTRUCTION DESCRIPTIONS
 
+Instructions in RISC-V are designed to perform specific operations ranging from basic arithmetic and logical computations to memory access and control flow. Each instruction description outlines its functionality, including operands (registers or immediates), effects on status flags, memory access patterns, and control flow implications. Descriptions provide a clear understanding of how instructions interact with processor state and contribute to program execution.
+
 Format of a line in the table:
 
 `<instruction name> "<instruction description>"`
@@ -289,7 +291,7 @@ Format of a line in the table:
 | `rsub.tensor.w`    | `Subtract the double-precision tensor values in frs1 from frs2, then write the result to frd`                                    |
 | `rmul.tensor.w`    | `Multiply the double-precision tensor values in frs1 and frs2, then write the result to frd`                                     |
 | `rdiv.tensor.w`    | `Divide the double-precision tensor value in frs1 into frs2, then write the result to frd`                                       |
-: RV32RARITH - "RV32RARITH Standard Extension for Double-Precision Floating-Point"
+: RV32RARITH - "RV32RARITH Expanded Extension for Real Arithmetic"
 
 | instruction name   | instruction description                                                                                                          |
 |--------------------|:---------------------------------------------------------------------------------------------------------------------------------|
@@ -309,7 +311,7 @@ Format of a line in the table:
 | `rsub.tensor.d`    | `Subtract the double-precision tensor values in frs1 from frs2, then write the result to frd`                                    |
 | `rmul.tensor.d`    | `Multiply the double-precision tensor values in frs1 and frs2, then write the result to frd`                                     |
 | `rdiv.tensor.d`    | `Divide the double-precision tensor value in frs1 into frs2, then write the result to frd`                                       |
-: RV64RARITH - "RV64RARITH Standard Extension for Double-Precision Floating-Point (+ RV32RARITH)"
+: RV64RARITH - "RV64RARITH Expanded Extension for Real Arithmetic (+ RV32RARITH)"
 
 | instruction name   | instruction description                                                                                                          |
 |--------------------|:---------------------------------------------------------------------------------------------------------------------------------|
@@ -329,7 +331,7 @@ Format of a line in the table:
 | `rsub.tensor.q`    | `Subtract the double-precision tensor values in frs1 from frs2, then write the result to frd`                                    |
 | `rmul.tensor.q`    | `Multiply the double-precision tensor values in frs1 and frs2, then write the result to frd`                                     |
 | `rdiv.tensor.q`    | `Divide the double-precision tensor value in frs1 into frs2, then write the result to frd`                                       |
-: RV128RARITH - "RV128RARITH Standard Extension for Double-Precision Floating-Point (+ RV64RARITH)"
+: RV128RARITH - "RV128RARITH Expanded Extension for Real Arithmetic (+ RV64RARITH)"
 
 | instruction name   | instruction description                                                                                                          |
 |--------------------|:---------------------------------------------------------------------------------------------------------------------------------|
@@ -365,7 +367,7 @@ Format of a line in the table:
 | `csub.p.tensor.w`  | `Subtract the double-precision tensor values in frs1 from frs2, then write the result to frd`                                    |
 | `cmul.p.tensor.w`  | `Multiply the double-precision tensor values in frs1 and frs2, then write the result to frd`                                     |
 | `cdiv.p.tensor.w`  | `Divide the double-precision tensor value in frs1 into frs2, then write the result to frd`                                       |
-: RV32CARITH - "RV32CARITH Standard Extension for Double-Precision Floating-Point"
+: RV32CARITH - "RV32CARITH Expanded Extension for Complex Arithmetic"
 
 | instruction name   | instruction description                                                                                                          |
 |--------------------|:---------------------------------------------------------------------------------------------------------------------------------|
@@ -401,7 +403,7 @@ Format of a line in the table:
 | `csub.p.tensor.d`  | `Subtract the double-precision tensor values in frs1 from frs2, then write the result to frd`                                    |
 | `cmul.p.tensor.d`  | `Multiply the double-precision tensor values in frs1 and frs2, then write the result to frd`                                     |
 | `cdiv.p.tensor.d`  | `Divide the double-precision tensor value in frs1 into frs2, then write the result to frd`                                       |
-: RV64CARITH - "RV64CARITH Standard Extension for Double-Precision Floating-Point (+ RV32CARITH)"
+: RV64CARITH - "RV64CARITH Expanded Extension for Complex Arithmetic (+ RV32CARITH)"
 
 | instruction name   | instruction description                                                                                                          |
 |--------------------|:---------------------------------------------------------------------------------------------------------------------------------|
@@ -437,7 +439,7 @@ Format of a line in the table:
 | `csub.p.tensor.q`  | `Subtract the double-precision tensor values in frs1 from frs2, then write the result to frd`                                    |
 | `cmul.p.tensor.q`  | `Multiply the double-precision tensor values in frs1 and frs2, then write the result to frd`                                     |
 | `cdiv.p.tensor.q`  | `Divide the double-precision tensor value in frs1 into frs2, then write the result to frd`                                       |
-: RV128CARITH - "RV128CARITH Standard Extension for Double-Precision Floating-Point (+ RV64CARITH)"
+: RV128CARITH - "RV128CARITH Expanded Extension for Complex Arithmetic (+ RV64CARITH)"
 
 | instruction name   | instruction description                                                                                                          |
 |--------------------|:---------------------------------------------------------------------------------------------------------------------------------|
@@ -521,7 +523,7 @@ Format of a line in the table:
 | `farcsinh.tensor.s`| `Calculate the inverse hyperbolic sine of the single-precision tensor value in frs1, then write the result to frd`               |
 | `farccosh.tensor.s`| `Calculate the inverse hyperbolic cosine of the single-precision tensor value in frs1, then write the result to frd`             |
 | `farctanh.tensor.s`| `Calculate the inverse hyperbolic tangent of the single-precision tensor value in frs1, then write the result to frd`            |
-: RV32RMATH - "RV32RMATH Standard Extension for Real Math"
+: RV32RMATH - "RV32RMATH Expanded Extension for Real Math"
 
 | instruction name   | instruction description                                                                                                          |
 |--------------------|:---------------------------------------------------------------------------------------------------------------------------------|
@@ -605,7 +607,7 @@ Format of a line in the table:
 | `farcsinh.tensor.d`| `Calculate the inverse hyperbolic sine of the double-precision tensor value in frs1, then write the result to frd`               |
 | `farccosh.tensor.d`| `Calculate the inverse hyperbolic cosine of the double-precision tensor value in frs1, then write the result to frd`             |
 | `farctanh.tensor.d`| `Calculate the inverse hyperbolic tangent of the double-precision tensor value in frs1, then write the result to frd`            |
-: RV64RMATH - "RV64RMATH Standard Extension for Real Math (+ RV32RMATH)"
+: RV64RMATH - "RV64RMATH Expanded Extension for Real Math (+ RV32RMATH)"
 
 | instruction name   | instruction description                                                                                                          |
 |--------------------|:---------------------------------------------------------------------------------------------------------------------------------|
@@ -689,7 +691,7 @@ Format of a line in the table:
 | `farcsinh.tensor.q`| `Calculate the inverse hyperbolic sine of the quadruple-precision tensor value in frs1, then write the result to frd`            |
 | `farccosh.tensor.q`| `Calculate the inverse hyperbolic cosine of the quadruple-precision tensor value in frs1, then write the result to frd`          |
 | `farctanh.tensor.q`| `Calculate the inverse hyperbolic tangent of the quadruple-precision tensor value in frs1, then write the result to frd`         |
-: RV128RMATH - "RV128MATH Standard Extension for Quadruple-Precision Real Math (+ RV64RMATH)"
+: RV128RMATH - "RV128MATH Expanded Extension for Quadruple-Precision Real Math (+ RV64RMATH)"
 
 | instruction name     | instruction description                                                                                                          |
 |----------------------|:---------------------------------------------------------------------------------------------------------------------------------|
@@ -853,7 +855,7 @@ Format of a line in the table:
 | `farcsinh.p.tensor.s`| `Calculate the inverse hyperbolic sine of the single-precision value in frs1, then write the result to frd`                      |
 | `farccosh.p.tensor.s`| `Calculate the inverse hyperbolic cosine of the single-precision value in frs1, then write the result to frd`                    |
 | `farctanh.p.tensor.s`| `Calculate the inverse hyperbolic tangent of the single-precision value in frs1, then write the result to frd`                   |
-: RV32CMATH - "RV32CMATH Standard Extension for Real Math"
+: RV32CMATH - "RV32CMATH Expanded Extension for Real Math"
 
 | instruction name     | instruction description                                                                                                          |
 |----------------------|:---------------------------------------------------------------------------------------------------------------------------------|
@@ -1017,7 +1019,7 @@ Format of a line in the table:
 | `farcsinh.p.tensor.d`| `Calculate the inverse hyperbolic sine of the double-precision value in frs1, then write the result to frd`                      |
 | `farccosh.p.tensor.d`| `Calculate the inverse hyperbolic cosine of the double-precision value in frs1, then write the result to frd`                    |
 | `farctanh.p.tensor.d`| `Calculate the inverse hyperbolic tangent of the double-precision value in frs1, then write the result to frd`                   |
-: RV64CMATH - "RV64CMATH Standard Extension for Real Math (+ RV32CMATH)"
+: RV64CMATH - "RV64CMATH Expanded Extension for Real Math (+ RV32CMATH)"
 
 | instruction name     | instruction description                                                                                                          |
 |----------------------|:---------------------------------------------------------------------------------------------------------------------------------|
@@ -1181,7 +1183,7 @@ Format of a line in the table:
 | `farcsinh.p.tensor.q`| `Calculate the inverse hyperbolic sine of the quadruple-precision value in frs1, then write the result to frd`                   |
 | `farccosh.p.tensor.q`| `Calculate the inverse hyperbolic cosine of the quadruple-precision value in frs1, then write the result to frd`                 |
 | `farctanh.p.tensor.q`| `Calculate the inverse hyperbolic tangent of the quadruple-precision value in frs1, then write the result to frd`                |
-: RV128CMATH - "RV128MATH Standard Extension for Quadruple-Precision Real Math (+ RV64CMATH)"
+: RV128CMATH - "RV128MATH Expanded Extension for Quadruple-Precision Real Math (+ RV64CMATH)"
 
 | instruction name   | instruction description                                                                                                          |
 |--------------------|:---------------------------------------------------------------------------------------------------------------------------------|
@@ -1209,7 +1211,7 @@ Format of a line in the table:
 | `rtrans.tensor.w`  | `Calculate the transpose of the single-precision tensor value in frs1, then write the result to frd`                             |
 | `rdiff.tensor.w`   | `Calculate the differentiation of the single-precision tensor value in frs1, then write the result to frd`                       |
 | `rint.tensor.w`    | `Calculate the integration of the single-precision tensor value in frs1, then write the result to frd`                           |
-: RV32RALG - "RV32RALG Standard Extension for Double-Precision Floating-Point"
+: RV32RALG - "RV32RALG Expanded Extension for Real Linear Algebra"
 
 | instruction name   | instruction description                                                                                                          |
 |--------------------|:---------------------------------------------------------------------------------------------------------------------------------|
@@ -1237,7 +1239,7 @@ Format of a line in the table:
 | `rtrans.tensor.d`  | `Calculate the transpose of the double-precision tensor value in frs1, then write the result to frd`                             |
 | `rdiff.tensor.d`   | `Calculate the differentiation of the double-precision tensor value in frs1, then write the result to frd`                       |
 | `rint.tensor.d`    | `Calculate the integration of the double-precision tensor value in frs1, then write the result to frd`                           |
-: RV64RALG - "RV64RALG Standard Extension for Double-Precision Floating-Point (+ RV32RALG)"
+: RV64RALG - "RV64RALG Expanded Extension for Real Linear Algebra (+ RV32RALG)"
 
 | instruction name   | instruction description                                                                                                          |
 |--------------------|:---------------------------------------------------------------------------------------------------------------------------------|
@@ -1265,7 +1267,7 @@ Format of a line in the table:
 | `rtrans.tensor.q`  | `Calculate the transpose of the quadruple-precision tensor value in frs1, then write the result to frd`                          |
 | `rdiff.tensor.q`   | `Calculate the differentiation of the quadruple-precision tensor value in frs1, then write the result to frd`                    |
 | `rint.tensor.q`    | `Calculate the integration of the quadruple-precision tensor value in frs1, then write the result to frd`                        |
-: RV128RALG - "RV128RALG Standard Extension for Double-Precision Floating-Point (+ RV64RALG)"
+: RV128RALG - "RV128RALG Expanded Extension for Real Linear Algebra (+ RV64RALG)"
 
 | instruction name   | instruction description                                                                                                          |
 |--------------------|:---------------------------------------------------------------------------------------------------------------------------------|
@@ -1317,7 +1319,7 @@ Format of a line in the table:
 | `rtrans.p.tensor.w`|                                                                                                                                  |
 | `rdiff.p.tensor.w` |                                                                                                                                  |
 | `rint.p.tensor.w`  |                                                                                                                                  |
-: RV32CALG - "RV32CALG Standard Extension for Double-Precision Floating-Point"
+: RV32CALG - "RV32CALG Expanded Extension for Complex Linear Algebra"
 
 | instruction name   | instruction description                                                                                                          |
 |--------------------|:---------------------------------------------------------------------------------------------------------------------------------|
@@ -1369,7 +1371,7 @@ Format of a line in the table:
 | `rtrans.p.tensor.d`|                                                                                                                                  |
 | `rdiff.p.tensor.d` |                                                                                                                                  |
 | `rint.p.tensor.d`  |                                                                                                                                  |
-: RV64CALG - "RV64CALG Standard Extension for Double-Precision Floating-Point (+ RV32CALG)"
+: RV64CALG - "RV64CALG Expanded Extension for Complex Linear Algebra (+ RV32CALG)"
 
 | instruction name   | instruction description                                                                                                          |
 |--------------------|:---------------------------------------------------------------------------------------------------------------------------------|
@@ -1421,7 +1423,7 @@ Format of a line in the table:
 | `rtrans.p.tensor.q`|                                                                                                                                  |
 | `rdiff.p.tensor.q` |                                                                                                                                  |
 | `rint.p.tensor.q`  |                                                                                                                                  |
-: RV128CALG - "RV128CALG Standard Extension for Double-Precision Floating-Point (+ RV64CALG)"
+: RV128CALG - "RV128CALG Expanded Extension for Complex Linear Algebra (+ RV64CALG)"
 
 | instruction name   | instruction description                                                                                                          |
 |--------------------|:---------------------------------------------------------------------------------------------------------------------------------|
@@ -1431,7 +1433,7 @@ Format of a line in the table:
 | `lstm.w`           | `Real Long-Short Term Memory Neural Network`                                                                                     |
 | `ann.w`            | `Real Attention Neural Network`                                                                                                  |
 | `dnc.w`            | `Real Differentiable Neural Computer`                                                                                            |
-: RV32RNN - "RV32RNN Standard Extension for Neural Network"
+: RV32RNN - "RV32RNN Expanded Extension for Real Neural Network"
 
 | instruction name   | instruction description                                                                                                          |
 |--------------------|:---------------------------------------------------------------------------------------------------------------------------------|
@@ -1441,7 +1443,7 @@ Format of a line in the table:
 | `lstm.d`           | `Real Long-Short Term Memory Neural Network`                                                                                     |
 | `ann.d`            | `Real Attention Neural Network`                                                                                                  |
 | `dnc.d`            | `Real Differentiable Neural Computer`                                                                                            |
-: RV64RNN - "RV64RNN Standard Extension for Neural Network (+ RV32RNN)"
+: RV64RNN - "RV64RNN Expanded Extension for Real Neural Network (+ RV32RNN)"
 
 | instruction name   | instruction description                                                                                                          |
 |--------------------|:---------------------------------------------------------------------------------------------------------------------------------|
@@ -1451,7 +1453,7 @@ Format of a line in the table:
 | `lstm.q`           | `Real Long-Short Term Memory Neural Network`                                                                                     |
 | `ann.q`            | `Real Attention Neural Network`                                                                                                  |
 | `dnc.q`            | `Real Differentiable Neural Computer`                                                                                            |
-: RV128RNN - "RV128RNN Standard Extension for Neural Network (+ RV64RNN)"
+: RV128RNN - "RV128RNN Expanded Extension for Real Neural Network (+ RV64RNN)"
 
 | instruction name   | instruction description                                                                                                          |
 |--------------------|:---------------------------------------------------------------------------------------------------------------------------------|
@@ -1467,7 +1469,7 @@ Format of a line in the table:
 | `lstm.polar.w`     | `Complex Long-Short Term Memory Neural Network`                                                                                  |
 | `ann.polar.w`      | `Complex Attention Neural Network`                                                                                               |
 | `dnc.polar.w`      | `Complex Differentiable Neural Computer`                                                                                         |
-: RV32CNN - "RV32CNN Standard Extension for Neural Network"
+: RV32CNN - "RV32CNN Expanded Extension for Complex Neural Network"
 
 | instruction name   | instruction description                                                                                                          |
 |--------------------|:---------------------------------------------------------------------------------------------------------------------------------|
@@ -1483,7 +1485,7 @@ Format of a line in the table:
 | `lstm.polar.d`     | `Complex Long-Short Term Memory Neural Network`                                                                                  |
 | `ann.polar.d`      | `Complex Attention Neural Network`                                                                                               |
 | `dnc.polar.d`      | `Complex Differentiable Neural Computer`                                                                                         |
-: RV64CNN - "RV64CNN Standard Extension for Neural Network (+ RV32CNN)"
+: RV64CNN - "RV64CNN Expanded Extension for Complex Neural Network (+ RV32CNN)"
 
 | instruction name   | instruction description                                                                                                          |
 |--------------------|:---------------------------------------------------------------------------------------------------------------------------------|
@@ -1499,7 +1501,7 @@ Format of a line in the table:
 | `lstm.polar.q`     | `Complex Long-Short Term Memory Neural Network`                                                                                  |
 | `ann.polar.q`      | `Complex Attention Neural Network`                                                                                               |
 | `dnc.polar.q`      | `Complex Differentiable Neural Computer`                                                                                         |
-: RV128CNN - "RV128CNN Standard Extension for Neural Network (+ RV64CNN)"
+: RV128CNN - "RV128CNN Expanded Extension for Complex Neural Network (+ RV64CNN)"
 
 | instruction name   | instruction description                                                                                                          |
 |--------------------|:---------------------------------------------------------------------------------------------------------------------------------|
