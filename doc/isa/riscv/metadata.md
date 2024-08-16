@@ -1,5 +1,5 @@
 ---
-title: 'RISC-V ISA with Differentiable Neural Computer Functionalities'
+title: '**RISC-V ISA with Differentiable Neural Computer Functionalities**'
 subtitle: '![](riscv.png){width=5cm}'
 
 author: Paco Reina Campo
