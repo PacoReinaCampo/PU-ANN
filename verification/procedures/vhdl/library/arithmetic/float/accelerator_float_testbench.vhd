@@ -35,16 +35,11 @@
 -- THE SOFTWARE.
 --
 --------------------------------------------------------------------------------
--- Author(s):
---   Paco Reina Campo <pacoreinacampo@queenfield.tech>
 
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-use ieee.float_pkg.all;
-
-use work.model_arithmetic_vhdl_pkg.all;
 use work.accelerator_arithmetic_vhdl_pkg.all;
 use work.accelerator_float_pkg.all;
 
@@ -73,6 +68,62 @@ entity accelerator_float_testbench is
     ENABLE_ACCELERATOR_SCALAR_FLOAT_ADDER_CASE_1      : boolean := false;
     ENABLE_ACCELERATOR_SCALAR_FLOAT_MULTIPLIER_CASE_1 : boolean := false;
     ENABLE_ACCELERATOR_SCALAR_FLOAT_DIVIDER_CASE_1    : boolean := false;
+
+    ENABLE_ACCELERATOR_SCALAR_FLOAT_ADDER_CASE_2      : boolean := false;
+    ENABLE_ACCELERATOR_SCALAR_FLOAT_MULTIPLIER_CASE_2 : boolean := false;
+    ENABLE_ACCELERATOR_SCALAR_FLOAT_DIVIDER_CASE_2    : boolean := false;
+
+    ENABLE_ACCELERATOR_SCALAR_FLOAT_ADDER_CASE_3      : boolean := false;
+    ENABLE_ACCELERATOR_SCALAR_FLOAT_MULTIPLIER_CASE_3 : boolean := false;
+    ENABLE_ACCELERATOR_SCALAR_FLOAT_DIVIDER_CASE_3    : boolean := false;
+
+    ENABLE_ACCELERATOR_SCALAR_FLOAT_ADDER_CASE_4      : boolean := false;
+    ENABLE_ACCELERATOR_SCALAR_FLOAT_MULTIPLIER_CASE_4 : boolean := false;
+    ENABLE_ACCELERATOR_SCALAR_FLOAT_DIVIDER_CASE_4    : boolean := false;
+
+    ENABLE_ACCELERATOR_SCALAR_FLOAT_ADDER_CASE_5      : boolean := false;
+    ENABLE_ACCELERATOR_SCALAR_FLOAT_MULTIPLIER_CASE_5 : boolean := false;
+    ENABLE_ACCELERATOR_SCALAR_FLOAT_DIVIDER_CASE_5    : boolean := false;
+
+    ENABLE_ACCELERATOR_SCALAR_FLOAT_ADDER_CASE_6      : boolean := false;
+    ENABLE_ACCELERATOR_SCALAR_FLOAT_MULTIPLIER_CASE_6 : boolean := false;
+    ENABLE_ACCELERATOR_SCALAR_FLOAT_DIVIDER_CASE_6    : boolean := false;
+
+    ENABLE_ACCELERATOR_SCALAR_FLOAT_ADDER_CASE_7      : boolean := false;
+    ENABLE_ACCELERATOR_SCALAR_FLOAT_MULTIPLIER_CASE_7 : boolean := false;
+    ENABLE_ACCELERATOR_SCALAR_FLOAT_DIVIDER_CASE_7    : boolean := false;
+
+    ENABLE_ACCELERATOR_SCALAR_FLOAT_ADDER_CASE_8      : boolean := false;
+    ENABLE_ACCELERATOR_SCALAR_FLOAT_MULTIPLIER_CASE_8 : boolean := false;
+    ENABLE_ACCELERATOR_SCALAR_FLOAT_DIVIDER_CASE_8    : boolean := false;
+
+    ENABLE_ACCELERATOR_SCALAR_FLOAT_ADDER_CASE_9      : boolean := false;
+    ENABLE_ACCELERATOR_SCALAR_FLOAT_MULTIPLIER_CASE_9 : boolean := false;
+    ENABLE_ACCELERATOR_SCALAR_FLOAT_DIVIDER_CASE_9    : boolean := false;
+
+    ENABLE_ACCELERATOR_SCALAR_FLOAT_ADDER_CASE_10      : boolean := false;
+    ENABLE_ACCELERATOR_SCALAR_FLOAT_MULTIPLIER_CASE_10 : boolean := false;
+    ENABLE_ACCELERATOR_SCALAR_FLOAT_DIVIDER_CASE_10    : boolean := false;
+
+    ENABLE_ACCELERATOR_SCALAR_FLOAT_ADDER_CASE_11      : boolean := false;
+    ENABLE_ACCELERATOR_SCALAR_FLOAT_MULTIPLIER_CASE_11 : boolean := false;
+    ENABLE_ACCELERATOR_SCALAR_FLOAT_DIVIDER_CASE_11    : boolean := false;
+
+    ENABLE_ACCELERATOR_SCALAR_FLOAT_ADDER_CASE_12      : boolean := false;
+    ENABLE_ACCELERATOR_SCALAR_FLOAT_MULTIPLIER_CASE_12 : boolean := false;
+    ENABLE_ACCELERATOR_SCALAR_FLOAT_DIVIDER_CASE_12    : boolean := false;
+
+    ENABLE_ACCELERATOR_SCALAR_FLOAT_ADDER_CASE_13      : boolean := false;
+    ENABLE_ACCELERATOR_SCALAR_FLOAT_MULTIPLIER_CASE_13 : boolean := false;
+    ENABLE_ACCELERATOR_SCALAR_FLOAT_DIVIDER_CASE_13    : boolean := false;
+
+    ENABLE_ACCELERATOR_SCALAR_FLOAT_ADDER_CASE_14      : boolean := false;
+    ENABLE_ACCELERATOR_SCALAR_FLOAT_MULTIPLIER_CASE_14 : boolean := false;
+    ENABLE_ACCELERATOR_SCALAR_FLOAT_DIVIDER_CASE_14    : boolean := false;
+
+    ENABLE_ACCELERATOR_SCALAR_FLOAT_ADDER_CASE_15      : boolean := false;
+    ENABLE_ACCELERATOR_SCALAR_FLOAT_MULTIPLIER_CASE_15 : boolean := false;
+    ENABLE_ACCELERATOR_SCALAR_FLOAT_DIVIDER_CASE_15    : boolean := false;
 
     -- VECTOR-FUNCTIONALITY
     ENABLE_ACCELERATOR_VECTOR_FLOAT_ADDER_TEST      : boolean := false;
@@ -118,12 +169,6 @@ end accelerator_float_testbench;
 architecture accelerator_float_testbench_architecture of accelerator_float_testbench is
 
   ------------------------------------------------------------------------------
-  -- Constants
-  ------------------------------------------------------------------------------
-
-  constant EMPTY : std_logic_vector(DATA_SIZE-1 downto 0) := (others => '0');
-
-  ------------------------------------------------------------------------------
   -- Signals
   ------------------------------------------------------------------------------
 
@@ -140,8 +185,6 @@ architecture accelerator_float_testbench_architecture of accelerator_float_testb
   signal start_scalar_float_adder : std_logic;
   signal ready_scalar_float_adder : std_logic;
 
-  signal ready_scalar_float_adder_model : std_logic;
-
   signal operation_scalar_float_adder : std_logic;
 
   -- DATA
@@ -151,15 +194,10 @@ architecture accelerator_float_testbench_architecture of accelerator_float_testb
   signal data_out_scalar_float_adder     : std_logic_vector(DATA_SIZE-1 downto 0);
   signal overflow_out_scalar_float_adder : std_logic;
 
-  signal data_out_scalar_float_adder_model     : std_logic_vector(DATA_SIZE-1 downto 0);
-  signal overflow_out_scalar_float_adder_model : std_logic;
-
   -- SCALAR FLOAT MULTIPLIER
   -- CONTROL
   signal start_scalar_float_multiplier : std_logic;
   signal ready_scalar_float_multiplier : std_logic;
-
-  signal ready_scalar_float_multiplier_model : std_logic;
 
   -- DATA
   signal data_a_in_scalar_float_multiplier : std_logic_vector(DATA_SIZE-1 downto 0);
@@ -168,15 +206,10 @@ architecture accelerator_float_testbench_architecture of accelerator_float_testb
   signal data_out_scalar_float_multiplier     : std_logic_vector(DATA_SIZE-1 downto 0);
   signal overflow_out_scalar_float_multiplier : std_logic;
 
-  signal data_out_scalar_float_multiplier_model     : std_logic_vector(DATA_SIZE-1 downto 0);
-  signal overflow_out_scalar_float_multiplier_model : std_logic;
-
   -- SCALAR FLOAT DIVIDER
   -- CONTROL
   signal start_scalar_float_divider : std_logic;
   signal ready_scalar_float_divider : std_logic;
-
-  signal ready_scalar_float_divider_model : std_logic;
 
   -- DATA
   signal data_a_in_scalar_float_divider : std_logic_vector(DATA_SIZE-1 downto 0);
@@ -184,9 +217,6 @@ architecture accelerator_float_testbench_architecture of accelerator_float_testb
 
   signal data_out_scalar_float_divider     : std_logic_vector(DATA_SIZE-1 downto 0);
   signal overflow_out_scalar_float_divider : std_logic;
-
-  signal data_out_scalar_float_divider_model     : std_logic_vector(DATA_SIZE-1 downto 0);
-  signal overflow_out_scalar_float_divider_model : std_logic;
 
   ------------------------------------------------------------------------------
   -- VECTOR
@@ -197,16 +227,12 @@ architecture accelerator_float_testbench_architecture of accelerator_float_testb
   signal start_vector_float_adder : std_logic;
   signal ready_vector_float_adder : std_logic;
 
-  signal ready_vector_float_adder_model : std_logic;
-
   signal operation_vector_float_adder : std_logic;
 
   signal data_a_in_enable_vector_float_adder : std_logic;
   signal data_b_in_enable_vector_float_adder : std_logic;
 
   signal data_out_enable_vector_float_adder : std_logic;
-
-  signal data_out_enable_vector_float_adder_model : std_logic;
 
   -- DATA
   signal size_in_vector_float_adder   : std_logic_vector(CONTROL_SIZE-1 downto 0);
@@ -216,22 +242,15 @@ architecture accelerator_float_testbench_architecture of accelerator_float_testb
   signal data_out_vector_float_adder     : std_logic_vector(DATA_SIZE-1 downto 0);
   signal overflow_out_vector_float_adder : std_logic;
 
-  signal data_out_vector_float_adder_model     : std_logic_vector(DATA_SIZE-1 downto 0);
-  signal overflow_out_vector_float_adder_model : std_logic;
-
   -- VECTOR FLOAT MULTIPLIER
   -- CONTROL
   signal start_vector_float_multiplier : std_logic;
   signal ready_vector_float_multiplier : std_logic;
 
-  signal ready_vector_float_multiplier_model : std_logic;
-
   signal data_a_in_enable_vector_float_multiplier : std_logic;
   signal data_b_in_enable_vector_float_multiplier : std_logic;
 
   signal data_out_enable_vector_float_multiplier : std_logic;
-
-  signal data_out_enable_vector_float_multiplier_model : std_logic;
 
   -- DATA
   signal size_in_vector_float_multiplier   : std_logic_vector(CONTROL_SIZE-1 downto 0);
@@ -241,22 +260,15 @@ architecture accelerator_float_testbench_architecture of accelerator_float_testb
   signal data_out_vector_float_multiplier     : std_logic_vector(DATA_SIZE-1 downto 0);
   signal overflow_out_vector_float_multiplier : std_logic;
 
-  signal data_out_vector_float_multiplier_model     : std_logic_vector(DATA_SIZE-1 downto 0);
-  signal overflow_out_vector_float_multiplier_model : std_logic;
-
   -- VECTOR FLOAT DIVIDER
   -- CONTROL
   signal start_vector_float_divider : std_logic;
   signal ready_vector_float_divider : std_logic;
 
-  signal ready_vector_float_divider_model : std_logic;
-
   signal data_a_in_enable_vector_float_divider : std_logic;
   signal data_b_in_enable_vector_float_divider : std_logic;
 
   signal data_out_enable_vector_float_divider : std_logic;
-
-  signal data_out_enable_vector_float_divider_model : std_logic;
 
   -- DATA
   signal size_in_vector_float_divider   : std_logic_vector(CONTROL_SIZE-1 downto 0);
@@ -266,9 +278,6 @@ architecture accelerator_float_testbench_architecture of accelerator_float_testb
   signal data_out_vector_float_divider     : std_logic_vector(DATA_SIZE-1 downto 0);
   signal overflow_out_vector_float_divider : std_logic;
 
-  signal data_out_vector_float_divider_model     : std_logic_vector(DATA_SIZE-1 downto 0);
-  signal overflow_out_vector_float_divider_model : std_logic;
-
   ------------------------------------------------------------------------------
   -- MATRIX
   ------------------------------------------------------------------------------
@@ -277,8 +286,6 @@ architecture accelerator_float_testbench_architecture of accelerator_float_testb
   -- CONTROL
   signal start_matrix_float_adder : std_logic;
   signal ready_matrix_float_adder : std_logic;
-
-  signal ready_matrix_float_adder_model : std_logic;
 
   signal operation_matrix_float_adder : std_logic;
 
@@ -290,9 +297,6 @@ architecture accelerator_float_testbench_architecture of accelerator_float_testb
   signal data_out_i_enable_matrix_float_adder : std_logic;
   signal data_out_j_enable_matrix_float_adder : std_logic;
 
-  signal data_out_i_enable_matrix_float_adder_model : std_logic;
-  signal data_out_j_enable_matrix_float_adder_model : std_logic;
-
   -- DATA
   signal size_i_in_matrix_float_adder : std_logic_vector(CONTROL_SIZE-1 downto 0);
   signal size_j_in_matrix_float_adder : std_logic_vector(CONTROL_SIZE-1 downto 0);
@@ -302,15 +306,10 @@ architecture accelerator_float_testbench_architecture of accelerator_float_testb
   signal data_out_matrix_float_adder     : std_logic_vector(DATA_SIZE-1 downto 0);
   signal overflow_out_matrix_float_adder : std_logic;
 
-  signal data_out_matrix_float_adder_model     : std_logic_vector(DATA_SIZE-1 downto 0);
-  signal overflow_out_matrix_float_adder_model : std_logic;
-
   -- MATRIX FLOAT MULTIPLIER
   -- CONTROL
   signal start_matrix_float_multiplier : std_logic;
   signal ready_matrix_float_multiplier : std_logic;
-
-  signal ready_matrix_float_multiplier_model : std_logic;
 
   signal data_a_in_i_enable_matrix_float_multiplier : std_logic;
   signal data_a_in_j_enable_matrix_float_multiplier : std_logic;
@@ -319,9 +318,6 @@ architecture accelerator_float_testbench_architecture of accelerator_float_testb
 
   signal data_out_i_enable_matrix_float_multiplier : std_logic;
   signal data_out_j_enable_matrix_float_multiplier : std_logic;
-
-  signal data_out_i_enable_matrix_float_multiplier_model : std_logic;
-  signal data_out_j_enable_matrix_float_multiplier_model : std_logic;
 
   -- DATA
   signal size_i_in_matrix_float_multiplier : std_logic_vector(CONTROL_SIZE-1 downto 0);
@@ -332,15 +328,10 @@ architecture accelerator_float_testbench_architecture of accelerator_float_testb
   signal data_out_matrix_float_multiplier     : std_logic_vector(DATA_SIZE-1 downto 0);
   signal overflow_out_matrix_float_multiplier : std_logic;
 
-  signal data_out_matrix_float_multiplier_model     : std_logic_vector(DATA_SIZE-1 downto 0);
-  signal overflow_out_matrix_float_multiplier_model : std_logic;
-
   -- MATRIX FLOAT DIVIDER
   -- CONTROL
   signal start_matrix_float_divider : std_logic;
   signal ready_matrix_float_divider : std_logic;
-
-  signal ready_matrix_float_divider_model : std_logic;
 
   signal data_a_in_i_enable_matrix_float_divider : std_logic;
   signal data_a_in_j_enable_matrix_float_divider : std_logic;
@@ -349,9 +340,6 @@ architecture accelerator_float_testbench_architecture of accelerator_float_testb
 
   signal data_out_i_enable_matrix_float_divider : std_logic;
   signal data_out_j_enable_matrix_float_divider : std_logic;
-
-  signal data_out_i_enable_matrix_float_divider_model : std_logic;
-  signal data_out_j_enable_matrix_float_divider_model : std_logic;
 
   -- DATA
   signal size_i_in_matrix_float_divider : std_logic_vector(CONTROL_SIZE-1 downto 0);
@@ -362,9 +350,6 @@ architecture accelerator_float_testbench_architecture of accelerator_float_testb
   signal data_out_matrix_float_divider     : std_logic_vector(DATA_SIZE-1 downto 0);
   signal overflow_out_matrix_float_divider : std_logic;
 
-  signal data_out_matrix_float_divider_model     : std_logic_vector(DATA_SIZE-1 downto 0);
-  signal overflow_out_matrix_float_divider_model : std_logic;
-
   ------------------------------------------------------------------------------
   -- TENSOR
   ------------------------------------------------------------------------------
@@ -373,8 +358,6 @@ architecture accelerator_float_testbench_architecture of accelerator_float_testb
   -- CONTROL
   signal start_tensor_float_adder : std_logic;
   signal ready_tensor_float_adder : std_logic;
-
-  signal ready_tensor_float_adder_model : std_logic;
 
   signal operation_tensor_float_adder : std_logic;
 
@@ -389,10 +372,6 @@ architecture accelerator_float_testbench_architecture of accelerator_float_testb
   signal data_out_j_enable_tensor_float_adder : std_logic;
   signal data_out_k_enable_tensor_float_adder : std_logic;
 
-  signal data_out_i_enable_tensor_float_adder_model : std_logic;
-  signal data_out_j_enable_tensor_float_adder_model : std_logic;
-  signal data_out_k_enable_tensor_float_adder_model : std_logic;
-
   -- DATA
   signal size_i_in_tensor_float_adder : std_logic_vector(CONTROL_SIZE-1 downto 0);
   signal size_j_in_tensor_float_adder : std_logic_vector(CONTROL_SIZE-1 downto 0);
@@ -403,15 +382,10 @@ architecture accelerator_float_testbench_architecture of accelerator_float_testb
   signal data_out_tensor_float_adder     : std_logic_vector(DATA_SIZE-1 downto 0);
   signal overflow_out_tensor_float_adder : std_logic;
 
-  signal data_out_tensor_float_adder_model     : std_logic_vector(DATA_SIZE-1 downto 0);
-  signal overflow_out_tensor_float_adder_model : std_logic;
-
   -- TENSOR FLOAT MULTIPLIER
   -- CONTROL
   signal start_tensor_float_multiplier : std_logic;
   signal ready_tensor_float_multiplier : std_logic;
-
-  signal ready_tensor_float_multiplier_model : std_logic;
 
   signal data_a_in_i_enable_tensor_float_multiplier : std_logic;
   signal data_a_in_j_enable_tensor_float_multiplier : std_logic;
@@ -424,10 +398,6 @@ architecture accelerator_float_testbench_architecture of accelerator_float_testb
   signal data_out_j_enable_tensor_float_multiplier : std_logic;
   signal data_out_k_enable_tensor_float_multiplier : std_logic;
 
-  signal data_out_i_enable_tensor_float_multiplier_model : std_logic;
-  signal data_out_j_enable_tensor_float_multiplier_model : std_logic;
-  signal data_out_k_enable_tensor_float_multiplier_model : std_logic;
-
   -- DATA
   signal size_i_in_tensor_float_multiplier : std_logic_vector(CONTROL_SIZE-1 downto 0);
   signal size_j_in_tensor_float_multiplier : std_logic_vector(CONTROL_SIZE-1 downto 0);
@@ -438,15 +408,10 @@ architecture accelerator_float_testbench_architecture of accelerator_float_testb
   signal data_out_tensor_float_multiplier     : std_logic_vector(DATA_SIZE-1 downto 0);
   signal overflow_out_tensor_float_multiplier : std_logic;
 
-  signal data_out_tensor_float_multiplier_model     : std_logic_vector(DATA_SIZE-1 downto 0);
-  signal overflow_out_tensor_float_multiplier_model : std_logic;
-
   -- TENSOR FLOAT DIVIDER
   -- CONTROL
   signal start_tensor_float_divider : std_logic;
   signal ready_tensor_float_divider : std_logic;
-
-  signal ready_tensor_float_divider_model : std_logic;
 
   signal data_a_in_i_enable_tensor_float_divider : std_logic;
   signal data_a_in_j_enable_tensor_float_divider : std_logic;
@@ -459,10 +424,6 @@ architecture accelerator_float_testbench_architecture of accelerator_float_testb
   signal data_out_j_enable_tensor_float_divider : std_logic;
   signal data_out_k_enable_tensor_float_divider : std_logic;
 
-  signal data_out_i_enable_tensor_float_divider_model : std_logic;
-  signal data_out_j_enable_tensor_float_divider_model : std_logic;
-  signal data_out_k_enable_tensor_float_divider_model : std_logic;
-
   -- DATA
   signal size_i_in_tensor_float_divider : std_logic_vector(CONTROL_SIZE-1 downto 0);
   signal size_j_in_tensor_float_divider : std_logic_vector(CONTROL_SIZE-1 downto 0);
@@ -472,9 +433,6 @@ architecture accelerator_float_testbench_architecture of accelerator_float_testb
 
   signal data_out_tensor_float_divider     : std_logic_vector(DATA_SIZE-1 downto 0);
   signal overflow_out_tensor_float_divider : std_logic;
-
-  signal data_out_tensor_float_divider_model     : std_logic_vector(DATA_SIZE-1 downto 0);
-  signal overflow_out_tensor_float_divider_model : std_logic;
 
 begin
 
@@ -501,7 +459,7 @@ begin
       RST => RST,
 
       ------------------------------------------------------------------------------
-      -- STIMULUS SCALAR
+      -- STIMULUS SCALAR FLOAT
       ------------------------------------------------------------------------------
 
       -- SCALAR FLOAT ADDER
@@ -512,9 +470,8 @@ begin
       SCALAR_FLOAT_ADDER_OPERATION => operation_scalar_float_adder,
 
       -- DATA
-      SCALAR_FLOAT_ADDER_DATA_A_IN => data_a_in_scalar_float_adder,
-      SCALAR_FLOAT_ADDER_DATA_B_IN => data_b_in_scalar_float_adder,
-
+      SCALAR_FLOAT_ADDER_DATA_A_IN    => data_a_in_scalar_float_adder,
+      SCALAR_FLOAT_ADDER_DATA_B_IN    => data_b_in_scalar_float_adder,
       SCALAR_FLOAT_ADDER_DATA_OUT     => data_out_scalar_float_adder,
       SCALAR_FLOAT_ADDER_OVERFLOW_OUT => overflow_out_scalar_float_adder,
 
@@ -524,9 +481,8 @@ begin
       SCALAR_FLOAT_MULTIPLIER_READY => ready_scalar_float_multiplier,
 
       -- DATA
-      SCALAR_FLOAT_MULTIPLIER_DATA_A_IN => data_a_in_scalar_float_multiplier,
-      SCALAR_FLOAT_MULTIPLIER_DATA_B_IN => data_b_in_scalar_float_multiplier,
-
+      SCALAR_FLOAT_MULTIPLIER_DATA_A_IN    => data_a_in_scalar_float_multiplier,
+      SCALAR_FLOAT_MULTIPLIER_DATA_B_IN    => data_b_in_scalar_float_multiplier,
       SCALAR_FLOAT_MULTIPLIER_DATA_OUT     => data_out_scalar_float_multiplier,
       SCALAR_FLOAT_MULTIPLIER_OVERFLOW_OUT => overflow_out_scalar_float_multiplier,
 
@@ -536,9 +492,8 @@ begin
       SCALAR_FLOAT_DIVIDER_READY => ready_scalar_float_divider,
 
       -- DATA
-      SCALAR_FLOAT_DIVIDER_DATA_A_IN => data_a_in_scalar_float_divider,
-      SCALAR_FLOAT_DIVIDER_DATA_B_IN => data_b_in_scalar_float_divider,
-
+      SCALAR_FLOAT_DIVIDER_DATA_A_IN    => data_a_in_scalar_float_divider,
+      SCALAR_FLOAT_DIVIDER_DATA_B_IN    => data_b_in_scalar_float_divider,
       SCALAR_FLOAT_DIVIDER_DATA_OUT     => data_out_scalar_float_divider,
       SCALAR_FLOAT_DIVIDER_OVERFLOW_OUT => overflow_out_scalar_float_divider,
 
@@ -559,10 +514,9 @@ begin
       VECTOR_FLOAT_ADDER_DATA_OUT_ENABLE => data_out_enable_vector_float_adder,
 
       -- DATA
-      VECTOR_FLOAT_ADDER_SIZE_IN   => size_in_vector_float_adder,
-      VECTOR_FLOAT_ADDER_DATA_A_IN => data_a_in_vector_float_adder,
-      VECTOR_FLOAT_ADDER_DATA_B_IN => data_b_in_vector_float_adder,
-
+      VECTOR_FLOAT_ADDER_SIZE_IN      => size_in_vector_float_adder,
+      VECTOR_FLOAT_ADDER_DATA_A_IN    => data_a_in_vector_float_adder,
+      VECTOR_FLOAT_ADDER_DATA_B_IN    => data_b_in_vector_float_adder,
       VECTOR_FLOAT_ADDER_DATA_OUT     => data_out_vector_float_adder,
       VECTOR_FLOAT_ADDER_OVERFLOW_OUT => overflow_out_vector_float_adder,
 
@@ -577,10 +531,9 @@ begin
       VECTOR_FLOAT_MULTIPLIER_DATA_OUT_ENABLE => data_out_enable_vector_float_multiplier,
 
       -- DATA
-      VECTOR_FLOAT_MULTIPLIER_SIZE_IN   => size_in_vector_float_multiplier,
-      VECTOR_FLOAT_MULTIPLIER_DATA_A_IN => data_a_in_vector_float_multiplier,
-      VECTOR_FLOAT_MULTIPLIER_DATA_B_IN => data_b_in_vector_float_multiplier,
-
+      VECTOR_FLOAT_MULTIPLIER_SIZE_IN      => size_in_vector_float_multiplier,
+      VECTOR_FLOAT_MULTIPLIER_DATA_A_IN    => data_a_in_vector_float_multiplier,
+      VECTOR_FLOAT_MULTIPLIER_DATA_B_IN    => data_b_in_vector_float_multiplier,
       VECTOR_FLOAT_MULTIPLIER_DATA_OUT     => data_out_vector_float_multiplier,
       VECTOR_FLOAT_MULTIPLIER_OVERFLOW_OUT => overflow_out_vector_float_multiplier,
 
@@ -595,10 +548,9 @@ begin
       VECTOR_FLOAT_DIVIDER_DATA_OUT_ENABLE => data_out_enable_vector_float_divider,
 
       -- DATA
-      VECTOR_FLOAT_DIVIDER_SIZE_IN   => size_in_vector_float_divider,
-      VECTOR_FLOAT_DIVIDER_DATA_A_IN => data_a_in_vector_float_divider,
-      VECTOR_FLOAT_DIVIDER_DATA_B_IN => data_b_in_vector_float_divider,
-
+      VECTOR_FLOAT_DIVIDER_SIZE_IN      => size_in_vector_float_divider,
+      VECTOR_FLOAT_DIVIDER_DATA_A_IN    => data_a_in_vector_float_divider,
+      VECTOR_FLOAT_DIVIDER_DATA_B_IN    => data_b_in_vector_float_divider,
       VECTOR_FLOAT_DIVIDER_DATA_OUT     => data_out_vector_float_divider,
       VECTOR_FLOAT_DIVIDER_OVERFLOW_OUT => overflow_out_vector_float_divider,
 
@@ -622,11 +574,10 @@ begin
       MATRIX_FLOAT_ADDER_DATA_OUT_J_ENABLE => data_out_j_enable_matrix_float_adder,
 
       -- DATA
-      MATRIX_FLOAT_ADDER_SIZE_I_IN => size_i_in_matrix_float_adder,
-      MATRIX_FLOAT_ADDER_SIZE_J_IN => size_j_in_matrix_float_adder,
-      MATRIX_FLOAT_ADDER_DATA_A_IN => data_a_in_matrix_float_adder,
-      MATRIX_FLOAT_ADDER_DATA_B_IN => data_b_in_matrix_float_adder,
-
+      MATRIX_FLOAT_ADDER_SIZE_I_IN    => size_i_in_matrix_float_adder,
+      MATRIX_FLOAT_ADDER_SIZE_J_IN    => size_j_in_matrix_float_adder,
+      MATRIX_FLOAT_ADDER_DATA_A_IN    => data_a_in_matrix_float_adder,
+      MATRIX_FLOAT_ADDER_DATA_B_IN    => data_b_in_matrix_float_adder,
       MATRIX_FLOAT_ADDER_DATA_OUT     => data_out_matrix_float_adder,
       MATRIX_FLOAT_ADDER_OVERFLOW_OUT => overflow_out_matrix_float_adder,
 
@@ -644,11 +595,10 @@ begin
       MATRIX_FLOAT_MULTIPLIER_DATA_OUT_J_ENABLE => data_out_j_enable_matrix_float_multiplier,
 
       -- DATA
-      MATRIX_FLOAT_MULTIPLIER_SIZE_I_IN => size_i_in_matrix_float_multiplier,
-      MATRIX_FLOAT_MULTIPLIER_SIZE_J_IN => size_j_in_matrix_float_multiplier,
-      MATRIX_FLOAT_MULTIPLIER_DATA_A_IN => data_a_in_matrix_float_multiplier,
-      MATRIX_FLOAT_MULTIPLIER_DATA_B_IN => data_b_in_matrix_float_multiplier,
-
+      MATRIX_FLOAT_MULTIPLIER_SIZE_I_IN    => size_i_in_matrix_float_multiplier,
+      MATRIX_FLOAT_MULTIPLIER_SIZE_J_IN    => size_j_in_matrix_float_multiplier,
+      MATRIX_FLOAT_MULTIPLIER_DATA_A_IN    => data_a_in_matrix_float_multiplier,
+      MATRIX_FLOAT_MULTIPLIER_DATA_B_IN    => data_b_in_matrix_float_multiplier,
       MATRIX_FLOAT_MULTIPLIER_DATA_OUT     => data_out_matrix_float_multiplier,
       MATRIX_FLOAT_MULTIPLIER_OVERFLOW_OUT => overflow_out_matrix_float_multiplier,
 
@@ -666,16 +616,15 @@ begin
       MATRIX_FLOAT_DIVIDER_DATA_OUT_J_ENABLE => data_out_j_enable_matrix_float_divider,
 
       -- DATA
-      MATRIX_FLOAT_DIVIDER_SIZE_I_IN => size_i_in_matrix_float_divider,
-      MATRIX_FLOAT_DIVIDER_SIZE_J_IN => size_j_in_matrix_float_divider,
-      MATRIX_FLOAT_DIVIDER_DATA_A_IN => data_a_in_matrix_float_divider,
-      MATRIX_FLOAT_DIVIDER_DATA_B_IN => data_b_in_matrix_float_divider,
-
+      MATRIX_FLOAT_DIVIDER_SIZE_I_IN    => size_i_in_matrix_float_divider,
+      MATRIX_FLOAT_DIVIDER_SIZE_J_IN    => size_j_in_matrix_float_divider,
+      MATRIX_FLOAT_DIVIDER_DATA_A_IN    => data_a_in_matrix_float_divider,
+      MATRIX_FLOAT_DIVIDER_DATA_B_IN    => data_b_in_matrix_float_divider,
       MATRIX_FLOAT_DIVIDER_DATA_OUT     => data_out_matrix_float_divider,
       MATRIX_FLOAT_DIVIDER_OVERFLOW_OUT => overflow_out_matrix_float_divider,
 
       ------------------------------------------------------------------------------
-      -- STIMULUS TENSOR FLOAT
+      -- STIMULUS TENSOR
       ------------------------------------------------------------------------------
 
       -- TENSOR FLOAT ADDER
@@ -785,32 +734,7 @@ begin
         DATA_A_IN => data_a_in_scalar_float_adder,
         DATA_B_IN => data_b_in_scalar_float_adder,
 
-        DATA_OUT     => data_out_scalar_float_adder,
-        OVERFLOW_OUT => overflow_out_scalar_float_adder
-        );
-
-    scalar_float_adder_model : model_scalar_float_adder
-      generic map (
-        DATA_SIZE    => DATA_SIZE,
-        CONTROL_SIZE => CONTROL_SIZE
-        )
-      port map (
-        -- GLOBAL
-        CLK => CLK,
-        RST => RST,
-
-        -- CONTROL
-        START => start_scalar_float_adder,
-        READY => ready_scalar_float_adder_model,
-
-        OPERATION => operation_scalar_float_adder,
-
-        -- DATA
-        DATA_A_IN => data_a_in_scalar_float_adder,
-        DATA_B_IN => data_b_in_scalar_float_adder,
-
-        DATA_OUT     => data_out_scalar_float_adder_model,
-        OVERFLOW_OUT => overflow_out_scalar_float_adder_model
+        DATA_OUT => data_out_scalar_float_adder
         );
   end generate accelerator_scalar_float_adder_test;
 
@@ -828,7 +752,7 @@ begin
 
         -- CONTROL
         START => start_scalar_float_multiplier,
-        READY => ready_scalar_float_adder,
+        READY => ready_scalar_float_multiplier,
 
         -- DATA
         DATA_A_IN => data_a_in_scalar_float_multiplier,
@@ -836,28 +760,6 @@ begin
 
         DATA_OUT     => data_out_scalar_float_multiplier,
         OVERFLOW_OUT => overflow_out_scalar_float_multiplier
-        );
-
-    scalar_float_multiplier_model : model_scalar_float_multiplier
-      generic map (
-        DATA_SIZE    => DATA_SIZE,
-        CONTROL_SIZE => CONTROL_SIZE
-        )
-      port map (
-        -- GLOBAL
-        CLK => CLK,
-        RST => RST,
-
-        -- CONTROL
-        START => start_scalar_float_multiplier,
-        READY => ready_scalar_float_adder_model,
-
-        -- DATA
-        DATA_A_IN => data_a_in_scalar_float_multiplier,
-        DATA_B_IN => data_b_in_scalar_float_multiplier,
-
-        DATA_OUT     => data_out_scalar_float_multiplier_model,
-        OVERFLOW_OUT => overflow_out_scalar_float_multiplier_model
         );
   end generate accelerator_scalar_float_multiplier_test;
 
@@ -884,52 +786,7 @@ begin
         DATA_OUT     => data_out_scalar_float_divider,
         OVERFLOW_OUT => overflow_out_scalar_float_divider
         );
-
-    scalar_float_divider_model : model_scalar_float_divider
-      generic map (
-        DATA_SIZE    => DATA_SIZE,
-        CONTROL_SIZE => CONTROL_SIZE
-        )
-      port map (
-        -- GLOBAL
-        CLK => CLK,
-        RST => RST,
-
-        -- CONTROL
-        START => start_scalar_float_divider,
-        READY => ready_scalar_float_divider_model,
-
-        -- DATA
-        DATA_A_IN => data_a_in_scalar_float_divider,
-        DATA_B_IN => data_b_in_scalar_float_divider,
-
-        DATA_OUT     => data_out_scalar_float_divider_model,
-        OVERFLOW_OUT => overflow_out_scalar_float_divider_model
-        );
   end generate accelerator_scalar_float_divider_test;
-
-  scalar_assertion : process (CLK, RST)
-  begin
-    if rising_edge(CLK) then
-      if (ready_scalar_float_adder = '1') then
-        assert data_out_scalar_float_adder = data_out_scalar_float_adder_model
-          report "SCALAR ADDER: CALCULATED = " & to_string(data_out_scalar_float_adder) & "; CORRECT = " & to_string(data_out_scalar_float_adder_model)
-          severity error;
-      end if;
-
-      if (ready_scalar_float_multiplier = '1') then
-        assert data_out_scalar_float_multiplier = data_out_scalar_float_multiplier_model
-          report "SCALAR MULTIPLIER: CALCULATED = " & to_string(data_out_scalar_float_multiplier) & "; CORRECT = " & to_string(data_out_scalar_float_multiplier_model)
-          severity error;
-      end if;
-
-      if (ready_scalar_float_divider = '1') then
-        assert data_out_scalar_float_divider = data_out_scalar_float_divider_model
-          report "SCALAR DIVIDER: CALCULATED = " & to_string(data_out_scalar_float_divider) & "; CORRECT = " & to_string(data_out_scalar_float_divider_model)
-          severity error;
-      end if;
-    end if;
-  end process scalar_assertion;
 
   ------------------------------------------------------------------------------
   -- VECTOR
@@ -966,36 +823,6 @@ begin
         DATA_OUT     => data_out_vector_float_adder,
         OVERFLOW_OUT => overflow_out_vector_float_adder
         );
-
-    vector_float_adder_model : model_vector_float_adder
-      generic map (
-        DATA_SIZE    => DATA_SIZE,
-        CONTROL_SIZE => CONTROL_SIZE
-        )
-      port map (
-        -- GLOBAL
-        CLK => CLK,
-        RST => RST,
-
-        -- CONTROL
-        START => start_vector_float_adder,
-        READY => ready_vector_float_adder_model,
-
-        OPERATION => operation_vector_float_adder,
-
-        DATA_A_IN_ENABLE => data_a_in_enable_vector_float_adder,
-        DATA_B_IN_ENABLE => data_b_in_enable_vector_float_adder,
-
-        DATA_OUT_ENABLE => data_out_enable_vector_float_adder_model,
-
-        -- DATA
-        SIZE_IN   => size_in_vector_float_adder,
-        DATA_A_IN => data_a_in_vector_float_adder,
-        DATA_B_IN => data_b_in_vector_float_adder,
-
-        DATA_OUT     => data_out_vector_float_adder_model,
-        OVERFLOW_OUT => overflow_out_vector_float_adder_model
-        );
   end generate accelerator_vector_float_adder_test;
 
   -- VECTOR FLOAT MULTIPLIER
@@ -1026,34 +853,6 @@ begin
 
         DATA_OUT     => data_out_vector_float_multiplier,
         OVERFLOW_OUT => overflow_out_vector_float_multiplier
-        );
-
-    vector_float_multiplier_model : model_vector_float_multiplier
-      generic map (
-        DATA_SIZE    => DATA_SIZE,
-        CONTROL_SIZE => CONTROL_SIZE
-        )
-      port map (
-        -- GLOBAL
-        CLK => CLK,
-        RST => RST,
-
-        -- CONTROL
-        START => start_vector_float_multiplier,
-        READY => ready_vector_float_multiplier_model,
-
-        DATA_A_IN_ENABLE => data_a_in_enable_vector_float_multiplier,
-        DATA_B_IN_ENABLE => data_b_in_enable_vector_float_multiplier,
-
-        DATA_OUT_ENABLE => data_out_enable_vector_float_multiplier_model,
-
-        -- DATA
-        SIZE_IN   => size_in_vector_float_multiplier,
-        DATA_A_IN => data_a_in_vector_float_multiplier,
-        DATA_B_IN => data_b_in_vector_float_multiplier,
-
-        DATA_OUT     => data_out_vector_float_multiplier_model,
-        OVERFLOW_OUT => overflow_out_vector_float_multiplier_model
         );
   end generate accelerator_vector_float_multiplier_test;
 
@@ -1086,83 +885,7 @@ begin
         DATA_OUT     => data_out_vector_float_divider,
         OVERFLOW_OUT => overflow_out_vector_float_divider
         );
-
-    vector_float_divider_model : model_vector_float_divider
-      generic map (
-        DATA_SIZE    => DATA_SIZE,
-        CONTROL_SIZE => CONTROL_SIZE
-        )
-      port map (
-        -- GLOBAL
-        CLK => CLK,
-        RST => RST,
-
-        -- CONTROL
-        START => start_vector_float_divider,
-        READY => ready_vector_float_divider_model,
-
-        DATA_A_IN_ENABLE => data_a_in_enable_vector_float_divider,
-        DATA_B_IN_ENABLE => data_b_in_enable_vector_float_divider,
-
-        DATA_OUT_ENABLE => data_out_enable_vector_float_divider_model,
-
-        -- DATA
-        SIZE_IN   => size_in_vector_float_divider,
-        DATA_A_IN => data_a_in_vector_float_divider,
-        DATA_B_IN => data_b_in_vector_float_divider,
-
-        DATA_OUT     => data_out_vector_float_divider_model,
-        OVERFLOW_OUT => overflow_out_vector_float_divider_model
-        );
   end generate accelerator_vector_float_divider_test;
-
-  vector_assertion : process (CLK, RST)
-    variable i : integer := 0;
-  begin
-    if rising_edge(CLK) then
-      if (ready_vector_float_adder = '1' and data_out_enable_vector_float_adder = '1') then
-        assert data_out_vector_float_adder = data_out_vector_float_adder_model
-          report "VECTOR ADDER: CALCULATED = " & to_string(data_out_vector_float_adder) & "; CORRECT = " & to_string(data_out_vector_float_adder_model)
-          severity error;
-
-        i := 0;
-      elsif (data_out_enable_vector_float_adder = '1' and not data_out_vector_float_adder = EMPTY) then
-        assert data_out_vector_float_adder = data_out_vector_float_adder_model
-          report "VECTOR ADDER: CALCULATED = " & to_string(data_out_vector_float_adder) & "; CORRECT = " & to_string(data_out_vector_float_adder_model)
-          severity error;
-
-        i := i + 1;
-      end if;
-
-      if (ready_vector_float_multiplier = '1' and data_out_enable_vector_float_multiplier = '1') then
-        assert data_out_vector_float_multiplier = data_out_vector_float_multiplier_model
-          report "VECTOR MULTIPLIER: CALCULATED = " & to_string(data_out_vector_float_multiplier) & "; CORRECT = " & to_string(data_out_vector_float_multiplier_model)
-          severity error;
-
-        i := 0;
-      elsif (data_out_enable_vector_float_multiplier = '1' and not data_out_vector_float_multiplier = EMPTY) then
-        assert data_out_vector_float_multiplier = data_out_vector_float_multiplier_model
-          report "VECTOR MULTIPLIER: CALCULATED = " & to_string(data_out_vector_float_multiplier) & "; CORRECT = " & to_string(data_out_vector_float_multiplier_model)
-          severity error;
-
-        i := i + 1;
-      end if;
-
-      if (ready_vector_float_divider = '1' and data_out_enable_vector_float_divider = '1') then
-        assert data_out_vector_float_divider = data_out_vector_float_divider_model
-          report "VECTOR DIVIDER: CALCULATED = " & to_string(data_out_vector_float_divider) & "; CORRECT = " & to_string(data_out_vector_float_divider_model)
-          severity error;
-
-        i := 0;
-      elsif (data_out_enable_vector_float_divider = '1' and not data_out_vector_float_divider = EMPTY) then
-        assert data_out_vector_float_divider = data_out_vector_float_divider_model
-          report "VECTOR DIVIDER: CALCULATED = " & to_string(data_out_vector_float_divider) & "; CORRECT = " & to_string(data_out_vector_float_divider_model)
-          severity error;
-
-        i := i + 1;
-      end if;
-    end if;
-  end process vector_assertion;
 
   ------------------------------------------------------------------------------
   -- MATRIX
@@ -1203,40 +926,6 @@ begin
         DATA_OUT     => data_out_matrix_float_adder,
         OVERFLOW_OUT => overflow_out_matrix_float_adder
         );
-
-    matrix_float_adder_model : model_matrix_float_adder
-      generic map (
-        DATA_SIZE    => DATA_SIZE,
-        CONTROL_SIZE => CONTROL_SIZE
-        )
-      port map (
-        -- GLOBAL
-        CLK => CLK,
-        RST => RST,
-
-        -- CONTROL
-        START => start_matrix_float_adder,
-        READY => ready_matrix_float_adder_model,
-
-        OPERATION => operation_matrix_float_adder,
-
-        DATA_A_IN_I_ENABLE => data_a_in_i_enable_matrix_float_adder,
-        DATA_A_IN_J_ENABLE => data_a_in_j_enable_matrix_float_adder,
-        DATA_B_IN_I_ENABLE => data_b_in_i_enable_matrix_float_adder,
-        DATA_B_IN_J_ENABLE => data_b_in_j_enable_matrix_float_adder,
-
-        DATA_OUT_I_ENABLE => data_out_i_enable_matrix_float_adder_model,
-        DATA_OUT_J_ENABLE => data_out_j_enable_matrix_float_adder_model,
-
-        -- DATA
-        SIZE_I_IN => size_i_in_matrix_float_adder,
-        SIZE_J_IN => size_j_in_matrix_float_adder,
-        DATA_A_IN => data_a_in_matrix_float_adder,
-        DATA_B_IN => data_b_in_matrix_float_adder,
-
-        DATA_OUT     => data_out_matrix_float_adder_model,
-        OVERFLOW_OUT => overflow_out_matrix_float_adder_model
-        );
   end generate accelerator_matrix_float_adder_test;
 
   -- MATRIX FLOAT MULTIPLIER
@@ -1271,38 +960,6 @@ begin
 
         DATA_OUT     => data_out_matrix_float_multiplier,
         OVERFLOW_OUT => overflow_out_matrix_float_multiplier
-        );
-
-    matrix_float_multiplier_model : model_matrix_float_multiplier
-      generic map (
-        DATA_SIZE    => DATA_SIZE,
-        CONTROL_SIZE => CONTROL_SIZE
-        )
-      port map (
-        -- GLOBAL
-        CLK => CLK,
-        RST => RST,
-
-        -- CONTROL
-        START => start_matrix_float_multiplier,
-        READY => ready_matrix_float_multiplier_model,
-
-        DATA_A_IN_I_ENABLE => data_a_in_i_enable_matrix_float_multiplier,
-        DATA_A_IN_J_ENABLE => data_a_in_j_enable_matrix_float_multiplier,
-        DATA_B_IN_I_ENABLE => data_b_in_i_enable_matrix_float_multiplier,
-        DATA_B_IN_J_ENABLE => data_b_in_j_enable_matrix_float_multiplier,
-
-        DATA_OUT_I_ENABLE => data_out_i_enable_matrix_float_multiplier_model,
-        DATA_OUT_J_ENABLE => data_out_j_enable_matrix_float_multiplier_model,
-
-        -- DATA
-        SIZE_I_IN => size_i_in_matrix_float_multiplier,
-        SIZE_J_IN => size_j_in_matrix_float_multiplier,
-        DATA_A_IN => data_a_in_matrix_float_multiplier,
-        DATA_B_IN => data_b_in_matrix_float_multiplier,
-
-        DATA_OUT     => data_out_matrix_float_multiplier_model,
-        OVERFLOW_OUT => overflow_out_matrix_float_multiplier_model
         );
   end generate accelerator_matrix_float_multiplier_test;
 
@@ -1339,112 +996,7 @@ begin
         DATA_OUT     => data_out_matrix_float_divider,
         OVERFLOW_OUT => overflow_out_matrix_float_divider
         );
-
-    matrix_float_divider_model : model_matrix_float_divider
-      generic map (
-        DATA_SIZE    => DATA_SIZE,
-        CONTROL_SIZE => CONTROL_SIZE
-        )
-      port map (
-        -- GLOBAL
-        CLK => CLK,
-        RST => RST,
-
-        -- CONTROL
-        START => start_matrix_float_divider,
-        READY => ready_matrix_float_divider_model,
-
-        DATA_A_IN_I_ENABLE => data_a_in_i_enable_matrix_float_divider,
-        DATA_A_IN_J_ENABLE => data_a_in_j_enable_matrix_float_divider,
-        DATA_B_IN_I_ENABLE => data_b_in_i_enable_matrix_float_divider,
-        DATA_B_IN_J_ENABLE => data_b_in_j_enable_matrix_float_divider,
-
-        DATA_OUT_I_ENABLE => data_out_i_enable_matrix_float_divider_model,
-        DATA_OUT_J_ENABLE => data_out_j_enable_matrix_float_divider_model,
-
-        -- DATA
-        SIZE_I_IN => size_i_in_matrix_float_divider,
-        SIZE_J_IN => size_j_in_matrix_float_divider,
-        DATA_A_IN => data_a_in_matrix_float_divider,
-        DATA_B_IN => data_b_in_matrix_float_divider,
-
-        DATA_OUT     => data_out_matrix_float_divider_model,
-        OVERFLOW_OUT => overflow_out_matrix_float_divider_model
-        );
   end generate accelerator_matrix_float_divider_test;
-
-  matrix_assertion : process (CLK, RST)
-    variable i : integer := 0;
-    variable j : integer := 0;
-  begin
-    if rising_edge(CLK) then
-      if (ready_matrix_float_adder = '1' and data_out_i_enable_matrix_float_adder = '1' and data_out_j_enable_matrix_float_adder = '1') then
-        assert data_out_matrix_float_adder = data_out_matrix_float_adder_model
-          report "MATRIX ADDER: CALCULATED = " & to_string(data_out_matrix_float_adder) & "; CORRECT = " & to_string(data_out_matrix_float_adder_model)
-          severity error;
-
-        i := 0;
-        j := 0;
-      elsif (data_out_i_enable_matrix_float_adder = '1' and data_out_j_enable_matrix_float_adder = '1' and not data_out_matrix_float_adder = EMPTY) then
-        assert data_out_matrix_float_adder = data_out_matrix_float_adder_model
-          report "MATRIX ADDER: CALCULATED = " & to_string(data_out_matrix_float_adder) & "; CORRECT = " & to_string(data_out_matrix_float_adder_model)
-          severity error;
-
-        i := i + 1;
-        j := 0;
-      elsif (data_out_j_enable_matrix_float_adder = '1' and not data_out_matrix_float_adder = EMPTY) then
-        assert data_out_matrix_float_adder = data_out_matrix_float_adder_model
-          report "MATRIX ADDER: CALCULATED = " & to_string(data_out_matrix_float_adder) & "; CORRECT = " & to_string(data_out_matrix_float_adder_model)
-          severity error;
-
-        j := j + 1;
-      end if;
-
-      if (ready_matrix_float_multiplier = '1' and data_out_i_enable_matrix_float_multiplier = '1' and data_out_j_enable_matrix_float_multiplier = '1') then
-        assert data_out_matrix_float_multiplier = data_out_matrix_float_multiplier_model
-          report "MATRIX MULTIPLIER: CALCULATED = " & to_string(data_out_matrix_float_multiplier) & "; CORRECT = " & to_string(data_out_matrix_float_multiplier_model)
-          severity error;
-
-        i := 0;
-        j := 0;
-      elsif (data_out_i_enable_matrix_float_multiplier = '1' and data_out_j_enable_matrix_float_multiplier = '1' and not data_out_matrix_float_multiplier = EMPTY) then
-        assert data_out_matrix_float_multiplier = data_out_matrix_float_multiplier_model
-          report "MATRIX MULTIPLIER: CALCULATED = " & to_string(data_out_matrix_float_multiplier) & "; CORRECT = " & to_string(data_out_matrix_float_multiplier_model)
-          severity error;
-
-        i := i + 1;
-        j := 0;
-      elsif (data_out_j_enable_matrix_float_multiplier = '1' and not data_out_matrix_float_multiplier = EMPTY) then
-        assert data_out_matrix_float_multiplier = data_out_matrix_float_multiplier_model
-          report "MATRIX MULTIPLIER: CALCULATED = " & to_string(data_out_matrix_float_multiplier) & "; CORRECT = " & to_string(data_out_matrix_float_multiplier_model)
-          severity error;
-
-        j := j + 1;
-      end if;
-
-      if (ready_matrix_float_divider = '1' and data_out_i_enable_matrix_float_divider = '1' and data_out_j_enable_matrix_float_divider = '1') then
-        assert data_out_matrix_float_divider = data_out_matrix_float_divider_model
-          report "MATRIX DIVIDER: CALCULATED = " & to_string(data_out_matrix_float_divider) & "; CORRECT = " & to_string(data_out_matrix_float_divider_model)
-          severity error;
-
-        i := 0;
-        j := 0;
-      elsif (data_out_i_enable_matrix_float_divider = '1' and data_out_j_enable_matrix_float_divider = '1' and not data_out_matrix_float_divider = EMPTY) then
-        assert data_out_matrix_float_divider = data_out_matrix_float_divider_model
-          report "MATRIX DIVIDER: CALCULATED = " & to_string(data_out_matrix_float_divider) & "; CORRECT = " & to_string(data_out_matrix_float_divider_model)
-          severity error;
-
-        i := i + 1;
-        j := 0;
-      elsif (data_out_j_enable_matrix_float_divider = '1' and not data_out_matrix_float_divider = EMPTY) then
-        assert data_out_matrix_float_divider = data_out_matrix_float_divider_model
-          report "MATRIX DIVIDER: CALCULATED = " & to_string(data_out_matrix_float_divider) & "; CORRECT = " & to_string(data_out_matrix_float_divider_model)
-          severity error;
-
-        j := j + 1;
-      end if;
-    end if;
-  end process matrix_assertion;
 
   ------------------------------------------------------------------------------
   -- TENSOR
@@ -1489,44 +1041,6 @@ begin
         DATA_OUT     => data_out_tensor_float_adder,
         OVERFLOW_OUT => overflow_out_tensor_float_adder
         );
-
-    tensor_float_adder_model : model_tensor_float_adder
-      generic map (
-        DATA_SIZE    => DATA_SIZE,
-        CONTROL_SIZE => CONTROL_SIZE
-        )
-      port map (
-        -- GLOBAL
-        CLK => CLK,
-        RST => RST,
-
-        -- CONTROL
-        START => start_tensor_float_adder,
-        READY => ready_tensor_float_adder_model,
-
-        OPERATION => operation_tensor_float_adder,
-
-        DATA_A_IN_I_ENABLE => data_a_in_i_enable_tensor_float_adder,
-        DATA_A_IN_J_ENABLE => data_a_in_j_enable_tensor_float_adder,
-        DATA_A_IN_K_ENABLE => data_a_in_k_enable_tensor_float_adder,
-        DATA_B_IN_I_ENABLE => data_b_in_i_enable_tensor_float_adder,
-        DATA_B_IN_J_ENABLE => data_b_in_j_enable_tensor_float_adder,
-        DATA_B_IN_K_ENABLE => data_b_in_k_enable_tensor_float_adder,
-
-        DATA_OUT_I_ENABLE => data_out_i_enable_tensor_float_adder_model,
-        DATA_OUT_J_ENABLE => data_out_j_enable_tensor_float_adder_model,
-        DATA_OUT_K_ENABLE => data_out_k_enable_tensor_float_adder_model,
-
-        -- DATA
-        SIZE_I_IN => size_i_in_tensor_float_adder,
-        SIZE_J_IN => size_j_in_tensor_float_adder,
-        SIZE_K_IN => size_k_in_tensor_float_adder,
-        DATA_A_IN => data_a_in_tensor_float_adder,
-        DATA_B_IN => data_b_in_tensor_float_adder,
-
-        DATA_OUT     => data_out_tensor_float_adder_model,
-        OVERFLOW_OUT => overflow_out_tensor_float_adder_model
-        );
   end generate accelerator_tensor_float_adder_test;
 
   -- TENSOR FLOAT MULTIPLIER
@@ -1565,42 +1079,6 @@ begin
 
         DATA_OUT     => data_out_tensor_float_multiplier,
         OVERFLOW_OUT => overflow_out_tensor_float_multiplier
-        );
-
-    tensor_float_multiplier_model : model_tensor_float_multiplier
-      generic map (
-        DATA_SIZE    => DATA_SIZE,
-        CONTROL_SIZE => CONTROL_SIZE
-        )
-      port map (
-        -- GLOBAL
-        CLK => CLK,
-        RST => RST,
-
-        -- CONTROL
-        START => start_tensor_float_multiplier,
-        READY => ready_tensor_float_multiplier_model,
-
-        DATA_A_IN_I_ENABLE => data_a_in_i_enable_tensor_float_multiplier,
-        DATA_A_IN_J_ENABLE => data_a_in_j_enable_tensor_float_multiplier,
-        DATA_A_IN_K_ENABLE => data_a_in_k_enable_tensor_float_multiplier,
-        DATA_B_IN_I_ENABLE => data_b_in_i_enable_tensor_float_multiplier,
-        DATA_B_IN_J_ENABLE => data_b_in_j_enable_tensor_float_multiplier,
-        DATA_B_IN_K_ENABLE => data_b_in_k_enable_tensor_float_multiplier,
-
-        DATA_OUT_I_ENABLE => data_out_i_enable_tensor_float_multiplier_model,
-        DATA_OUT_J_ENABLE => data_out_j_enable_tensor_float_multiplier_model,
-        DATA_OUT_K_ENABLE => data_out_k_enable_tensor_float_multiplier_model,
-
-        -- DATA
-        SIZE_I_IN => size_i_in_tensor_float_multiplier,
-        SIZE_J_IN => size_j_in_tensor_float_multiplier,
-        SIZE_K_IN => size_k_in_tensor_float_multiplier,
-        DATA_A_IN => data_a_in_tensor_float_multiplier,
-        DATA_B_IN => data_b_in_tensor_float_multiplier,
-
-        DATA_OUT     => data_out_tensor_float_multiplier_model,
-        OVERFLOW_OUT => overflow_out_tensor_float_multiplier_model
         );
   end generate accelerator_tensor_float_multiplier_test;
 
@@ -1641,143 +1119,6 @@ begin
         DATA_OUT     => data_out_tensor_float_divider,
         OVERFLOW_OUT => overflow_out_tensor_float_divider
         );
-
-    tensor_float_divider_model : model_tensor_float_divider
-      generic map (
-        DATA_SIZE    => DATA_SIZE,
-        CONTROL_SIZE => CONTROL_SIZE
-        )
-      port map (
-        -- GLOBAL
-        CLK => CLK,
-        RST => RST,
-
-        -- CONTROL
-        START => start_tensor_float_divider,
-        READY => ready_tensor_float_divider_model,
-
-        DATA_A_IN_I_ENABLE => data_a_in_i_enable_tensor_float_divider,
-        DATA_A_IN_J_ENABLE => data_a_in_j_enable_tensor_float_divider,
-        DATA_A_IN_K_ENABLE => data_a_in_k_enable_tensor_float_divider,
-        DATA_B_IN_I_ENABLE => data_b_in_i_enable_tensor_float_divider,
-        DATA_B_IN_J_ENABLE => data_b_in_j_enable_tensor_float_divider,
-        DATA_B_IN_K_ENABLE => data_b_in_k_enable_tensor_float_divider,
-
-        DATA_OUT_I_ENABLE => data_out_i_enable_tensor_float_divider_model,
-        DATA_OUT_J_ENABLE => data_out_j_enable_tensor_float_divider_model,
-        DATA_OUT_K_ENABLE => data_out_k_enable_tensor_float_divider_model,
-
-        -- DATA
-        SIZE_I_IN => size_i_in_tensor_float_divider,
-        SIZE_J_IN => size_j_in_tensor_float_divider,
-        SIZE_K_IN => size_k_in_tensor_float_divider,
-        DATA_A_IN => data_a_in_tensor_float_divider,
-        DATA_B_IN => data_b_in_tensor_float_divider,
-
-        DATA_OUT     => data_out_tensor_float_divider_model,
-        OVERFLOW_OUT => overflow_out_tensor_float_divider_model
-        );
   end generate accelerator_tensor_float_divider_test;
-
-  tensor_assertion : process (CLK, RST)
-    variable i : integer := 0;
-    variable j : integer := 0;
-    variable k : integer := 0;
-  begin
-    if rising_edge(CLK) then
-      if (ready_tensor_float_adder = '1' and data_out_i_enable_tensor_float_adder = '1' and data_out_j_enable_tensor_float_adder = '1' and data_out_k_enable_tensor_float_adder = '1') then
-        assert data_out_tensor_float_adder = data_out_tensor_float_adder_model
-          report "TENSOR ADDER: CALCULATED = " & to_string(data_out_tensor_float_adder) & "; CORRECT = " & to_string(data_out_tensor_float_adder_model)
-          severity error;
-
-        i := 0;
-        j := 0;
-        k := 0;
-      elsif (data_out_i_enable_tensor_float_adder = '1' and data_out_j_enable_tensor_float_adder = '1' and data_out_k_enable_tensor_float_divider = '1' and not data_out_tensor_float_adder = EMPTY) then
-        assert data_out_tensor_float_adder = data_out_tensor_float_adder_model
-          report "TENSOR ADDER: CALCULATED = " & to_string(data_out_tensor_float_adder) & "; CORRECT = " & to_string(data_out_tensor_float_adder_model)
-          severity error;
-
-        i := i + 1;
-        j := 0;
-        k := 0;
-      elsif (data_out_j_enable_tensor_float_adder = '1' and data_out_k_enable_tensor_float_divider = '1' and not data_out_tensor_float_adder = EMPTY) then
-        assert data_out_tensor_float_adder = data_out_tensor_float_adder_model
-          report "TENSOR ADDER: CALCULATED = " & to_string(data_out_tensor_float_adder) & "; CORRECT = " & to_string(data_out_tensor_float_adder_model)
-          severity error;
-
-        j := j + 1;
-        k := 0;
-      elsif (data_out_k_enable_tensor_float_divider = '1' and not data_out_tensor_float_adder = EMPTY) then
-        assert data_out_tensor_float_adder = data_out_tensor_float_adder_model
-          report "TENSOR ADDER: CALCULATED = " & to_string(data_out_tensor_float_adder) & "; CORRECT = " & to_string(data_out_tensor_float_adder_model)
-          severity error;
-
-        k := k + 1;
-      end if;
-
-      if (ready_tensor_float_multiplier = '1' and data_out_i_enable_tensor_float_multiplier = '1' and data_out_j_enable_tensor_float_multiplier = '1' and data_out_k_enable_tensor_float_multiplier = '1') then
-        assert data_out_tensor_float_multiplier = data_out_tensor_float_multiplier_model
-          report "TENSOR MULTIPLIER: CALCULATED = " & to_string(data_out_tensor_float_multiplier) & "; CORRECT = " & to_string(data_out_tensor_float_multiplier_model)
-          severity error;
-
-        i := 0;
-        j := 0;
-        k := 0;
-      elsif (data_out_i_enable_tensor_float_multiplier = '1' and data_out_j_enable_tensor_float_multiplier = '1' and data_out_k_enable_tensor_float_divider = '1' and not data_out_tensor_float_multiplier = EMPTY) then
-        assert data_out_tensor_float_multiplier = data_out_tensor_float_multiplier_model
-          report "TENSOR MULTIPLIER: CALCULATED = " & to_string(data_out_tensor_float_multiplier) & "; CORRECT = " & to_string(data_out_tensor_float_multiplier_model)
-          severity error;
-
-        i := i + 1;
-        j := 0;
-        k := 0;
-      elsif (data_out_j_enable_tensor_float_multiplier = '1' and data_out_k_enable_tensor_float_divider = '1' and not data_out_tensor_float_multiplier = EMPTY) then
-        assert data_out_tensor_float_multiplier = data_out_tensor_float_multiplier_model
-          report "TENSOR MULTIPLIER: CALCULATED = " & to_string(data_out_tensor_float_multiplier) & "; CORRECT = " & to_string(data_out_tensor_float_multiplier_model)
-          severity error;
-
-        j := j + 1;
-        k := 0;
-      elsif (data_out_k_enable_tensor_float_divider = '1' and not data_out_tensor_float_multiplier = EMPTY) then
-        assert data_out_tensor_float_multiplier = data_out_tensor_float_multiplier_model
-          report "TENSOR MULTIPLIER: CALCULATED = " & to_string(data_out_tensor_float_multiplier) & "; CORRECT = " & to_string(data_out_tensor_float_multiplier_model)
-          severity error;
-
-        k := k + 1;
-      end if;
-
-      if (ready_tensor_float_divider = '1' and data_out_i_enable_tensor_float_divider = '1' and data_out_j_enable_tensor_float_divider = '1' and data_out_k_enable_tensor_float_divider = '1') then
-        assert data_out_tensor_float_divider = data_out_tensor_float_divider_model
-          report "TENSOR DIVIDER: CALCULATED = " & to_string(data_out_tensor_float_divider) & "; CORRECT = " & to_string(data_out_tensor_float_divider_model)
-          severity error;
-
-        i := 0;
-        j := 0;
-        k := 0;
-      elsif (data_out_i_enable_tensor_float_divider = '1' and data_out_j_enable_tensor_float_divider = '1' and data_out_k_enable_tensor_float_divider = '1' and not data_out_tensor_float_divider = EMPTY) then
-        assert data_out_tensor_float_divider = data_out_tensor_float_divider_model
-          report "TENSOR DIVIDER: CALCULATED = " & to_string(data_out_tensor_float_divider) & "; CORRECT = " & to_string(data_out_tensor_float_divider_model)
-          severity error;
-
-        i := i + 1;
-        j := 0;
-        k := 0;
-      elsif (data_out_j_enable_tensor_float_divider = '1' and data_out_k_enable_tensor_float_divider = '1' and not data_out_tensor_float_divider = EMPTY) then
-        assert data_out_tensor_float_divider = data_out_tensor_float_divider_model
-          report "TENSOR DIVIDER: CALCULATED = " & to_string(data_out_tensor_float_divider) & "; CORRECT = " & to_string(data_out_tensor_float_divider_model)
-          severity error;
-
-        j := j + 1;
-        k := 0;
-      elsif (data_out_k_enable_tensor_float_divider = '1' and not data_out_tensor_float_divider = EMPTY) then
-        assert data_out_tensor_float_divider = data_out_tensor_float_divider_model
-          report "TENSOR DIVIDER: CALCULATED = " & to_string(data_out_tensor_float_divider) & "; CORRECT = " & to_string(data_out_tensor_float_divider_model)
-          severity error;
-
-        k := k + 1;
-      end if;
-    end if;
-  end process tensor_assertion;
 
 end accelerator_float_testbench_architecture;

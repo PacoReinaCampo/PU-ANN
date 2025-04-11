@@ -40,8 +40,6 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-use work.model_math_vhdl_pkg.all;
-use work.accelerator_arithmetic_vhdl_pkg.all;
 use work.accelerator_math_vhdl_pkg.all;
 use work.accelerator_function_pkg.all;
 
@@ -93,12 +91,6 @@ end accelerator_function_testbench;
 architecture accelerator_function_testbench_architecture of accelerator_function_testbench is
 
   ------------------------------------------------------------------------------
-  -- Constants
-  ------------------------------------------------------------------------------
-
-  constant EMPTY : std_logic_vector(DATA_SIZE-1 downto 0) := (others => '0');
-
-  ------------------------------------------------------------------------------
   -- Signals
   ------------------------------------------------------------------------------
 
@@ -115,26 +107,31 @@ architecture accelerator_function_testbench_architecture of accelerator_function
   signal start_scalar_logistic : std_logic;
   signal ready_scalar_logistic : std_logic;
 
-  signal ready_scalar_logistic_model : std_logic;
-
   -- DATA
   signal data_in_scalar_logistic  : std_logic_vector(DATA_SIZE-1 downto 0);
   signal data_out_scalar_logistic : std_logic_vector(DATA_SIZE-1 downto 0);
-
-  signal data_out_scalar_logistic_model : std_logic_vector(DATA_SIZE-1 downto 0);
 
   -- SCALAR ONEPLUS
   -- CONTROL
   signal start_scalar_oneplus : std_logic;
   signal ready_scalar_oneplus : std_logic;
 
-  signal ready_scalar_oneplus_model : std_logic;
-
   -- DATA
   signal data_in_scalar_oneplus  : std_logic_vector(DATA_SIZE-1 downto 0);
   signal data_out_scalar_oneplus : std_logic_vector(DATA_SIZE-1 downto 0);
 
-  signal data_out_scalar_oneplus_model : std_logic_vector(DATA_SIZE-1 downto 0);
+  -- CONTROL
+  signal start_scalar_summation : std_logic;
+  signal ready_scalar_summation : std_logic;
+
+  signal data_in_enable_scalar_summation : std_logic;
+
+  signal data_out_enable_scalar_summation : std_logic;
+
+  -- DATA
+  signal length_in_scalar_summation : std_logic_vector(CONTROL_SIZE-1 downto 0);
+  signal data_in_scalar_summation   : std_logic_vector(DATA_SIZE-1 downto 0);
+  signal data_out_scalar_summation  : std_logic_vector(DATA_SIZE-1 downto 0);
 
   ------------------------------------------------------------------------------
   -- VECTOR
@@ -145,40 +142,28 @@ architecture accelerator_function_testbench_architecture of accelerator_function
   signal start_vector_logistic : std_logic;
   signal ready_vector_logistic : std_logic;
 
-  signal ready_vector_logistic_model : std_logic;
-
   signal data_in_enable_vector_logistic : std_logic;
 
   signal data_out_enable_vector_logistic : std_logic;
-
-  signal data_out_enable_vector_logistic_model : std_logic;
 
   -- DATA
   signal size_in_vector_logistic  : std_logic_vector(CONTROL_SIZE-1 downto 0);
   signal data_in_vector_logistic  : std_logic_vector(DATA_SIZE-1 downto 0);
   signal data_out_vector_logistic : std_logic_vector(DATA_SIZE-1 downto 0);
 
-  signal data_out_vector_logistic_model : std_logic_vector(DATA_SIZE-1 downto 0);
-
   -- VECTOR ONEPLUS
   -- CONTROL
   signal start_vector_oneplus : std_logic;
   signal ready_vector_oneplus : std_logic;
 
-  signal ready_vector_oneplus_model : std_logic;
-
   signal data_in_enable_vector_oneplus : std_logic;
 
   signal data_out_enable_vector_oneplus : std_logic;
-
-  signal data_out_enable_vector_oneplus_model : std_logic;
 
   -- DATA
   signal size_in_vector_oneplus  : std_logic_vector(CONTROL_SIZE-1 downto 0);
   signal data_in_vector_oneplus  : std_logic_vector(DATA_SIZE-1 downto 0);
   signal data_out_vector_oneplus : std_logic_vector(DATA_SIZE-1 downto 0);
-
-  signal data_out_vector_oneplus_model : std_logic_vector(DATA_SIZE-1 downto 0);
 
   ------------------------------------------------------------------------------
   -- MATRIX
@@ -189,16 +174,11 @@ architecture accelerator_function_testbench_architecture of accelerator_function
   signal start_matrix_logistic : std_logic;
   signal ready_matrix_logistic : std_logic;
 
-  signal ready_matrix_logistic_model : std_logic;
-
   signal data_in_i_enable_matrix_logistic : std_logic;
   signal data_in_j_enable_matrix_logistic : std_logic;
 
   signal data_out_i_enable_matrix_logistic : std_logic;
   signal data_out_j_enable_matrix_logistic : std_logic;
-
-  signal data_out_i_enable_matrix_logistic_model : std_logic;
-  signal data_out_j_enable_matrix_logistic_model : std_logic;
 
   -- DATA
   signal size_i_in_matrix_logistic : std_logic_vector(CONTROL_SIZE-1 downto 0);
@@ -206,14 +186,10 @@ architecture accelerator_function_testbench_architecture of accelerator_function
   signal data_in_matrix_logistic   : std_logic_vector(DATA_SIZE-1 downto 0);
   signal data_out_matrix_logistic  : std_logic_vector(DATA_SIZE-1 downto 0);
 
-  signal data_out_matrix_logistic_model : std_logic_vector(DATA_SIZE-1 downto 0);
-
   -- MATRIX ONEPLUS
   -- CONTROL
   signal start_matrix_oneplus : std_logic;
   signal ready_matrix_oneplus : std_logic;
-
-  signal ready_matrix_oneplus_model : std_logic;
 
   signal data_in_i_enable_matrix_oneplus : std_logic;
   signal data_in_j_enable_matrix_oneplus : std_logic;
@@ -221,16 +197,11 @@ architecture accelerator_function_testbench_architecture of accelerator_function
   signal data_out_i_enable_matrix_oneplus : std_logic;
   signal data_out_j_enable_matrix_oneplus : std_logic;
 
-  signal data_out_i_enable_matrix_oneplus_model : std_logic;
-  signal data_out_j_enable_matrix_oneplus_model : std_logic;
-
   -- DATA
   signal size_i_in_matrix_oneplus : std_logic_vector(CONTROL_SIZE-1 downto 0);
   signal size_j_in_matrix_oneplus : std_logic_vector(CONTROL_SIZE-1 downto 0);
   signal data_in_matrix_oneplus   : std_logic_vector(DATA_SIZE-1 downto 0);
   signal data_out_matrix_oneplus  : std_logic_vector(DATA_SIZE-1 downto 0);
-
-  signal data_out_matrix_oneplus_model : std_logic_vector(DATA_SIZE-1 downto 0);
 
 begin
 
@@ -373,25 +344,6 @@ begin
         DATA_IN  => data_in_scalar_logistic,
         DATA_OUT => data_out_scalar_logistic
         );
-
-    scalar_logistic_function_model : model_scalar_logistic_function
-      generic map (
-        DATA_SIZE    => DATA_SIZE,
-        CONTROL_SIZE => CONTROL_SIZE
-        )
-      port map (
-        -- GLOBAL
-        CLK => CLK,
-        RST => RST,
-
-        -- CONTROL
-        START => start_scalar_logistic,
-        READY => ready_scalar_logistic_model,
-
-        -- DATA
-        DATA_IN  => data_in_scalar_logistic,
-        DATA_OUT => data_out_scalar_logistic_model
-        );
   end generate accelerator_scalar_logistic_function_test;
 
   -- SCALAR ONEPLUS
@@ -414,43 +366,7 @@ begin
         DATA_IN  => data_in_scalar_oneplus,
         DATA_OUT => data_out_scalar_oneplus
         );
-
-    scalar_oneplus_function_model : model_scalar_oneplus_function
-      generic map (
-        DATA_SIZE    => DATA_SIZE,
-        CONTROL_SIZE => CONTROL_SIZE
-        )
-      port map (
-        -- GLOBAL
-        CLK => CLK,
-        RST => RST,
-
-        -- CONTROL
-        START => start_scalar_oneplus,
-        READY => ready_scalar_oneplus_model,
-
-        -- DATA
-        DATA_IN  => data_in_scalar_oneplus,
-        DATA_OUT => data_out_scalar_oneplus_model
-        );
   end generate accelerator_scalar_oneplus_function_test;
-
-  scalar_assertion : process (CLK, RST)
-  begin
-    if rising_edge(CLK) then
-      if (ready_scalar_logistic = '1') then
-        assert data_out_scalar_logistic = data_out_scalar_logistic_model
-          report "SCALAR LOGISTIC: CALCULATED = " & to_string(data_out_scalar_logistic) & "; CORRECT = " & to_string(data_out_scalar_logistic_model)
-          severity error;
-      end if;
-
-      if (ready_scalar_oneplus = '1') then
-        assert data_out_scalar_oneplus = data_out_scalar_oneplus_model
-          report "SCALAR ONEPLUS: CALCULATED = " & to_string(data_out_scalar_oneplus) & "; CORRECT = " & to_string(data_out_scalar_oneplus_model)
-          severity error;
-      end if;
-    end if;
-  end process scalar_assertion;
 
   ------------------------------------------------------------------------------
   -- VECTOR
@@ -481,30 +397,6 @@ begin
         DATA_IN  => data_in_vector_logistic,
         DATA_OUT => data_out_vector_logistic
         );
-
-    vector_logistic_function_model : model_vector_logistic_function
-      generic map (
-        DATA_SIZE    => DATA_SIZE,
-        CONTROL_SIZE => CONTROL_SIZE
-        )
-      port map (
-        -- GLOBAL
-        CLK => CLK,
-        RST => RST,
-
-        -- CONTROL
-        START => start_vector_logistic,
-        READY => ready_vector_logistic_model,
-
-        DATA_IN_ENABLE => data_in_enable_vector_logistic,
-
-        DATA_OUT_ENABLE => data_out_enable_vector_logistic_model,
-
-        -- DATA
-        SIZE_IN  => size_in_vector_logistic,
-        DATA_IN  => data_in_vector_logistic,
-        DATA_OUT => data_out_vector_logistic_model
-        );
   end generate accelerator_vector_logistic_function_test;
 
   -- VECTOR ONEPLUS
@@ -533,66 +425,7 @@ begin
         DATA_IN  => data_in_vector_oneplus,
         DATA_OUT => data_out_vector_oneplus
         );
-
-    vector_oneplus_function_model : model_vector_oneplus_function
-      generic map (
-
-        DATA_SIZE    => DATA_SIZE,
-        CONTROL_SIZE => CONTROL_SIZE
-        )
-      port map (
-        -- GLOBAL
-        CLK => CLK,
-        RST => RST,
-
-        -- CONTROL
-        START => start_vector_oneplus,
-        READY => ready_vector_oneplus_model,
-
-        DATA_IN_ENABLE => data_in_enable_vector_oneplus,
-
-        DATA_OUT_ENABLE => data_out_enable_vector_oneplus_model,
-
-        -- DATA
-        SIZE_IN  => size_in_vector_oneplus,
-        DATA_IN  => data_in_vector_oneplus,
-        DATA_OUT => data_out_vector_oneplus_model
-        );
   end generate accelerator_vector_oneplus_function_test;
-
-  vector_assertion : process (CLK, RST)
-    variable i : integer := 0;
-  begin
-    if rising_edge(CLK) then
-      if (ready_vector_logistic = '1' and data_out_enable_vector_logistic = '1') then
-        assert data_out_vector_logistic = data_out_vector_logistic_model
-          report "VECTOR LOGISTIC: CALCULATED = " & to_string(data_out_vector_logistic) & "; CORRECT = " & to_string(data_out_vector_logistic_model)
-          severity error;
-
-        i := 0;
-      elsif (data_out_enable_vector_logistic = '1' and not data_out_vector_logistic = EMPTY) then
-        assert data_out_vector_logistic = data_out_vector_logistic_model
-          report "VECTOR LOGISTIC: CALCULATED = " & to_string(data_out_vector_logistic) & "; CORRECT = " & to_string(data_out_vector_logistic_model)
-          severity error;
-
-        i := i + 1;
-      end if;
-
-      if (ready_vector_oneplus = '1' and data_out_enable_vector_oneplus = '1') then
-        assert data_out_vector_oneplus = data_out_vector_oneplus_model
-          report "VECTOR ONEPLUS: CALCULATED = " & to_string(data_out_vector_oneplus) & "; CORRECT = " & to_string(data_out_vector_oneplus_model)
-          severity error;
-
-        i := 0;
-      elsif (data_out_enable_vector_oneplus = '1' and not data_out_vector_oneplus = EMPTY) then
-        assert data_out_vector_oneplus = data_out_vector_oneplus_model
-          report "VECTOR ONEPLUS: CALCULATED = " & to_string(data_out_vector_oneplus) & "; CORRECT = " & to_string(data_out_vector_oneplus_model)
-          severity error;
-
-        i := i + 1;
-      end if;
-    end if;
-  end process vector_assertion;
 
   ------------------------------------------------------------------------------
   -- MATRIX
@@ -626,33 +459,6 @@ begin
         DATA_IN   => data_in_matrix_logistic,
         DATA_OUT  => data_out_matrix_logistic
         );
-
-    matrix_logistic_function_model : model_matrix_logistic_function
-      generic map (
-        DATA_SIZE    => DATA_SIZE,
-        CONTROL_SIZE => CONTROL_SIZE
-        )
-      port map (
-        -- GLOBAL
-        CLK => CLK,
-        RST => RST,
-
-        -- CONTROL
-        START => start_matrix_logistic,
-        READY => ready_matrix_logistic_model,
-
-        DATA_IN_I_ENABLE => data_in_i_enable_matrix_logistic,
-        DATA_IN_J_ENABLE => data_in_j_enable_matrix_logistic,
-
-        DATA_OUT_I_ENABLE => data_out_i_enable_matrix_logistic_model,
-        DATA_OUT_J_ENABLE => data_out_j_enable_matrix_logistic_model,
-
-        -- DATA
-        SIZE_I_IN => size_i_in_matrix_logistic,
-        SIZE_J_IN => size_j_in_matrix_logistic,
-        DATA_IN   => data_in_matrix_logistic,
-        DATA_OUT  => data_out_matrix_logistic_model
-        );
   end generate accelerator_matrix_logistic_function_test;
 
   -- MATRIX ONEPLUS
@@ -683,84 +489,6 @@ begin
         DATA_IN   => data_in_matrix_oneplus,
         DATA_OUT  => data_out_matrix_oneplus
         );
-
-    matrix_oneplus_function_model : model_matrix_oneplus_function
-      generic map (
-        DATA_SIZE    => DATA_SIZE,
-        CONTROL_SIZE => CONTROL_SIZE
-        )
-      port map (
-        -- GLOBAL
-        CLK => CLK,
-        RST => RST,
-
-        -- CONTROL
-        START => start_matrix_oneplus,
-        READY => ready_matrix_oneplus_model,
-
-        DATA_IN_I_ENABLE => data_in_i_enable_matrix_oneplus,
-        DATA_IN_J_ENABLE => data_in_j_enable_matrix_oneplus,
-
-        DATA_OUT_I_ENABLE => data_out_i_enable_matrix_oneplus_model,
-        DATA_OUT_J_ENABLE => data_out_j_enable_matrix_oneplus_model,
-
-        -- DATA
-        SIZE_I_IN => size_i_in_matrix_oneplus,
-        SIZE_J_IN => size_j_in_matrix_oneplus,
-        DATA_IN   => data_in_matrix_oneplus,
-        DATA_OUT  => data_out_matrix_oneplus_model
-        );
   end generate accelerator_matrix_oneplus_function_test;
-
-  matrix_assertion : process (CLK, RST)
-    variable i : integer := 0;
-    variable j : integer := 0;
-  begin
-    if rising_edge(CLK) then
-      if (ready_matrix_logistic = '1' and data_out_i_enable_matrix_logistic = '1' and data_out_j_enable_matrix_logistic = '1') then
-        assert data_out_matrix_logistic = data_out_matrix_logistic_model
-          report "MATRIX LOGISTIC: CALCULATED = " & to_string(data_out_matrix_logistic) & "; CORRECT = " & to_string(data_out_matrix_logistic_model)
-          severity error;
-
-        i := 0;
-        j := 0;
-      elsif (data_out_i_enable_matrix_logistic = '1' and data_out_j_enable_matrix_logistic = '1' and not data_out_matrix_logistic = EMPTY) then
-        assert data_out_matrix_logistic = data_out_matrix_logistic_model
-          report "MATRIX LOGISTIC: CALCULATED = " & to_string(data_out_matrix_logistic) & "; CORRECT = " & to_string(data_out_matrix_logistic_model)
-          severity error;
-
-        i := i + 1;
-        j := 0;
-      elsif (data_out_j_enable_matrix_logistic = '1' and not data_out_matrix_logistic = EMPTY) then
-        assert data_out_matrix_logistic = data_out_matrix_logistic_model
-          report "MATRIX LOGISTIC: CALCULATED = " & to_string(data_out_matrix_logistic) & "; CORRECT = " & to_string(data_out_matrix_logistic_model)
-          severity error;
-
-        j := j + 1;
-      end if;
-
-      if (ready_matrix_oneplus = '1' and data_out_i_enable_matrix_oneplus = '1' and data_out_j_enable_matrix_oneplus = '1') then
-        assert data_out_matrix_oneplus = data_out_matrix_oneplus_model
-          report "MATRIX ONEPLUS: CALCULATED = " & to_string(data_out_matrix_oneplus) & "; CORRECT = " & to_string(data_out_matrix_oneplus_model)
-          severity error;
-
-        i := 0;
-        j := 0;
-      elsif (data_out_i_enable_matrix_oneplus = '1' and data_out_j_enable_matrix_oneplus = '1' and not data_out_matrix_oneplus = EMPTY) then
-        assert data_out_matrix_oneplus = data_out_matrix_oneplus_model
-          report "MATRIX ONEPLUS: CALCULATED = " & to_string(data_out_matrix_oneplus) & "; CORRECT = " & to_string(data_out_matrix_oneplus_model)
-          severity error;
-
-        i := i + 1;
-        j := 0;
-      elsif (data_out_j_enable_matrix_oneplus = '1' and not data_out_matrix_oneplus = EMPTY) then
-        assert data_out_matrix_oneplus = data_out_matrix_oneplus_model
-          report "MATRIX ONEPLUS: CALCULATED = " & to_string(data_out_matrix_oneplus) & "; CORRECT = " & to_string(data_out_matrix_oneplus_model)
-          severity error;
-
-        j := j + 1;
-      end if;
-    end if;
-  end process matrix_assertion;
 
 end accelerator_function_testbench_architecture;

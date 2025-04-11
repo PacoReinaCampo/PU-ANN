@@ -204,7 +204,7 @@ begin
         -------------------------------------------------------------------
         MONITOR_CASE <= "STIMULUS_ACCELERATOR_STATE_TOP_CASE_0                                 ";
         -------------------------------------------------------------------
-
+      
         ACCELERATOR_STATE_TOP_SIZE_A_I_IN <= FOUR_CONTROL;
         ACCELERATOR_STATE_TOP_SIZE_A_J_IN <= FOUR_CONTROL;
         ACCELERATOR_STATE_TOP_SIZE_B_I_IN <= FOUR_CONTROL;

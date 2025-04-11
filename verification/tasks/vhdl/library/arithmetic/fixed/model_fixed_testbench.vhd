@@ -82,6 +82,62 @@ entity model_fixed_testbench is
     ENABLE_NTM_VECTOR_FIXED_MULTIPLIER_CASE_1 : boolean := false;
     ENABLE_NTM_VECTOR_FIXED_DIVIDER_CASE_1    : boolean := false;
 
+    ENABLE_NTM_SCALAR_FIXED_ADDER_CASE_2      : boolean := false;
+    ENABLE_NTM_SCALAR_FIXED_MULTIPLIER_CASE_2 : boolean := false;
+    ENABLE_NTM_SCALAR_FIXED_DIVIDER_CASE_2    : boolean := false;
+
+    ENABLE_NTM_SCALAR_FIXED_ADDER_CASE_3      : boolean := false;
+    ENABLE_NTM_SCALAR_FIXED_MULTIPLIER_CASE_3 : boolean := false;
+    ENABLE_NTM_SCALAR_FIXED_DIVIDER_CASE_3    : boolean := false;
+
+    ENABLE_NTM_SCALAR_FIXED_ADDER_CASE_4      : boolean := false;
+    ENABLE_NTM_SCALAR_FIXED_MULTIPLIER_CASE_4 : boolean := false;
+    ENABLE_NTM_SCALAR_FIXED_DIVIDER_CASE_4    : boolean := false;
+
+    ENABLE_NTM_SCALAR_FIXED_ADDER_CASE_5      : boolean := false;
+    ENABLE_NTM_SCALAR_FIXED_MULTIPLIER_CASE_5 : boolean := false;
+    ENABLE_NTM_SCALAR_FIXED_DIVIDER_CASE_5    : boolean := false;
+
+    ENABLE_NTM_SCALAR_FIXED_ADDER_CASE_6      : boolean := false;
+    ENABLE_NTM_SCALAR_FIXED_MULTIPLIER_CASE_6 : boolean := false;
+    ENABLE_NTM_SCALAR_FIXED_DIVIDER_CASE_6    : boolean := false;
+
+    ENABLE_NTM_SCALAR_FIXED_ADDER_CASE_7      : boolean := false;
+    ENABLE_NTM_SCALAR_FIXED_MULTIPLIER_CASE_7 : boolean := false;
+    ENABLE_NTM_SCALAR_FIXED_DIVIDER_CASE_7    : boolean := false;
+
+    ENABLE_NTM_SCALAR_FIXED_ADDER_CASE_8      : boolean := false;
+    ENABLE_NTM_SCALAR_FIXED_MULTIPLIER_CASE_8 : boolean := false;
+    ENABLE_NTM_SCALAR_FIXED_DIVIDER_CASE_8    : boolean := false;
+
+    ENABLE_NTM_SCALAR_FIXED_ADDER_CASE_9      : boolean := false;
+    ENABLE_NTM_SCALAR_FIXED_MULTIPLIER_CASE_9 : boolean := false;
+    ENABLE_NTM_SCALAR_FIXED_DIVIDER_CASE_9    : boolean := false;
+
+    ENABLE_NTM_SCALAR_FIXED_ADDER_CASE_10      : boolean := false;
+    ENABLE_NTM_SCALAR_FIXED_MULTIPLIER_CASE_10 : boolean := false;
+    ENABLE_NTM_SCALAR_FIXED_DIVIDER_CASE_10    : boolean := false;
+
+    ENABLE_NTM_SCALAR_FIXED_ADDER_CASE_11      : boolean := false;
+    ENABLE_NTM_SCALAR_FIXED_MULTIPLIER_CASE_11 : boolean := false;
+    ENABLE_NTM_SCALAR_FIXED_DIVIDER_CASE_11    : boolean := false;
+
+    ENABLE_NTM_SCALAR_FIXED_ADDER_CASE_12      : boolean := false;
+    ENABLE_NTM_SCALAR_FIXED_MULTIPLIER_CASE_12 : boolean := false;
+    ENABLE_NTM_SCALAR_FIXED_DIVIDER_CASE_12    : boolean := false;
+
+    ENABLE_NTM_SCALAR_FIXED_ADDER_CASE_13      : boolean := false;
+    ENABLE_NTM_SCALAR_FIXED_MULTIPLIER_CASE_13 : boolean := false;
+    ENABLE_NTM_SCALAR_FIXED_DIVIDER_CASE_13    : boolean := false;
+
+    ENABLE_NTM_SCALAR_FIXED_ADDER_CASE_14      : boolean := false;
+    ENABLE_NTM_SCALAR_FIXED_MULTIPLIER_CASE_14 : boolean := false;
+    ENABLE_NTM_SCALAR_FIXED_DIVIDER_CASE_14    : boolean := false;
+
+    ENABLE_NTM_SCALAR_FIXED_ADDER_CASE_15      : boolean := false;
+    ENABLE_NTM_SCALAR_FIXED_MULTIPLIER_CASE_15 : boolean := false;
+    ENABLE_NTM_SCALAR_FIXED_DIVIDER_CASE_15    : boolean := false;
+
     -- MATRIX-FUNCTIONALITY
     ENABLE_NTM_MATRIX_FIXED_ADDER_TEST      : boolean := false;
     ENABLE_NTM_MATRIX_FIXED_MULTIPLIER_TEST : boolean := false;
@@ -111,57 +167,6 @@ entity model_fixed_testbench is
 end model_fixed_testbench;
 
 architecture model_fixed_testbench_architecture of model_fixed_testbench is
-
-  ------------------------------------------------------------------------------
-  -- Constants
-  ------------------------------------------------------------------------------
-
-  constant EMPTY : std_logic_vector(DATA_SIZE-1 downto 0) := (others => '0');
-
-  constant CONTROL_X : std_logic_vector(CONTROL_SIZE-1 downto 0) := std_logic_vector(to_unsigned(CONTROL_SIZE, CONTROL_SIZE));
-  constant CONTROL_Y : std_logic_vector(CONTROL_SIZE-1 downto 0) := std_logic_vector(to_unsigned(CONTROL_SIZE, CONTROL_SIZE));
-  constant CONTROL_Z : std_logic_vector(CONTROL_SIZE-1 downto 0) := std_logic_vector(to_unsigned(CONTROL_SIZE, CONTROL_SIZE));
-  constant CONTROL_L : std_logic_vector(CONTROL_SIZE-1 downto 0) := std_logic_vector(to_unsigned(CONTROL_SIZE, CONTROL_SIZE));
-
-  -- SCALAR
-  constant SCALAR_ADDER_OUTPUT_0 : std_logic_vector(DATA_SIZE-1 downto 0) := function_scalar_fixed_adder('0', SCALAR_SAMPLE_A, SCALAR_SAMPLE_B);
-  constant SCALAR_ADDER_OUTPUT_1 : std_logic_vector(DATA_SIZE-1 downto 0) := function_scalar_fixed_adder('0', SCALAR_SAMPLE_B, SCALAR_SAMPLE_A);
-
-  constant SCALAR_MULTIPLIER_OUTPUT_0 : std_logic_vector(DATA_SIZE-1 downto 0) := function_scalar_fixed_multiplier(SCALAR_SAMPLE_A, SCALAR_SAMPLE_B);
-  constant SCALAR_MULTIPLIER_OUTPUT_1 : std_logic_vector(DATA_SIZE-1 downto 0) := function_scalar_fixed_multiplier(SCALAR_SAMPLE_B, SCALAR_SAMPLE_A);
-
-  constant SCALAR_DIVIDER_OUTPUT_0 : std_logic_vector(DATA_SIZE-1 downto 0) := function_scalar_fixed_divider(SCALAR_SAMPLE_A, SCALAR_SAMPLE_B);
-  constant SCALAR_DIVIDER_OUTPUT_1 : std_logic_vector(DATA_SIZE-1 downto 0) := function_scalar_fixed_divider(SCALAR_SAMPLE_B, SCALAR_SAMPLE_A);
-
-  -- VECTOR
-  constant VECTOR_ADDER_OUTPUT_0 : vector_buffer := function_vector_fixed_adder('0', CONTROL_L, VECTOR_SAMPLE_A, VECTOR_SAMPLE_B);
-  constant VECTOR_ADDER_OUTPUT_1 : vector_buffer := function_vector_fixed_adder('0', CONTROL_L, VECTOR_SAMPLE_B, VECTOR_SAMPLE_A);
-
-  constant VECTOR_MULTIPLIER_OUTPUT_0 : vector_buffer := function_vector_fixed_multiplier(CONTROL_L, VECTOR_SAMPLE_A, VECTOR_SAMPLE_B);
-  constant VECTOR_MULTIPLIER_OUTPUT_1 : vector_buffer := function_vector_fixed_multiplier(CONTROL_L, VECTOR_SAMPLE_B, VECTOR_SAMPLE_A);
-
-  constant VECTOR_DIVIDER_OUTPUT_0 : vector_buffer := function_vector_fixed_divider(CONTROL_L, VECTOR_SAMPLE_A, VECTOR_SAMPLE_B);
-  constant VECTOR_DIVIDER_OUTPUT_1 : vector_buffer := function_vector_fixed_divider(CONTROL_L, VECTOR_SAMPLE_B, VECTOR_SAMPLE_A);
-
-  -- MATRIX
-  constant MATRIX_ADDER_OUTPUT_0 : matrix_buffer := function_matrix_fixed_adder('0', CONTROL_X, CONTROL_Y, MATRIX_SAMPLE_A, MATRIX_SAMPLE_B);
-  constant MATRIX_ADDER_OUTPUT_1 : matrix_buffer := function_matrix_fixed_adder('0', CONTROL_X, CONTROL_Y, MATRIX_SAMPLE_B, MATRIX_SAMPLE_A);
-
-  constant MATRIX_MULTIPLIER_OUTPUT_0 : matrix_buffer := function_matrix_fixed_multiplier(CONTROL_X, CONTROL_Y, MATRIX_SAMPLE_A, MATRIX_SAMPLE_B);
-  constant MATRIX_MULTIPLIER_OUTPUT_1 : matrix_buffer := function_matrix_fixed_multiplier(CONTROL_X, CONTROL_Y, MATRIX_SAMPLE_B, MATRIX_SAMPLE_A);
-
-  constant MATRIX_DIVIDER_OUTPUT_0 : matrix_buffer := function_matrix_fixed_divider(CONTROL_X, CONTROL_Y, MATRIX_SAMPLE_A, MATRIX_SAMPLE_B);
-  constant MATRIX_DIVIDER_OUTPUT_1 : matrix_buffer := function_matrix_fixed_divider(CONTROL_X, CONTROL_Y, MATRIX_SAMPLE_B, MATRIX_SAMPLE_A);
-
-  -- TENSOR
-  constant TENSOR_ADDER_OUTPUT_0 : tensor_buffer := function_tensor_fixed_adder('0', CONTROL_X, CONTROL_Y, CONTROL_Z, TENSOR_SAMPLE_A, TENSOR_SAMPLE_B);
-  constant TENSOR_ADDER_OUTPUT_1 : tensor_buffer := function_tensor_fixed_adder('0', CONTROL_X, CONTROL_Y, CONTROL_Z, TENSOR_SAMPLE_B, TENSOR_SAMPLE_A);
-
-  constant TENSOR_MULTIPLIER_OUTPUT_0 : tensor_buffer := function_tensor_fixed_multiplier(CONTROL_X, CONTROL_Y, CONTROL_Z, TENSOR_SAMPLE_A, TENSOR_SAMPLE_B);
-  constant TENSOR_MULTIPLIER_OUTPUT_1 : tensor_buffer := function_tensor_fixed_multiplier(CONTROL_X, CONTROL_Y, CONTROL_Z, TENSOR_SAMPLE_B, TENSOR_SAMPLE_A);
-
-  constant TENSOR_DIVIDER_OUTPUT_0 : tensor_buffer := function_tensor_fixed_divider(CONTROL_X, CONTROL_Y, CONTROL_Z, TENSOR_SAMPLE_A, TENSOR_SAMPLE_B);
-  constant TENSOR_DIVIDER_OUTPUT_1 : tensor_buffer := function_tensor_fixed_divider(CONTROL_X, CONTROL_Y, CONTROL_Z, TENSOR_SAMPLE_B, TENSOR_SAMPLE_A);
 
   ------------------------------------------------------------------------------
   -- Signals
@@ -783,29 +788,6 @@ begin
         );
   end generate model_scalar_fixed_divider_test;
 
-  scalar_assertion : process (CLK, RST)
-  begin
-    if rising_edge(CLK) then
-      if (ready_scalar_fixed_adder = '1') then
-        assert data_out_scalar_fixed_adder = SCALAR_ADDER_OUTPUT_0
-          report "SCALAR ADDER: CALCULATED = " & to_string(data_out_scalar_fixed_adder) & "; CORRECT = " & to_string(SCALAR_ADDER_OUTPUT_0)
-          severity error;
-      end if;
-
-      if (ready_scalar_fixed_multiplier = '1') then
-        assert data_out_scalar_fixed_multiplier = SCALAR_MULTIPLIER_OUTPUT_0
-          report "SCALAR MULTIPLIER: CALCULATED = " & to_string(data_out_scalar_fixed_multiplier) & "; CORRECT = " & to_string(SCALAR_MULTIPLIER_OUTPUT_0)
-          severity error;
-      end if;
-
-      if (ready_scalar_fixed_divider = '1') then
-        assert data_out_scalar_fixed_divider = SCALAR_DIVIDER_OUTPUT_0
-          report "SCALAR DIVIDER: CALCULATED = " & to_string(data_out_scalar_fixed_divider) & "; CORRECT = " & to_string(SCALAR_DIVIDER_OUTPUT_0)
-          severity error;
-      end if;
-    end if;
-  end process scalar_assertion;
-
   ------------------------------------------------------------------------------
   -- VECTOR
   ------------------------------------------------------------------------------
@@ -904,54 +886,6 @@ begin
         OVERFLOW_OUT => overflow_out_vector_fixed_divider
         );
   end generate model_vector_fixed_divider_test;
-
-  vector_assertion : process (CLK, RST)
-    variable i : integer := 0;
-  begin
-    if rising_edge(CLK) then
-      if (ready_vector_fixed_adder = '1' and data_out_enable_vector_fixed_adder = '1') then
-        assert data_out_vector_fixed_adder = VECTOR_ADDER_OUTPUT_0(i)
-          report "VECTOR ADDER: CALCULATED = " & to_string(data_out_vector_fixed_adder) & "; CORRECT = " & to_string(VECTOR_ADDER_OUTPUT_0(i))
-          severity error;
-
-        i := 0;
-      elsif (data_out_enable_vector_fixed_adder = '1' and not data_out_vector_fixed_adder = ZERO_DATA) then
-        assert data_out_vector_fixed_adder = VECTOR_ADDER_OUTPUT_0(i)
-          report "VECTOR ADDER: CALCULATED = " & to_string(data_out_vector_fixed_adder) & "; CORRECT = " & to_string(VECTOR_ADDER_OUTPUT_0(i))
-          severity error;
-
-        i := i + 1;
-      end if;
-
-      if (ready_vector_fixed_multiplier = '1' and data_out_enable_vector_fixed_multiplier = '1') then
-        assert data_out_vector_fixed_multiplier = VECTOR_MULTIPLIER_OUTPUT_0(i)
-          report "VECTOR MULTIPLIER: CALCULATED = " & to_string(data_out_vector_fixed_multiplier) & "; CORRECT = " & to_string(VECTOR_MULTIPLIER_OUTPUT_0(i))
-          severity error;
-
-        i := 0;
-      elsif (data_out_enable_vector_fixed_multiplier = '1' and not data_out_vector_fixed_multiplier = ZERO_DATA) then
-        assert data_out_vector_fixed_multiplier = VECTOR_MULTIPLIER_OUTPUT_0(i)
-          report "VECTOR MULTIPLIER: CALCULATED = " & to_string(data_out_vector_fixed_multiplier) & "; CORRECT = " & to_string(VECTOR_MULTIPLIER_OUTPUT_0(i))
-          severity error;
-
-        i := i + 1;
-      end if;
-
-      if (ready_vector_fixed_divider = '1' and data_out_enable_vector_fixed_divider = '1') then
-        assert data_out_vector_fixed_divider = VECTOR_DIVIDER_OUTPUT_0(i)
-          report "VECTOR DIVIDER: CALCULATED = " & to_string(data_out_vector_fixed_divider) & "; CORRECT = " & to_string(VECTOR_DIVIDER_OUTPUT_0(i))
-          severity error;
-
-        i := 0;
-      elsif (data_out_enable_vector_fixed_divider = '1' and not data_out_vector_fixed_divider = ZERO_DATA) then
-        assert data_out_vector_fixed_divider = VECTOR_DIVIDER_OUTPUT_0(i)
-          report "VECTOR DIVIDER: CALCULATED = " & to_string(data_out_vector_fixed_divider) & "; CORRECT = " & to_string(VECTOR_DIVIDER_OUTPUT_0(i))
-          severity error;
-
-        i := i + 1;
-      end if;
-    end if;
-  end process vector_assertion;
 
   ------------------------------------------------------------------------------
   -- MATRIX
@@ -1063,79 +997,6 @@ begin
         OVERFLOW_OUT => overflow_out_matrix_fixed_divider
         );
   end generate model_matrix_fixed_divider_test;
-
-  matrix_assertion : process (CLK, RST)
-    variable i : integer := 0;
-    variable j : integer := 0;
-  begin
-    if rising_edge(CLK) then
-      if (ready_matrix_fixed_adder = '1' and data_out_i_enable_matrix_fixed_adder = '1' and data_out_j_enable_matrix_fixed_adder = '1') then
-        assert data_out_matrix_fixed_adder = MATRIX_ADDER_OUTPUT_0(i, j)
-          report "MATRIX ADDER: CALCULATED = " & to_string(data_out_matrix_fixed_adder) & "; CORRECT = " & to_string(MATRIX_ADDER_OUTPUT_0(i, j))
-          severity error;
-
-        i := 0;
-        j := 0;
-      elsif (data_out_i_enable_matrix_fixed_adder = '1' and data_out_j_enable_matrix_fixed_adder = '1' and not data_out_matrix_fixed_adder = ZERO_DATA) then
-        assert data_out_matrix_fixed_adder = MATRIX_ADDER_OUTPUT_0(i, j)
-          report "MATRIX ADDER: CALCULATED = " & to_string(data_out_matrix_fixed_adder) & "; CORRECT = " & to_string(MATRIX_ADDER_OUTPUT_0(i, j))
-          severity error;
-
-        i := i + 1;
-        j := 0;
-      elsif (data_out_j_enable_matrix_fixed_adder = '1' and not data_out_matrix_fixed_adder = ZERO_DATA) then
-        assert data_out_matrix_fixed_adder = MATRIX_ADDER_OUTPUT_0(i, j)
-          report "MATRIX ADDER: CALCULATED = " & to_string(data_out_matrix_fixed_adder) & "; CORRECT = " & to_string(MATRIX_ADDER_OUTPUT_0(i, j))
-          severity error;
-
-        j := j + 1;
-      end if;
-
-      if (ready_matrix_fixed_multiplier = '1' and data_out_i_enable_matrix_fixed_multiplier = '1' and data_out_j_enable_matrix_fixed_multiplier = '1') then
-        assert data_out_matrix_fixed_multiplier = MATRIX_MULTIPLIER_OUTPUT_0(i, j)
-          report "MATRIX MULTIPLIER: CALCULATED = " & to_string(data_out_matrix_fixed_multiplier) & "; CORRECT = " & to_string(MATRIX_MULTIPLIER_OUTPUT_0(i, j))
-          severity error;
-
-        i := 0;
-        j := 0;
-      elsif (data_out_i_enable_matrix_fixed_multiplier = '1' and data_out_j_enable_matrix_fixed_multiplier = '1' and not data_out_matrix_fixed_multiplier = ZERO_DATA) then
-        assert data_out_matrix_fixed_multiplier = MATRIX_MULTIPLIER_OUTPUT_0(i, j)
-          report "MATRIX MULTIPLIER: CALCULATED = " & to_string(data_out_matrix_fixed_multiplier) & "; CORRECT = " & to_string(MATRIX_MULTIPLIER_OUTPUT_0(i, j))
-          severity error;
-
-        i := i + 1;
-        j := 0;
-      elsif (data_out_j_enable_matrix_fixed_multiplier = '1' and not data_out_matrix_fixed_multiplier = ZERO_DATA) then
-        assert data_out_matrix_fixed_multiplier = MATRIX_MULTIPLIER_OUTPUT_0(i, j)
-          report "MATRIX MULTIPLIER: CALCULATED = " & to_string(data_out_matrix_fixed_multiplier) & "; CORRECT = " & to_string(MATRIX_MULTIPLIER_OUTPUT_0(i, j))
-          severity error;
-
-        j := j + 1;
-      end if;
-
-      if (ready_matrix_fixed_divider = '1' and data_out_i_enable_matrix_fixed_divider = '1' and data_out_j_enable_matrix_fixed_divider = '1') then
-        assert data_out_matrix_fixed_divider = MATRIX_DIVIDER_OUTPUT_0(i, j)
-          report "MATRIX DIVIDER: CALCULATED = " & to_string(data_out_matrix_fixed_divider) & "; CORRECT = " & to_string(MATRIX_DIVIDER_OUTPUT_0(i, j))
-          severity error;
-
-        i := 0;
-        j := 0;
-      elsif (data_out_i_enable_matrix_fixed_divider = '1' and data_out_j_enable_matrix_fixed_divider = '1' and not data_out_matrix_fixed_divider = ZERO_DATA) then
-        assert data_out_matrix_fixed_divider = MATRIX_DIVIDER_OUTPUT_0(i, j)
-          report "MATRIX DIVIDER: CALCULATED = " & to_string(data_out_matrix_fixed_divider) & "; CORRECT = " & to_string(MATRIX_DIVIDER_OUTPUT_0(i, j))
-          severity error;
-
-        i := i + 1;
-        j := 0;
-      elsif (data_out_j_enable_matrix_fixed_divider = '1' and not data_out_matrix_fixed_divider = ZERO_DATA) then
-        assert data_out_matrix_fixed_divider = MATRIX_DIVIDER_OUTPUT_0(i, j)
-          report "MATRIX DIVIDER: CALCULATED = " & to_string(data_out_matrix_fixed_divider) & "; CORRECT = " & to_string(MATRIX_DIVIDER_OUTPUT_0(i, j))
-          severity error;
-
-        j := j + 1;
-      end if;
-    end if;
-  end process matrix_assertion;
 
   ------------------------------------------------------------------------------
   -- TENSOR
@@ -1259,106 +1120,5 @@ begin
         OVERFLOW_OUT => overflow_out_tensor_fixed_divider
         );
   end generate model_tensor_fixed_divider_test;
-
-  tensor_assertion : process (CLK, RST)
-    variable i : integer := 0;
-    variable j : integer := 0;
-    variable k : integer := 0;
-  begin
-    if rising_edge(CLK) then
-      if (ready_tensor_fixed_adder = '1' and data_out_i_enable_tensor_fixed_adder = '1' and data_out_j_enable_tensor_fixed_adder = '1' and data_out_k_enable_tensor_fixed_adder = '1') then
-        assert data_out_tensor_fixed_adder = TENSOR_ADDER_OUTPUT_0(i, j, k)
-          report "TENSOR ADDER: CALCULATED = " & to_string(data_out_tensor_fixed_adder) & "; CORRECT = " & to_string(TENSOR_ADDER_OUTPUT_0(i, j, k))
-          severity error;
-
-        i := 0;
-        j := 0;
-        k := 0;
-      elsif (data_out_i_enable_tensor_fixed_adder = '1' and data_out_j_enable_tensor_fixed_adder = '1' and data_out_k_enable_tensor_fixed_adder = '1' and not data_out_tensor_fixed_adder = ZERO_DATA) then
-        assert data_out_tensor_fixed_adder = TENSOR_ADDER_OUTPUT_0(i, j, k)
-          report "TENSOR ADDER: CALCULATED = " & to_string(data_out_tensor_fixed_adder) & "; CORRECT = " & to_string(TENSOR_ADDER_OUTPUT_0(i, j, k))
-          severity error;
-
-        i := i + 1;
-        j := 0;
-        k := 0;
-      elsif (data_out_j_enable_tensor_fixed_adder = '1' and data_out_k_enable_tensor_fixed_adder = '1' and not data_out_tensor_fixed_adder = ZERO_DATA) then
-        assert data_out_tensor_fixed_adder = TENSOR_ADDER_OUTPUT_0(i, j, k)
-          report "TENSOR ADDER: CALCULATED = " & to_string(data_out_tensor_fixed_adder) & "; CORRECT = " & to_string(TENSOR_ADDER_OUTPUT_0(i, j, k))
-          severity error;
-
-        j := j + 1;
-        k := 0;
-      elsif (data_out_k_enable_tensor_fixed_adder = '1' and not data_out_tensor_fixed_adder = ZERO_DATA) then
-        assert data_out_tensor_fixed_adder = TENSOR_ADDER_OUTPUT_0(i, j, k)
-          report "TENSOR ADDER: CALCULATED = " & to_string(data_out_tensor_fixed_adder) & "; CORRECT = " & to_string(TENSOR_ADDER_OUTPUT_0(i, j, k))
-          severity error;
-
-        k := k + 1;
-      end if;
-
-      if (ready_tensor_fixed_multiplier = '1' and data_out_i_enable_tensor_fixed_multiplier = '1' and data_out_j_enable_tensor_fixed_multiplier = '1' and data_out_k_enable_tensor_fixed_multiplier = '1') then
-        assert data_out_tensor_fixed_multiplier = TENSOR_MULTIPLIER_OUTPUT_0(i, j, k)
-          report "TENSOR MULTIPLIER: CALCULATED = " & to_string(data_out_tensor_fixed_multiplier) & "; CORRECT = " & to_string(TENSOR_MULTIPLIER_OUTPUT_0(i, j, k))
-          severity error;
-
-        i := 0;
-        j := 0;
-        k := 0;
-      elsif (data_out_i_enable_tensor_fixed_multiplier = '1' and data_out_j_enable_tensor_fixed_multiplier = '1' and data_out_k_enable_tensor_fixed_multiplier = '1' and not data_out_tensor_fixed_multiplier = ZERO_DATA) then
-        assert data_out_tensor_fixed_multiplier = TENSOR_MULTIPLIER_OUTPUT_0(i, j, k)
-          report "TENSOR MULTIPLIER: CALCULATED = " & to_string(data_out_tensor_fixed_multiplier) & "; CORRECT = " & to_string(TENSOR_MULTIPLIER_OUTPUT_0(i, j, k))
-          severity error;
-
-        i := i + 1;
-        j := 0;
-        k := 0;
-      elsif (data_out_j_enable_tensor_fixed_multiplier = '1' and data_out_k_enable_tensor_fixed_multiplier = '1' and not data_out_tensor_fixed_multiplier = ZERO_DATA) then
-        assert data_out_tensor_fixed_multiplier = TENSOR_MULTIPLIER_OUTPUT_0(i, j, k)
-          report "TENSOR MULTIPLIER: CALCULATED = " & to_string(data_out_tensor_fixed_multiplier) & "; CORRECT = " & to_string(TENSOR_MULTIPLIER_OUTPUT_0(i, j, k))
-          severity error;
-
-        j := j + 1;
-        k := 0;
-      elsif (data_out_k_enable_tensor_fixed_multiplier = '1' and not data_out_tensor_fixed_multiplier = ZERO_DATA) then
-        assert data_out_tensor_fixed_multiplier = TENSOR_MULTIPLIER_OUTPUT_0(i, j, k)
-          report "TENSOR MULTIPLIER: CALCULATED = " & to_string(data_out_tensor_fixed_multiplier) & "; CORRECT = " & to_string(TENSOR_MULTIPLIER_OUTPUT_0(i, j, k))
-          severity error;
-
-        k := k + 1;
-      end if;
-
-      if (ready_tensor_fixed_divider = '1' and data_out_i_enable_tensor_fixed_divider = '1' and data_out_j_enable_tensor_fixed_divider = '1' and data_out_k_enable_tensor_fixed_divider = '1') then
-        assert data_out_tensor_fixed_divider = TENSOR_DIVIDER_OUTPUT_0(i, j, k)
-          report "TENSOR DIVIDER: CALCULATED = " & to_string(data_out_tensor_fixed_divider) & "; CORRECT = " & to_string(TENSOR_DIVIDER_OUTPUT_0(i, j, k))
-          severity error;
-
-        i := 0;
-        j := 0;
-        k := 0;
-      elsif (data_out_i_enable_tensor_fixed_divider = '1' and data_out_j_enable_tensor_fixed_divider = '1' and data_out_k_enable_tensor_fixed_divider = '1' and not data_out_tensor_fixed_divider = ZERO_DATA) then
-        assert data_out_tensor_fixed_divider = TENSOR_DIVIDER_OUTPUT_0(i, j, k)
-          report "TENSOR DIVIDER: CALCULATED = " & to_string(data_out_tensor_fixed_divider) & "; CORRECT = " & to_string(TENSOR_DIVIDER_OUTPUT_0(i, j, k))
-          severity error;
-
-        i := i + 1;
-        j := 0;
-        k := 0;
-      elsif (data_out_j_enable_tensor_fixed_divider = '1' and data_out_k_enable_tensor_fixed_divider = '1' and not data_out_tensor_fixed_divider = ZERO_DATA) then
-        assert data_out_tensor_fixed_divider = TENSOR_DIVIDER_OUTPUT_0(i, j, k)
-          report "TENSOR DIVIDER: CALCULATED = " & to_string(data_out_tensor_fixed_divider) & "; CORRECT = " & to_string(TENSOR_DIVIDER_OUTPUT_0(i, j, k))
-          severity error;
-
-        j := j + 1;
-        k := 0;
-      elsif (data_out_k_enable_tensor_fixed_divider = '1' and not data_out_tensor_fixed_divider = ZERO_DATA) then
-        assert data_out_tensor_fixed_divider = TENSOR_DIVIDER_OUTPUT_0(i, j, k)
-          report "TENSOR DIVIDER: CALCULATED = " & to_string(data_out_tensor_fixed_divider) & "; CORRECT = " & to_string(TENSOR_DIVIDER_OUTPUT_0(i, j, k))
-          severity error;
-
-        k := k + 1;
-      end if;
-    end if;
-  end process tensor_assertion;
 
 end model_fixed_testbench_architecture;

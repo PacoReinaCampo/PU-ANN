@@ -71,6 +71,30 @@ entity model_integer_testbench is
     ENABLE_NTM_SCALAR_INTEGER_MULTIPLIER_CASE_1 : boolean := false;
     ENABLE_NTM_SCALAR_INTEGER_DIVIDER_CASE_1    : boolean := false;
 
+    ENABLE_NTM_SCALAR_INTEGER_ADDER_CASE_2      : boolean := false;
+    ENABLE_NTM_SCALAR_INTEGER_MULTIPLIER_CASE_2 : boolean := false;
+    ENABLE_NTM_SCALAR_INTEGER_DIVIDER_CASE_2    : boolean := false;
+
+    ENABLE_NTM_SCALAR_INTEGER_ADDER_CASE_3      : boolean := false;
+    ENABLE_NTM_SCALAR_INTEGER_MULTIPLIER_CASE_3 : boolean := false;
+    ENABLE_NTM_SCALAR_INTEGER_DIVIDER_CASE_3    : boolean := false;
+
+    ENABLE_NTM_SCALAR_INTEGER_ADDER_CASE_4      : boolean := false;
+    ENABLE_NTM_SCALAR_INTEGER_MULTIPLIER_CASE_4 : boolean := false;
+    ENABLE_NTM_SCALAR_INTEGER_DIVIDER_CASE_4    : boolean := false;
+
+    ENABLE_NTM_SCALAR_INTEGER_ADDER_CASE_5      : boolean := false;
+    ENABLE_NTM_SCALAR_INTEGER_MULTIPLIER_CASE_5 : boolean := false;
+    ENABLE_NTM_SCALAR_INTEGER_DIVIDER_CASE_5    : boolean := false;
+
+    ENABLE_NTM_SCALAR_INTEGER_ADDER_CASE_6      : boolean := false;
+    ENABLE_NTM_SCALAR_INTEGER_MULTIPLIER_CASE_6 : boolean := false;
+    ENABLE_NTM_SCALAR_INTEGER_DIVIDER_CASE_6    : boolean := false;
+
+    ENABLE_NTM_SCALAR_INTEGER_ADDER_CASE_7      : boolean := false;
+    ENABLE_NTM_SCALAR_INTEGER_MULTIPLIER_CASE_7 : boolean := false;
+    ENABLE_NTM_SCALAR_INTEGER_DIVIDER_CASE_7    : boolean := false;
+
     -- VECTOR-FUNCTIONALITY
     ENABLE_NTM_VECTOR_INTEGER_ADDER_TEST      : boolean := false;
     ENABLE_NTM_VECTOR_INTEGER_MULTIPLIER_TEST : boolean := false;
@@ -113,57 +137,6 @@ entity model_integer_testbench is
 end model_integer_testbench;
 
 architecture model_integer_testbench_architecture of model_integer_testbench is
-
-  ------------------------------------------------------------------------------
-  -- Constants
-  ------------------------------------------------------------------------------
-
-  constant EMPTY : std_logic_vector(DATA_SIZE-1 downto 0) := (others => '0');
-
-  constant CONTROL_X : std_logic_vector(CONTROL_SIZE-1 downto 0) := std_logic_vector(to_unsigned(CONTROL_SIZE, CONTROL_SIZE));
-  constant CONTROL_Y : std_logic_vector(CONTROL_SIZE-1 downto 0) := std_logic_vector(to_unsigned(CONTROL_SIZE, CONTROL_SIZE));
-  constant CONTROL_Z : std_logic_vector(CONTROL_SIZE-1 downto 0) := std_logic_vector(to_unsigned(CONTROL_SIZE, CONTROL_SIZE));
-  constant CONTROL_L : std_logic_vector(CONTROL_SIZE-1 downto 0) := std_logic_vector(to_unsigned(CONTROL_SIZE, CONTROL_SIZE));
-
-  -- SCALAR
-  constant SCALAR_ADDER_OUTPUT_0 : std_logic_vector(DATA_SIZE-1 downto 0) := function_scalar_integer_adder('0', SCALAR_SAMPLE_A, SCALAR_SAMPLE_B);
-  constant SCALAR_ADDER_OUTPUT_1 : std_logic_vector(DATA_SIZE-1 downto 0) := function_scalar_integer_adder('0', SCALAR_SAMPLE_B, SCALAR_SAMPLE_A);
-
-  constant SCALAR_MULTIPLIER_OUTPUT_0 : std_logic_vector(DATA_SIZE-1 downto 0) := function_scalar_integer_multiplier(SCALAR_SAMPLE_A, SCALAR_SAMPLE_B);
-  constant SCALAR_MULTIPLIER_OUTPUT_1 : std_logic_vector(DATA_SIZE-1 downto 0) := function_scalar_integer_multiplier(SCALAR_SAMPLE_B, SCALAR_SAMPLE_A);
-
-  constant SCALAR_DIVIDER_OUTPUT_0 : std_logic_vector(DATA_SIZE-1 downto 0) := function_scalar_integer_divider(SCALAR_SAMPLE_A, SCALAR_SAMPLE_B);
-  constant SCALAR_DIVIDER_OUTPUT_1 : std_logic_vector(DATA_SIZE-1 downto 0) := function_scalar_integer_divider(SCALAR_SAMPLE_B, SCALAR_SAMPLE_A);
-
-  -- VECTOR
-  constant VECTOR_ADDER_OUTPUT_0 : vector_buffer := function_vector_integer_adder('0', CONTROL_L, VECTOR_SAMPLE_A, VECTOR_SAMPLE_B);
-  constant VECTOR_ADDER_OUTPUT_1 : vector_buffer := function_vector_integer_adder('0', CONTROL_L, VECTOR_SAMPLE_B, VECTOR_SAMPLE_A);
-
-  constant VECTOR_MULTIPLIER_OUTPUT_0 : vector_buffer := function_vector_integer_multiplier(CONTROL_L, VECTOR_SAMPLE_A, VECTOR_SAMPLE_B);
-  constant VECTOR_MULTIPLIER_OUTPUT_1 : vector_buffer := function_vector_integer_multiplier(CONTROL_L, VECTOR_SAMPLE_B, VECTOR_SAMPLE_A);
-
-  constant VECTOR_DIVIDER_OUTPUT_0 : vector_buffer := function_vector_integer_divider(CONTROL_L, VECTOR_SAMPLE_A, VECTOR_SAMPLE_B);
-  constant VECTOR_DIVIDER_OUTPUT_1 : vector_buffer := function_vector_integer_divider(CONTROL_L, VECTOR_SAMPLE_B, VECTOR_SAMPLE_A);
-
-  -- MATRIX
-  constant MATRIX_ADDER_OUTPUT_0 : matrix_buffer := function_matrix_integer_adder('0', CONTROL_X, CONTROL_Y, MATRIX_SAMPLE_A, MATRIX_SAMPLE_B);
-  constant MATRIX_ADDER_OUTPUT_1 : matrix_buffer := function_matrix_integer_adder('0', CONTROL_X, CONTROL_Y, MATRIX_SAMPLE_B, MATRIX_SAMPLE_A);
-
-  constant MATRIX_MULTIPLIER_OUTPUT_0 : matrix_buffer := function_matrix_integer_multiplier(CONTROL_X, CONTROL_Y, MATRIX_SAMPLE_A, MATRIX_SAMPLE_B);
-  constant MATRIX_MULTIPLIER_OUTPUT_1 : matrix_buffer := function_matrix_integer_multiplier(CONTROL_X, CONTROL_Y, MATRIX_SAMPLE_B, MATRIX_SAMPLE_A);
-
-  constant MATRIX_DIVIDER_OUTPUT_0 : matrix_buffer := function_matrix_integer_divider(CONTROL_X, CONTROL_Y, MATRIX_SAMPLE_A, MATRIX_SAMPLE_B);
-  constant MATRIX_DIVIDER_OUTPUT_1 : matrix_buffer := function_matrix_integer_divider(CONTROL_X, CONTROL_Y, MATRIX_SAMPLE_B, MATRIX_SAMPLE_A);
-
-  -- TENSOR
-  constant TENSOR_ADDER_OUTPUT_0 : tensor_buffer := function_tensor_integer_adder('0', CONTROL_X, CONTROL_Y, CONTROL_Z, TENSOR_SAMPLE_A, TENSOR_SAMPLE_B);
-  constant TENSOR_ADDER_OUTPUT_1 : tensor_buffer := function_tensor_integer_adder('0', CONTROL_X, CONTROL_Y, CONTROL_Z, TENSOR_SAMPLE_B, TENSOR_SAMPLE_A);
-
-  constant TENSOR_MULTIPLIER_OUTPUT_0 : tensor_buffer := function_tensor_integer_multiplier(CONTROL_X, CONTROL_Y, CONTROL_Z, TENSOR_SAMPLE_A, TENSOR_SAMPLE_B);
-  constant TENSOR_MULTIPLIER_OUTPUT_1 : tensor_buffer := function_tensor_integer_multiplier(CONTROL_X, CONTROL_Y, CONTROL_Z, TENSOR_SAMPLE_B, TENSOR_SAMPLE_A);
-
-  constant TENSOR_DIVIDER_OUTPUT_0 : tensor_buffer := function_tensor_integer_divider(CONTROL_X, CONTROL_Y, CONTROL_Z, TENSOR_SAMPLE_A, TENSOR_SAMPLE_B);
-  constant TENSOR_DIVIDER_OUTPUT_1 : tensor_buffer := function_tensor_integer_divider(CONTROL_X, CONTROL_Y, CONTROL_Z, TENSOR_SAMPLE_B, TENSOR_SAMPLE_A);
 
   ------------------------------------------------------------------------------
   -- Signals
@@ -759,7 +732,7 @@ begin
 
         -- CONTROL
         START => start_scalar_integer_multiplier,
-        READY => ready_scalar_integer_multiplier,
+        READY => ready_scalar_integer_adder,
 
         -- DATA
         DATA_A_IN => data_a_in_scalar_integer_multiplier,
@@ -794,29 +767,6 @@ begin
         REMAINDER_OUT => remainder_out_scalar_integer_divider
         );
   end generate model_scalar_integer_divider_test;
-
-  scalar_assertion : process (CLK, RST)
-  begin
-    if rising_edge(CLK) then
-      if (ready_scalar_integer_adder = '1') then
-        assert data_out_scalar_integer_adder = SCALAR_ADDER_OUTPUT_0
-          report "SCALAR ADDER: CALCULATED = " & to_string(data_out_scalar_integer_adder) & "; CORRECT = " & to_string(SCALAR_ADDER_OUTPUT_0)
-          severity error;
-      end if;
-
-      if (ready_scalar_integer_multiplier = '1') then
-        assert data_out_scalar_integer_multiplier = SCALAR_MULTIPLIER_OUTPUT_0
-          report "SCALAR MULTIPLIER: CALCULATED = " & to_string(data_out_scalar_integer_multiplier) & "; CORRECT = " & to_string(SCALAR_MULTIPLIER_OUTPUT_0)
-          severity error;
-      end if;
-
-      if (ready_scalar_integer_divider = '1') then
-        assert data_out_scalar_integer_divider = SCALAR_DIVIDER_OUTPUT_0
-          report "SCALAR DIVIDER: CALCULATED = " & to_string(data_out_scalar_integer_divider) & "; CORRECT = " & to_string(SCALAR_DIVIDER_OUTPUT_0)
-          severity error;
-      end if;
-    end if;
-  end process scalar_assertion;
 
   ------------------------------------------------------------------------------
   -- VECTOR
@@ -916,54 +866,6 @@ begin
         REMAINDER_OUT => remainder_out_vector_integer_divider
         );
   end generate model_vector_integer_divider_test;
-
-  vector_assertion : process (CLK, RST)
-    variable i : integer := 0;
-  begin
-    if rising_edge(CLK) then
-      if (ready_vector_integer_adder = '1' and data_out_enable_vector_integer_adder = '1') then
-        assert data_out_vector_integer_adder = VECTOR_ADDER_OUTPUT_0(i)
-          report "VECTOR ADDER: CALCULATED = " & to_string(data_out_vector_integer_adder) & "; CORRECT = " & to_string(VECTOR_ADDER_OUTPUT_0(i))
-          severity error;
-
-        i := 0;
-      elsif (data_out_enable_vector_integer_adder = '1' and not data_out_vector_integer_adder = ZERO_DATA) then
-        assert data_out_vector_integer_adder = VECTOR_ADDER_OUTPUT_0(i)
-          report "VECTOR ADDER: CALCULATED = " & to_string(data_out_vector_integer_adder) & "; CORRECT = " & to_string(VECTOR_ADDER_OUTPUT_0(i))
-          severity error;
-
-        i := i + 1;
-      end if;
-
-      if (ready_vector_integer_multiplier = '1' and data_out_enable_vector_integer_multiplier = '1') then
-        assert data_out_vector_integer_multiplier = VECTOR_MULTIPLIER_OUTPUT_0(i)
-          report "VECTOR MULTIPLIER: CALCULATED = " & to_string(data_out_vector_integer_multiplier) & "; CORRECT = " & to_string(VECTOR_MULTIPLIER_OUTPUT_0(i))
-          severity error;
-
-        i := 0;
-      elsif (data_out_enable_vector_integer_multiplier = '1' and not data_out_vector_integer_multiplier = ZERO_DATA) then
-        assert data_out_vector_integer_multiplier = VECTOR_MULTIPLIER_OUTPUT_0(i)
-          report "VECTOR MULTIPLIER: CALCULATED = " & to_string(data_out_vector_integer_multiplier) & "; CORRECT = " & to_string(VECTOR_MULTIPLIER_OUTPUT_0(i))
-          severity error;
-
-        i := i + 1;
-      end if;
-
-      if (ready_vector_integer_divider = '1' and data_out_enable_vector_integer_divider = '1') then
-        assert data_out_vector_integer_divider = VECTOR_DIVIDER_OUTPUT_0(i)
-          report "VECTOR DIVIDER: CALCULATED = " & to_string(data_out_vector_integer_divider) & "; CORRECT = " & to_string(VECTOR_DIVIDER_OUTPUT_0(i))
-          severity error;
-
-        i := 0;
-      elsif (data_out_enable_vector_integer_divider = '1' and not data_out_vector_integer_divider = ZERO_DATA) then
-        assert data_out_vector_integer_divider = VECTOR_DIVIDER_OUTPUT_0(i)
-          report "VECTOR DIVIDER: CALCULATED = " & to_string(data_out_vector_integer_divider) & "; CORRECT = " & to_string(VECTOR_DIVIDER_OUTPUT_0(i))
-          severity error;
-
-        i := i + 1;
-      end if;
-    end if;
-  end process vector_assertion;
 
   ------------------------------------------------------------------------------
   -- MATRIX
@@ -1075,79 +977,6 @@ begin
         REMAINDER_OUT => remainder_out_matrix_integer_divider
         );
   end generate model_matrix_integer_divider_test;
-
-  matrix_assertion : process (CLK, RST)
-    variable i : integer := 0;
-    variable j : integer := 0;
-  begin
-    if rising_edge(CLK) then
-      if (ready_matrix_integer_adder = '1' and data_out_i_enable_matrix_integer_adder = '1' and data_out_j_enable_matrix_integer_adder = '1') then
-        assert data_out_matrix_integer_adder = MATRIX_ADDER_OUTPUT_0(i, j)
-          report "MATRIX ADDER: CALCULATED = " & to_string(data_out_matrix_integer_adder) & "; CORRECT = " & to_string(MATRIX_ADDER_OUTPUT_0(i, j))
-          severity error;
-
-        i := 0;
-        j := 0;
-      elsif (data_out_i_enable_matrix_integer_adder = '1' and data_out_j_enable_matrix_integer_adder = '1' and not data_out_matrix_integer_adder = ZERO_DATA) then
-        assert data_out_matrix_integer_adder = MATRIX_ADDER_OUTPUT_0(i, j)
-          report "MATRIX ADDER: CALCULATED = " & to_string(data_out_matrix_integer_adder) & "; CORRECT = " & to_string(MATRIX_ADDER_OUTPUT_0(i, j))
-          severity error;
-
-        i := i + 1;
-        j := 0;
-      elsif (data_out_j_enable_matrix_integer_adder = '1' and not data_out_matrix_integer_adder = ZERO_DATA) then
-        assert data_out_matrix_integer_adder = MATRIX_ADDER_OUTPUT_0(i, j)
-          report "MATRIX ADDER: CALCULATED = " & to_string(data_out_matrix_integer_adder) & "; CORRECT = " & to_string(MATRIX_ADDER_OUTPUT_0(i, j))
-          severity error;
-
-        j := j + 1;
-      end if;
-
-      if (ready_matrix_integer_multiplier = '1' and data_out_i_enable_matrix_integer_multiplier = '1' and data_out_j_enable_matrix_integer_multiplier = '1') then
-        assert data_out_matrix_integer_multiplier = MATRIX_MULTIPLIER_OUTPUT_0(i, j)
-          report "MATRIX MULTIPLIER: CALCULATED = " & to_string(data_out_matrix_integer_multiplier) & "; CORRECT = " & to_string(MATRIX_MULTIPLIER_OUTPUT_0(i, j))
-          severity error;
-
-        i := 0;
-        j := 0;
-      elsif (data_out_i_enable_matrix_integer_multiplier = '1' and data_out_j_enable_matrix_integer_multiplier = '1' and not data_out_matrix_integer_multiplier = ZERO_DATA) then
-        assert data_out_matrix_integer_multiplier = MATRIX_MULTIPLIER_OUTPUT_0(i, j)
-          report "MATRIX MULTIPLIER: CALCULATED = " & to_string(data_out_matrix_integer_multiplier) & "; CORRECT = " & to_string(MATRIX_MULTIPLIER_OUTPUT_0(i, j))
-          severity error;
-
-        i := i + 1;
-        j := 0;
-      elsif (data_out_j_enable_matrix_integer_multiplier = '1' and not data_out_matrix_integer_multiplier = ZERO_DATA) then
-        assert data_out_matrix_integer_multiplier = MATRIX_MULTIPLIER_OUTPUT_0(i, j)
-          report "MATRIX MULTIPLIER: CALCULATED = " & to_string(data_out_matrix_integer_multiplier) & "; CORRECT = " & to_string(MATRIX_MULTIPLIER_OUTPUT_0(i, j))
-          severity error;
-
-        j := j + 1;
-      end if;
-
-      if (ready_matrix_integer_divider = '1' and data_out_i_enable_matrix_integer_divider = '1' and data_out_j_enable_matrix_integer_divider = '1') then
-        assert data_out_matrix_integer_divider = MATRIX_DIVIDER_OUTPUT_0(i, j)
-          report "MATRIX DIVIDER: CALCULATED = " & to_string(data_out_matrix_integer_divider) & "; CORRECT = " & to_string(MATRIX_DIVIDER_OUTPUT_0(i, j))
-          severity error;
-
-        i := 0;
-        j := 0;
-      elsif (data_out_i_enable_matrix_integer_divider = '1' and data_out_j_enable_matrix_integer_divider = '1' and not data_out_matrix_integer_divider = ZERO_DATA) then
-        assert data_out_matrix_integer_divider = MATRIX_DIVIDER_OUTPUT_0(i, j)
-          report "MATRIX DIVIDER: CALCULATED = " & to_string(data_out_matrix_integer_divider) & "; CORRECT = " & to_string(MATRIX_DIVIDER_OUTPUT_0(i, j))
-          severity error;
-
-        i := i + 1;
-        j := 0;
-      elsif (data_out_j_enable_matrix_integer_divider = '1' and not data_out_matrix_integer_divider = ZERO_DATA) then
-        assert data_out_matrix_integer_divider = MATRIX_DIVIDER_OUTPUT_0(i, j)
-          report "MATRIX DIVIDER: CALCULATED = " & to_string(data_out_matrix_integer_divider) & "; CORRECT = " & to_string(MATRIX_DIVIDER_OUTPUT_0(i, j))
-          severity error;
-
-        j := j + 1;
-      end if;
-    end if;
-  end process matrix_assertion;
 
   ------------------------------------------------------------------------------
   -- TENSOR
@@ -1271,106 +1100,5 @@ begin
         REMAINDER_OUT => remainder_out_tensor_integer_divider
         );
   end generate model_tensor_integer_divider_test;
-
-  tensor_assertion : process (CLK, RST)
-    variable i : integer := 0;
-    variable j : integer := 0;
-    variable k : integer := 0;
-  begin
-    if rising_edge(CLK) then
-      if (ready_tensor_integer_adder = '1' and data_out_i_enable_tensor_integer_adder = '1' and data_out_j_enable_tensor_integer_adder = '1' and data_out_k_enable_tensor_integer_adder = '1') then
-        assert data_out_tensor_integer_adder = TENSOR_ADDER_OUTPUT_0(i, j, k)
-          report "TENSOR ADDER: CALCULATED = " & to_string(data_out_tensor_integer_adder) & "; CORRECT = " & to_string(TENSOR_ADDER_OUTPUT_0(i, j, k))
-          severity error;
-
-        i := 0;
-        j := 0;
-        k := 0;
-      elsif (data_out_i_enable_tensor_integer_adder = '1' and data_out_j_enable_tensor_integer_adder = '1' and data_out_k_enable_tensor_integer_adder = '1' and not data_out_tensor_integer_adder = ZERO_DATA) then
-        assert data_out_tensor_integer_adder = TENSOR_ADDER_OUTPUT_0(i, j, k)
-          report "TENSOR ADDER: CALCULATED = " & to_string(data_out_tensor_integer_adder) & "; CORRECT = " & to_string(TENSOR_ADDER_OUTPUT_0(i, j, k))
-          severity error;
-
-        i := i + 1;
-        j := 0;
-        k := 0;
-      elsif (data_out_j_enable_tensor_integer_adder = '1' and data_out_k_enable_tensor_integer_adder = '1' and not data_out_tensor_integer_adder = ZERO_DATA) then
-        assert data_out_tensor_integer_adder = TENSOR_ADDER_OUTPUT_0(i, j, k)
-          report "TENSOR ADDER: CALCULATED = " & to_string(data_out_tensor_integer_adder) & "; CORRECT = " & to_string(TENSOR_ADDER_OUTPUT_0(i, j, k))
-          severity error;
-
-        j := j + 1;
-        k := 0;
-      elsif (data_out_k_enable_tensor_integer_adder = '1' and not data_out_tensor_integer_adder = ZERO_DATA) then
-        assert data_out_tensor_integer_adder = TENSOR_ADDER_OUTPUT_0(i, j, k)
-          report "TENSOR ADDER: CALCULATED = " & to_string(data_out_tensor_integer_adder) & "; CORRECT = " & to_string(TENSOR_ADDER_OUTPUT_0(i, j, k))
-          severity error;
-
-        k := k + 1;
-      end if;
-
-      if (ready_tensor_integer_multiplier = '1' and data_out_i_enable_tensor_integer_multiplier = '1' and data_out_j_enable_tensor_integer_multiplier = '1' and data_out_k_enable_tensor_integer_multiplier = '1') then
-        assert data_out_tensor_integer_multiplier = TENSOR_MULTIPLIER_OUTPUT_0(i, j, k)
-          report "TENSOR MULTIPLIER: CALCULATED = " & to_string(data_out_tensor_integer_multiplier) & "; CORRECT = " & to_string(TENSOR_MULTIPLIER_OUTPUT_0(i, j, k))
-          severity error;
-
-        i := 0;
-        j := 0;
-        k := 0;
-      elsif (data_out_i_enable_tensor_integer_multiplier = '1' and data_out_j_enable_tensor_integer_multiplier = '1' and data_out_k_enable_tensor_integer_multiplier = '1' and not data_out_tensor_integer_multiplier = ZERO_DATA) then
-        assert data_out_tensor_integer_multiplier = TENSOR_MULTIPLIER_OUTPUT_0(i, j, k)
-          report "TENSOR MULTIPLIER: CALCULATED = " & to_string(data_out_tensor_integer_multiplier) & "; CORRECT = " & to_string(TENSOR_MULTIPLIER_OUTPUT_0(i, j, k))
-          severity error;
-
-        i := i + 1;
-        j := 0;
-        k := 0;
-      elsif (data_out_j_enable_tensor_integer_multiplier = '1' and data_out_k_enable_tensor_integer_multiplier = '1' and not data_out_tensor_integer_multiplier = ZERO_DATA) then
-        assert data_out_tensor_integer_multiplier = TENSOR_MULTIPLIER_OUTPUT_0(i, j, k)
-          report "TENSOR MULTIPLIER: CALCULATED = " & to_string(data_out_tensor_integer_multiplier) & "; CORRECT = " & to_string(TENSOR_MULTIPLIER_OUTPUT_0(i, j, k))
-          severity error;
-
-        j := j + 1;
-        k := 0;
-      elsif (data_out_k_enable_tensor_integer_multiplier = '1' and not data_out_tensor_integer_multiplier = ZERO_DATA) then
-        assert data_out_tensor_integer_multiplier = TENSOR_MULTIPLIER_OUTPUT_0(i, j, k)
-          report "TENSOR MULTIPLIER: CALCULATED = " & to_string(data_out_tensor_integer_multiplier) & "; CORRECT = " & to_string(TENSOR_MULTIPLIER_OUTPUT_0(i, j, k))
-          severity error;
-
-        k := k + 1;
-      end if;
-
-      if (ready_tensor_integer_divider = '1' and data_out_i_enable_tensor_integer_divider = '1' and data_out_j_enable_tensor_integer_divider = '1' and data_out_k_enable_tensor_integer_divider = '1') then
-        assert data_out_tensor_integer_divider = TENSOR_DIVIDER_OUTPUT_0(i, j, k)
-          report "TENSOR DIVIDER: CALCULATED = " & to_string(data_out_tensor_integer_divider) & "; CORRECT = " & to_string(TENSOR_DIVIDER_OUTPUT_0(i, j, k))
-          severity error;
-
-        i := 0;
-        j := 0;
-        k := 0;
-      elsif (data_out_i_enable_tensor_integer_divider = '1' and data_out_j_enable_tensor_integer_divider = '1' and data_out_k_enable_tensor_integer_divider = '1' and not data_out_tensor_integer_divider = ZERO_DATA) then
-        assert data_out_tensor_integer_divider = TENSOR_DIVIDER_OUTPUT_0(i, j, k)
-          report "TENSOR DIVIDER: CALCULATED = " & to_string(data_out_tensor_integer_divider) & "; CORRECT = " & to_string(TENSOR_DIVIDER_OUTPUT_0(i, j, k))
-          severity error;
-
-        i := i + 1;
-        j := 0;
-        k := 0;
-      elsif (data_out_j_enable_tensor_integer_divider = '1' and data_out_k_enable_tensor_integer_divider = '1' and not data_out_tensor_integer_divider = ZERO_DATA) then
-        assert data_out_tensor_integer_divider = TENSOR_DIVIDER_OUTPUT_0(i, j, k)
-          report "TENSOR DIVIDER: CALCULATED = " & to_string(data_out_tensor_integer_divider) & "; CORRECT = " & to_string(TENSOR_DIVIDER_OUTPUT_0(i, j, k))
-          severity error;
-
-        j := j + 1;
-        k := 0;
-      elsif (data_out_k_enable_tensor_integer_divider = '1' and not data_out_tensor_integer_divider = ZERO_DATA) then
-        assert data_out_tensor_integer_divider = TENSOR_DIVIDER_OUTPUT_0(i, j, k)
-          report "TENSOR DIVIDER: CALCULATED = " & to_string(data_out_tensor_integer_divider) & "; CORRECT = " & to_string(TENSOR_DIVIDER_OUTPUT_0(i, j, k))
-          severity error;
-
-        k := k + 1;
-      end if;
-    end if;
-  end process tensor_assertion;
 
 end model_integer_testbench_architecture;

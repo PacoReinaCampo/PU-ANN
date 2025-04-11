@@ -40,7 +40,6 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-use work.model_math_vhdl_pkg.all;
 use work.accelerator_math_vhdl_pkg.all;
 use work.accelerator_calculus_pkg.all;
 
@@ -101,12 +100,6 @@ end accelerator_calculus_testbench;
 architecture accelerator_calculus_testbench_architecture of accelerator_calculus_testbench is
 
   ------------------------------------------------------------------------------
-  -- Constants
-  ------------------------------------------------------------------------------
-
-  constant EMPTY : std_logic_vector(DATA_SIZE-1 downto 0) := (others => '0');
-
-  ------------------------------------------------------------------------------
   -- Signals
   ------------------------------------------------------------------------------
 
@@ -119,17 +112,11 @@ architecture accelerator_calculus_testbench_architecture of accelerator_calculus
   signal start_vector_differentiation : std_logic;
   signal ready_vector_differentiation : std_logic;
 
-  signal ready_vector_differentiation_model : std_logic;
-
   signal data_in_enable_vector_differentiation : std_logic;
 
   signal data_enable_vector_differentiation : std_logic;
 
-  signal data_enable_vector_differentiation_model : std_logic;
-
   signal data_out_enable_vector_differentiation : std_logic;
-
-  signal data_out_enable_vector_differentiation_model : std_logic;
 
   -- DATA
   signal size_in_vector_differentiation   : std_logic_vector(CONTROL_SIZE-1 downto 0);
@@ -137,24 +124,16 @@ architecture accelerator_calculus_testbench_architecture of accelerator_calculus
   signal data_in_vector_differentiation   : std_logic_vector(DATA_SIZE-1 downto 0);
   signal data_out_vector_differentiation  : std_logic_vector(DATA_SIZE-1 downto 0);
 
-  signal data_out_vector_differentiation_model : std_logic_vector(DATA_SIZE-1 downto 0);
-
   -- VECTOR INTEGRATION
   -- CONTROL
   signal start_vector_integration : std_logic;
   signal ready_vector_integration : std_logic;
 
-  signal ready_vector_integration_model : std_logic;
-
   signal data_in_enable_vector_integration : std_logic;
 
   signal data_enable_vector_integration : std_logic;
 
-  signal data_enable_vector_integration_model : std_logic;
-
   signal data_out_enable_vector_integration : std_logic;
-
-  signal data_out_enable_vector_integration_model : std_logic;
 
   -- DATA
   signal size_in_vector_integration   : std_logic_vector(CONTROL_SIZE-1 downto 0);
@@ -162,38 +141,26 @@ architecture accelerator_calculus_testbench_architecture of accelerator_calculus
   signal data_in_vector_integration   : std_logic_vector(DATA_SIZE-1 downto 0);
   signal data_out_vector_integration  : std_logic_vector(DATA_SIZE-1 downto 0);
 
-  signal data_out_vector_integration_model : std_logic_vector(DATA_SIZE-1 downto 0);
-
   -- VECTOR SOFTMAX
   -- CONTROL
   signal start_vector_softmax : std_logic;
   signal ready_vector_softmax : std_logic;
 
-  signal ready_vector_softmax_model : std_logic;
-
   signal data_in_enable_vector_softmax : std_logic;
 
   signal data_enable_vector_softmax : std_logic;
 
-  signal data_enable_vector_softmax_model : std_logic;
-
   signal data_out_enable_vector_softmax : std_logic;
-
-  signal data_out_enable_vector_softmax_model : std_logic;
 
   -- DATA
   signal size_in_vector_softmax  : std_logic_vector(CONTROL_SIZE-1 downto 0);
   signal data_in_vector_softmax  : std_logic_vector(DATA_SIZE-1 downto 0);
   signal data_out_vector_softmax : std_logic_vector(DATA_SIZE-1 downto 0);
 
-  signal data_out_vector_softmax_model : std_logic_vector(DATA_SIZE-1 downto 0);
-
   -- MATRIX DIFFERENTIATION
   -- CONTROL
   signal start_matrix_differentiation : std_logic;
   signal ready_matrix_differentiation : std_logic;
-
-  signal ready_matrix_differentiation_model : std_logic;
 
   signal control_matrix_differentiation : std_logic;
 
@@ -203,14 +170,8 @@ architecture accelerator_calculus_testbench_architecture of accelerator_calculus
   signal data_i_enable_matrix_differentiation : std_logic;
   signal data_j_enable_matrix_differentiation : std_logic;
 
-  signal data_i_enable_matrix_differentiation_model : std_logic;
-  signal data_j_enable_matrix_differentiation_model : std_logic;
-
   signal data_out_i_enable_matrix_differentiation : std_logic;
   signal data_out_j_enable_matrix_differentiation : std_logic;
-
-  signal data_out_i_enable_matrix_differentiation_model : std_logic;
-  signal data_out_j_enable_matrix_differentiation_model : std_logic;
 
   -- DATA
   signal size_i_in_matrix_differentiation   : std_logic_vector(CONTROL_SIZE-1 downto 0);
@@ -220,14 +181,10 @@ architecture accelerator_calculus_testbench_architecture of accelerator_calculus
   signal data_in_matrix_differentiation     : std_logic_vector(DATA_SIZE-1 downto 0);
   signal data_out_matrix_differentiation    : std_logic_vector(DATA_SIZE-1 downto 0);
 
-  signal data_out_matrix_differentiation_model : std_logic_vector(DATA_SIZE-1 downto 0);
-
   -- MATRIX INTEGRATION
   -- CONTROL
   signal start_matrix_integration : std_logic;
   signal ready_matrix_integration : std_logic;
-
-  signal ready_matrix_integration_model : std_logic;
 
   signal data_in_i_enable_matrix_integration : std_logic;
   signal data_in_j_enable_matrix_integration : std_logic;
@@ -235,14 +192,8 @@ architecture accelerator_calculus_testbench_architecture of accelerator_calculus
   signal data_i_enable_matrix_integration : std_logic;
   signal data_j_enable_matrix_integration : std_logic;
 
-  signal data_i_enable_matrix_integration_model : std_logic;
-  signal data_j_enable_matrix_integration_model : std_logic;
-
   signal data_out_i_enable_matrix_integration : std_logic;
   signal data_out_j_enable_matrix_integration : std_logic;
-
-  signal data_out_i_enable_matrix_integration_model : std_logic;
-  signal data_out_j_enable_matrix_integration_model : std_logic;
 
   -- DATA
   signal size_i_in_matrix_integration : std_logic_vector(CONTROL_SIZE-1 downto 0);
@@ -251,14 +202,10 @@ architecture accelerator_calculus_testbench_architecture of accelerator_calculus
   signal data_in_matrix_integration   : std_logic_vector(DATA_SIZE-1 downto 0);
   signal data_out_matrix_integration  : std_logic_vector(DATA_SIZE-1 downto 0);
 
-  signal data_out_matrix_integration_model : std_logic_vector(DATA_SIZE-1 downto 0);
-
   -- MATRIX SOFTMAX
   -- CONTROL
   signal start_matrix_softmax : std_logic;
   signal ready_matrix_softmax : std_logic;
-
-  signal ready_matrix_softmax_model : std_logic;
 
   signal data_in_i_enable_matrix_softmax : std_logic;
   signal data_in_j_enable_matrix_softmax : std_logic;
@@ -266,14 +213,8 @@ architecture accelerator_calculus_testbench_architecture of accelerator_calculus
   signal data_i_enable_matrix_softmax : std_logic;
   signal data_j_enable_matrix_softmax : std_logic;
 
-  signal data_i_enable_matrix_softmax_model : std_logic;
-  signal data_j_enable_matrix_softmax_model : std_logic;
-
   signal data_out_i_enable_matrix_softmax : std_logic;
   signal data_out_j_enable_matrix_softmax : std_logic;
-
-  signal data_out_i_enable_matrix_softmax_model : std_logic;
-  signal data_out_j_enable_matrix_softmax_model : std_logic;
 
   -- DATA
   signal size_i_in_matrix_softmax : std_logic_vector(CONTROL_SIZE-1 downto 0);
@@ -281,16 +222,13 @@ architecture accelerator_calculus_testbench_architecture of accelerator_calculus
   signal data_in_matrix_softmax   : std_logic_vector(DATA_SIZE-1 downto 0);
   signal data_out_matrix_softmax  : std_logic_vector(DATA_SIZE-1 downto 0);
 
-  signal data_out_matrix_softmax_model : std_logic_vector(DATA_SIZE-1 downto 0);
-
   -- TENSOR DIFFERENTIATION
   -- CONTROL
   signal start_tensor_differentiation : std_logic;
   signal ready_tensor_differentiation : std_logic;
 
-  signal ready_tensor_differentiation_model : std_logic;
-
-  signal control_tensor_differentiation : std_logic_vector(1 downto 0);
+  signal control_tensor_differentiation : std_logic_vector(1 downto 0)
+;
 
   signal data_in_i_enable_tensor_differentiation : std_logic;
   signal data_in_j_enable_tensor_differentiation : std_logic;
@@ -300,17 +238,9 @@ architecture accelerator_calculus_testbench_architecture of accelerator_calculus
   signal data_j_enable_tensor_differentiation : std_logic;
   signal data_k_enable_tensor_differentiation : std_logic;
 
-  signal data_i_enable_tensor_differentiation_model : std_logic;
-  signal data_j_enable_tensor_differentiation_model : std_logic;
-  signal data_k_enable_tensor_differentiation_model : std_logic;
-
   signal data_out_i_enable_tensor_differentiation : std_logic;
   signal data_out_j_enable_tensor_differentiation : std_logic;
   signal data_out_k_enable_tensor_differentiation : std_logic;
-
-  signal data_out_i_enable_tensor_differentiation_model : std_logic;
-  signal data_out_j_enable_tensor_differentiation_model : std_logic;
-  signal data_out_k_enable_tensor_differentiation_model : std_logic;
 
   -- DATA
   signal size_i_in_tensor_differentiation   : std_logic_vector(CONTROL_SIZE-1 downto 0);
@@ -322,14 +252,10 @@ architecture accelerator_calculus_testbench_architecture of accelerator_calculus
   signal data_in_tensor_differentiation     : std_logic_vector(DATA_SIZE-1 downto 0);
   signal data_out_tensor_differentiation    : std_logic_vector(DATA_SIZE-1 downto 0);
 
-  signal data_out_tensor_differentiation_model : std_logic_vector(DATA_SIZE-1 downto 0);
-
   -- TENSOR INTEGRATION
   -- CONTROL
   signal start_tensor_integration : std_logic;
   signal ready_tensor_integration : std_logic;
-
-  signal ready_tensor_integration_model : std_logic;
 
   signal data_in_i_enable_tensor_integration : std_logic;
   signal data_in_j_enable_tensor_integration : std_logic;
@@ -339,17 +265,9 @@ architecture accelerator_calculus_testbench_architecture of accelerator_calculus
   signal data_j_enable_tensor_integration : std_logic;
   signal data_k_enable_tensor_integration : std_logic;
 
-  signal data_i_enable_tensor_integration_model : std_logic;
-  signal data_j_enable_tensor_integration_model : std_logic;
-  signal data_k_enable_tensor_integration_model : std_logic;
-
   signal data_out_i_enable_tensor_integration : std_logic;
   signal data_out_j_enable_tensor_integration : std_logic;
   signal data_out_k_enable_tensor_integration : std_logic;
-
-  signal data_out_i_enable_tensor_integration_model : std_logic;
-  signal data_out_j_enable_tensor_integration_model : std_logic;
-  signal data_out_k_enable_tensor_integration_model : std_logic;
 
   -- DATA
   signal size_i_in_tensor_integration : std_logic_vector(CONTROL_SIZE-1 downto 0);
@@ -359,14 +277,10 @@ architecture accelerator_calculus_testbench_architecture of accelerator_calculus
   signal data_in_tensor_integration   : std_logic_vector(DATA_SIZE-1 downto 0);
   signal data_out_tensor_integration  : std_logic_vector(DATA_SIZE-1 downto 0);
 
-  signal data_out_tensor_integration_model : std_logic_vector(DATA_SIZE-1 downto 0);
-
   -- TENSOR SOFTMAX
   -- CONTROL
   signal start_tensor_softmax : std_logic;
   signal ready_tensor_softmax : std_logic;
-
-  signal ready_tensor_softmax_model : std_logic;
 
   signal data_in_i_enable_tensor_softmax : std_logic;
   signal data_in_j_enable_tensor_softmax : std_logic;
@@ -376,17 +290,9 @@ architecture accelerator_calculus_testbench_architecture of accelerator_calculus
   signal data_j_enable_tensor_softmax : std_logic;
   signal data_k_enable_tensor_softmax : std_logic;
 
-  signal data_i_enable_tensor_softmax_model : std_logic;
-  signal data_j_enable_tensor_softmax_model : std_logic;
-  signal data_k_enable_tensor_softmax_model : std_logic;
-
   signal data_out_i_enable_tensor_softmax : std_logic;
   signal data_out_j_enable_tensor_softmax : std_logic;
   signal data_out_k_enable_tensor_softmax : std_logic;
-
-  signal data_out_i_enable_tensor_softmax_model : std_logic;
-  signal data_out_j_enable_tensor_softmax_model : std_logic;
-  signal data_out_k_enable_tensor_softmax_model : std_logic;
 
   -- DATA
   signal size_i_in_tensor_softmax : std_logic_vector(CONTROL_SIZE-1 downto 0);
@@ -394,8 +300,6 @@ architecture accelerator_calculus_testbench_architecture of accelerator_calculus
   signal size_k_in_tensor_softmax : std_logic_vector(CONTROL_SIZE-1 downto 0);
   signal data_in_tensor_softmax   : std_logic_vector(DATA_SIZE-1 downto 0);
   signal data_out_tensor_softmax  : std_logic_vector(DATA_SIZE-1 downto 0);
-
-  signal data_out_tensor_softmax_model : std_logic_vector(DATA_SIZE-1 downto 0);
 
 begin
 
@@ -643,38 +547,11 @@ begin
         DATA_IN   => data_in_vector_differentiation,
         DATA_OUT  => data_out_vector_differentiation
         );
-
-    vector_differentiation_model : model_vector_differentiation
-      generic map (
-        DATA_SIZE    => DATA_SIZE,
-        CONTROL_SIZE => CONTROL_SIZE
-        )
-      port map (
-        -- GLOBAL
-        CLK => CLK,
-        RST => RST,
-
-        -- CONTROL
-        START => start_vector_differentiation,
-        READY => ready_vector_differentiation_model,
-
-        DATA_IN_ENABLE => data_in_enable_vector_differentiation,
-
-        DATA_ENABLE => data_enable_vector_differentiation_model,
-
-        DATA_OUT_ENABLE => data_out_enable_vector_differentiation_model,
-
-        -- DATA
-        SIZE_IN   => size_in_vector_differentiation,
-        LENGTH_IN => length_in_vector_differentiation,
-        DATA_IN   => data_in_vector_differentiation,
-        DATA_OUT  => data_out_vector_differentiation_model
-        );
   end generate accelerator_vector_differentiation_test;
 
   -- VECTOR INTEGRATION
   accelerator_vector_integration_test : if (ENABLE_ACCELERATOR_VECTOR_INTEGRATION_TEST) generate
-    vector_integration : accelerator_vector_integration
+    VECTOR_INTEGRATION : accelerator_vector_integration
       generic map (
         DATA_SIZE    => DATA_SIZE,
         CONTROL_SIZE => CONTROL_SIZE
@@ -700,38 +577,11 @@ begin
         DATA_IN   => data_in_vector_integration,
         DATA_OUT  => data_out_vector_integration
         );
-
-    vector_integration_model : model_vector_integration
-      generic map (
-        DATA_SIZE    => DATA_SIZE,
-        CONTROL_SIZE => CONTROL_SIZE
-        )
-      port map (
-        -- GLOBAL
-        CLK => CLK,
-        RST => RST,
-
-        -- CONTROL
-        START => start_vector_integration,
-        READY => ready_vector_integration_model,
-
-        DATA_IN_ENABLE => data_in_enable_vector_integration,
-
-        DATA_ENABLE => data_enable_vector_integration_model,
-
-        DATA_OUT_ENABLE => data_out_enable_vector_integration_model,
-
-        -- DATA
-        SIZE_IN   => size_in_vector_integration,
-        LENGTH_IN => length_in_vector_integration,
-        DATA_IN   => data_in_vector_integration,
-        DATA_OUT  => data_out_vector_integration_model
-        );
   end generate accelerator_vector_integration_test;
 
   -- VECTOR SOFTMAX
   accelerator_vector_softmax_test : if (ENABLE_ACCELERATOR_VECTOR_SOFTMAX_TEST) generate
-    vector_softmax : accelerator_vector_softmax
+    VECTOR_SOFTMAX : accelerator_vector_softmax
       generic map (
         DATA_SIZE    => DATA_SIZE,
         CONTROL_SIZE => CONTROL_SIZE
@@ -756,81 +606,7 @@ begin
         DATA_IN  => data_in_vector_softmax,
         DATA_OUT => data_out_vector_softmax
         );
-
-    vector_softmax_model : model_vector_softmax
-      generic map (
-        DATA_SIZE    => DATA_SIZE,
-        CONTROL_SIZE => CONTROL_SIZE
-        )
-      port map (
-        -- GLOBAL
-        CLK => CLK,
-        RST => RST,
-
-        -- CONTROL
-        START => start_vector_softmax,
-        READY => ready_vector_softmax_model,
-
-        DATA_IN_ENABLE => data_in_enable_vector_softmax,
-
-        DATA_ENABLE => data_enable_vector_softmax_model,
-
-        DATA_OUT_ENABLE => data_out_enable_vector_softmax_model,
-
-        -- DATA
-        SIZE_IN  => size_in_vector_softmax,
-        DATA_IN  => data_in_vector_softmax,
-        DATA_OUT => data_out_vector_softmax_model
-        );
   end generate accelerator_vector_softmax_test;
-
-  vector_assertion : process (CLK, RST)
-    variable i : integer := 0;
-  begin
-    if rising_edge(CLK) then
-      if (ready_vector_differentiation = '1' and data_out_enable_vector_differentiation = '1') then
-        assert data_out_vector_differentiation = data_out_vector_differentiation_model
-          report "VECTOR DIFFERENTIATION: CALCULATED = " & to_string(data_out_vector_differentiation) & "; CORRECT = " & to_string(data_out_vector_differentiation_model)
-          severity error;
-
-        i := 0;
-      elsif (data_out_enable_vector_differentiation = '1' and not data_out_vector_differentiation = EMPTY) then
-        assert data_out_vector_differentiation = data_out_vector_differentiation_model
-          report "VECTOR DIFFERENTIATION: CALCULATED = " & to_string(data_out_vector_differentiation) & "; CORRECT = " & to_string(data_out_vector_differentiation_model)
-          severity error;
-
-        i := i + 1;
-      end if;
-
-      if (ready_vector_integration = '1' and data_out_enable_vector_integration = '1') then
-        assert data_out_vector_integration = data_out_vector_integration_model
-          report "VECTOR INTEGRATION: CALCULATED = " & to_string(data_out_vector_integration) & "; CORRECT = " & to_string(data_out_vector_integration_model)
-          severity error;
-
-        i := 0;
-      elsif (data_out_enable_vector_integration = '1' and not data_out_vector_integration = EMPTY) then
-        assert data_out_vector_integration = data_out_vector_integration_model
-          report "VECTOR INTEGRATION: CALCULATED = " & to_string(data_out_vector_integration) & "; CORRECT = " & to_string(data_out_vector_integration_model)
-          severity error;
-
-        i := i + 1;
-      end if;
-
-      if (ready_vector_softmax = '1' and data_out_enable_vector_softmax = '1') then
-        assert data_out_vector_softmax = data_out_vector_softmax_model
-          report "VECTOR SOFTMAX: CALCULATED = " & to_string(data_out_vector_softmax) & "; CORRECT = " & to_string(data_out_vector_softmax_model)
-          severity error;
-
-        i := 0;
-      elsif (data_out_enable_vector_softmax = '1' and not data_out_vector_softmax = EMPTY) then
-        assert data_out_vector_softmax = data_out_vector_softmax_model
-          report "VECTOR SOFTMAX: CALCULATED = " & to_string(data_out_vector_softmax) & "; CORRECT = " & to_string(data_out_vector_softmax_model)
-          severity error;
-
-        i := i + 1;
-      end if;
-    end if;
-  end process vector_assertion;
 
   -- MATRIX DIFFERENTIATION
   accelerator_matrix_differentiation_test : if (ENABLE_ACCELERATOR_MATRIX_DIFFERENTIATION_TEST) generate
@@ -867,40 +643,6 @@ begin
         DATA_IN     => data_in_matrix_differentiation,
         DATA_OUT    => data_out_matrix_differentiation
         );
-
-    matrix_differentiation_model : model_matrix_differentiation
-      generic map (
-        DATA_SIZE    => DATA_SIZE,
-        CONTROL_SIZE => CONTROL_SIZE
-        )
-      port map (
-        -- GLOBAL
-        CLK => CLK,
-        RST => RST,
-
-        -- CONTROL
-        START => start_matrix_differentiation,
-        READY => ready_matrix_differentiation_model,
-
-        CONTROL => control_matrix_differentiation,
-
-        DATA_IN_I_ENABLE => data_in_i_enable_matrix_differentiation,
-        DATA_IN_J_ENABLE => data_in_j_enable_matrix_differentiation,
-
-        DATA_I_ENABLE => data_i_enable_matrix_differentiation_model,
-        DATA_J_ENABLE => data_j_enable_matrix_differentiation_model,
-
-        DATA_OUT_I_ENABLE => data_out_i_enable_matrix_differentiation_model,
-        DATA_OUT_J_ENABLE => data_out_j_enable_matrix_differentiation_model,
-
-        -- DATA
-        SIZE_I_IN   => size_i_in_matrix_differentiation,
-        SIZE_J_IN   => size_j_in_matrix_differentiation,
-        LENGTH_I_IN => length_i_in_matrix_differentiation,
-        LENGTH_J_IN => length_j_in_matrix_differentiation,
-        DATA_IN     => data_in_matrix_differentiation,
-        DATA_OUT    => data_out_matrix_differentiation_model
-        );
   end generate accelerator_matrix_differentiation_test;
 
   -- MATRIX INTEGRATION
@@ -935,37 +677,6 @@ begin
         DATA_IN   => data_in_matrix_integration,
         DATA_OUT  => data_out_matrix_integration
         );
-
-    matrix_integration_model : model_matrix_integration
-      generic map (
-        DATA_SIZE    => DATA_SIZE,
-        CONTROL_SIZE => CONTROL_SIZE
-        )
-      port map (
-        -- GLOBAL
-        CLK => CLK,
-        RST => RST,
-
-        -- CONTROL
-        START => start_matrix_integration,
-        READY => ready_matrix_integration_model,
-
-        DATA_IN_I_ENABLE => data_in_i_enable_matrix_integration,
-        DATA_IN_J_ENABLE => data_in_j_enable_matrix_integration,
-
-        DATA_I_ENABLE => data_i_enable_matrix_integration_model,
-        DATA_J_ENABLE => data_j_enable_matrix_integration_model,
-
-        DATA_OUT_I_ENABLE => data_out_i_enable_matrix_integration_model,
-        DATA_OUT_J_ENABLE => data_out_j_enable_matrix_integration_model,
-
-        -- DATA
-        SIZE_I_IN => size_i_in_matrix_integration,
-        SIZE_J_IN => size_j_in_matrix_integration,
-        LENGTH_IN => length_in_matrix_integration,
-        DATA_IN   => data_in_matrix_integration,
-        DATA_OUT  => data_out_matrix_integration_model
-        );
   end generate accelerator_matrix_integration_test;
 
   -- MATRIX SOFTMAX
@@ -999,110 +710,7 @@ begin
         DATA_IN   => data_in_matrix_softmax,
         DATA_OUT  => data_out_matrix_softmax
         );
-
-    matrix_softmax_model : model_matrix_softmax
-      generic map (
-        DATA_SIZE    => DATA_SIZE,
-        CONTROL_SIZE => CONTROL_SIZE
-        )
-      port map (
-        -- GLOBAL
-        CLK => CLK,
-        RST => RST,
-
-        -- CONTROL
-        START => start_matrix_softmax,
-        READY => ready_matrix_softmax_model,
-
-        DATA_IN_I_ENABLE => data_in_i_enable_matrix_softmax,
-        DATA_IN_J_ENABLE => data_in_j_enable_matrix_softmax,
-
-        DATA_I_ENABLE => data_i_enable_matrix_softmax_model,
-        DATA_J_ENABLE => data_j_enable_matrix_softmax_model,
-
-        DATA_OUT_I_ENABLE => data_out_i_enable_matrix_softmax_model,
-        DATA_OUT_J_ENABLE => data_out_j_enable_matrix_softmax_model,
-
-        -- DATA
-        SIZE_I_IN => size_i_in_matrix_softmax,
-        SIZE_J_IN => size_j_in_matrix_softmax,
-        DATA_IN   => data_in_matrix_softmax,
-        DATA_OUT  => data_out_matrix_softmax_model
-        );
   end generate accelerator_matrix_softmax_test;
-
-  matrix_assertion : process (CLK, RST)
-    variable i : integer := 0;
-    variable j : integer := 0;
-  begin
-    if rising_edge(CLK) then
-      if (ready_matrix_differentiation = '1' and data_out_i_enable_matrix_differentiation = '1' and data_out_j_enable_matrix_differentiation = '1') then
-        assert data_out_matrix_differentiation = data_out_matrix_differentiation_model
-          report "MATRIX DIFFERENTIATION: CALCULATED = " & to_string(data_out_matrix_differentiation) & "; CORRECT = " & to_string(data_out_matrix_differentiation_model)
-          severity error;
-
-        i := 0;
-        j := 0;
-      elsif (data_out_i_enable_matrix_differentiation = '1' and data_out_j_enable_matrix_differentiation = '1' and not data_out_matrix_differentiation = EMPTY) then
-        assert data_out_matrix_differentiation = data_out_matrix_differentiation_model
-          report "MATRIX DIFFERENTIATION: CALCULATED = " & to_string(data_out_matrix_differentiation) & "; CORRECT = " & to_string(data_out_matrix_differentiation_model)
-          severity error;
-
-        i := i + 1;
-        j := 0;
-      elsif (data_out_j_enable_matrix_differentiation = '1' and not data_out_matrix_differentiation = EMPTY) then
-        assert data_out_matrix_differentiation = data_out_matrix_differentiation_model
-          report "MATRIX DIFFERENTIATION: CALCULATED = " & to_string(data_out_matrix_differentiation) & "; CORRECT = " & to_string(data_out_matrix_differentiation_model)
-          severity error;
-
-        j := j + 1;
-      end if;
-
-      if (ready_matrix_integration = '1' and data_out_i_enable_matrix_integration = '1' and data_out_j_enable_matrix_integration = '1') then
-        assert data_out_matrix_integration = data_out_matrix_integration_model
-          report "MATRIX INTEGRATION: CALCULATED = " & to_string(data_out_matrix_integration) & "; CORRECT = " & to_string(data_out_matrix_integration_model)
-          severity error;
-
-        i := 0;
-        j := 0;
-      elsif (data_out_i_enable_matrix_integration = '1' and data_out_j_enable_matrix_integration = '1' and not data_out_matrix_integration = EMPTY) then
-        assert data_out_matrix_integration = data_out_matrix_integration_model
-          report "MATRIX INTEGRATION: CALCULATED = " & to_string(data_out_matrix_integration) & "; CORRECT = " & to_string(data_out_matrix_integration_model)
-          severity error;
-
-        i := i + 1;
-        j := 0;
-      elsif (data_out_j_enable_matrix_integration = '1' and not data_out_matrix_integration = EMPTY) then
-        assert data_out_matrix_integration = data_out_matrix_integration_model
-          report "MATRIX INTEGRATION: CALCULATED = " & to_string(data_out_matrix_integration) & "; CORRECT = " & to_string(data_out_matrix_integration_model)
-          severity error;
-
-        j := j + 1;
-      end if;
-
-      if (ready_matrix_softmax = '1' and data_out_i_enable_matrix_softmax = '1' and data_out_j_enable_matrix_softmax = '1') then
-        assert data_out_matrix_softmax = data_out_matrix_softmax_model
-          report "MATRIX SOFTMAX: CALCULATED = " & to_string(data_out_matrix_softmax) & "; CORRECT = " & to_string(data_out_matrix_softmax_model)
-          severity error;
-
-        i := 0;
-        j := 0;
-      elsif (data_out_i_enable_matrix_softmax = '1' and data_out_j_enable_matrix_softmax = '1' and not data_out_matrix_softmax = EMPTY) then
-        assert data_out_matrix_softmax = data_out_matrix_softmax_model
-          report "MATRIX SOFTMAX: CALCULATED = " & to_string(data_out_matrix_softmax) & "; CORRECT = " & to_string(data_out_matrix_softmax_model)
-          severity error;
-
-        i := i + 1;
-        j := 0;
-      elsif (data_out_j_enable_matrix_softmax = '1' and not data_out_matrix_softmax = EMPTY) then
-        assert data_out_matrix_softmax = data_out_matrix_softmax_model
-          report "MATRIX SOFTMAX: CALCULATED = " & to_string(data_out_matrix_softmax) & "; CORRECT = " & to_string(data_out_matrix_softmax_model)
-          severity error;
-
-        j := j + 1;
-      end if;
-    end if;
-  end process matrix_assertion;
 
   -- TENSOR DIFFERENTIATION
   accelerator_tensor_differentiation_test : if (ENABLE_ACCELERATOR_TENSOR_DIFFERENTIATION_TEST) generate
@@ -1144,45 +752,6 @@ begin
         DATA_IN     => data_in_tensor_differentiation,
         DATA_OUT    => data_out_tensor_differentiation
         );
-
-    tensor_differentiation_model : model_tensor_differentiation
-      generic map (
-        DATA_SIZE    => DATA_SIZE,
-        CONTROL_SIZE => CONTROL_SIZE
-        )
-      port map (
-        -- GLOBAL
-        CLK => CLK,
-        RST => RST,
-
-        -- CONTROL
-        START => start_tensor_differentiation,
-        READY => ready_tensor_differentiation_model,
-
-        CONTROL => control_tensor_differentiation,
-
-        DATA_IN_I_ENABLE => data_in_i_enable_tensor_differentiation,
-        DATA_IN_J_ENABLE => data_in_j_enable_tensor_differentiation,
-        DATA_IN_K_ENABLE => data_in_k_enable_tensor_differentiation,
-
-        DATA_I_ENABLE => data_i_enable_tensor_differentiation_model,
-        DATA_J_ENABLE => data_j_enable_tensor_differentiation_model,
-        DATA_K_ENABLE => data_k_enable_tensor_differentiation_model,
-
-        DATA_OUT_I_ENABLE => data_out_i_enable_tensor_differentiation_model,
-        DATA_OUT_J_ENABLE => data_out_j_enable_tensor_differentiation_model,
-        DATA_OUT_K_ENABLE => data_out_k_enable_tensor_differentiation_model,
-
-        -- DATA
-        SIZE_I_IN   => size_i_in_tensor_differentiation,
-        SIZE_J_IN   => size_j_in_tensor_differentiation,
-        SIZE_K_IN   => size_k_in_tensor_differentiation,
-        LENGTH_I_IN => length_i_in_tensor_differentiation,
-        LENGTH_J_IN => length_j_in_tensor_differentiation,
-        LENGTH_K_IN => length_k_in_tensor_differentiation,
-        DATA_IN     => data_in_tensor_differentiation,
-        DATA_OUT    => data_out_tensor_differentiation_model
-        );
   end generate accelerator_tensor_differentiation_test;
 
   -- TENSOR INTEGRATION
@@ -1221,41 +790,6 @@ begin
         DATA_IN   => data_in_tensor_integration,
         DATA_OUT  => data_out_tensor_integration
         );
-
-    tensor_integration_model : model_tensor_integration
-      generic map (
-        DATA_SIZE    => DATA_SIZE,
-        CONTROL_SIZE => CONTROL_SIZE
-        )
-      port map (
-        -- GLOBAL
-        CLK => CLK,
-        RST => RST,
-
-        -- CONTROL
-        START => start_tensor_integration,
-        READY => ready_tensor_integration_model,
-
-        DATA_IN_I_ENABLE => data_in_i_enable_tensor_integration,
-        DATA_IN_J_ENABLE => data_in_j_enable_tensor_integration,
-        DATA_IN_K_ENABLE => data_in_k_enable_tensor_integration,
-
-        DATA_I_ENABLE => data_i_enable_tensor_integration_model,
-        DATA_J_ENABLE => data_j_enable_tensor_integration_model,
-        DATA_K_ENABLE => data_k_enable_tensor_integration_model,
-
-        DATA_OUT_I_ENABLE => data_out_i_enable_tensor_integration_model,
-        DATA_OUT_J_ENABLE => data_out_j_enable_tensor_integration_model,
-        DATA_OUT_K_ENABLE => data_out_k_enable_tensor_integration_model,
-
-        -- DATA
-        SIZE_I_IN => size_i_in_tensor_integration,
-        SIZE_J_IN => size_j_in_tensor_integration,
-        SIZE_K_IN => size_k_in_tensor_integration,
-        LENGTH_IN => length_in_tensor_integration,
-        DATA_IN   => data_in_tensor_integration,
-        DATA_OUT  => data_out_tensor_integration_model
-        );
   end generate accelerator_tensor_integration_test;
 
   -- TENSOR SOFTMAX
@@ -1293,141 +827,6 @@ begin
         DATA_IN   => data_in_tensor_softmax,
         DATA_OUT  => data_out_tensor_softmax
         );
-
-    tensor_softmax_model : model_tensor_softmax
-      generic map (
-        DATA_SIZE    => DATA_SIZE,
-        CONTROL_SIZE => CONTROL_SIZE
-        )
-      port map (
-        -- GLOBAL
-        CLK => CLK,
-        RST => RST,
-
-        -- CONTROL
-        START => start_tensor_softmax,
-        READY => ready_tensor_softmax_model,
-
-        DATA_IN_I_ENABLE => data_in_i_enable_tensor_softmax,
-        DATA_IN_J_ENABLE => data_in_j_enable_tensor_softmax,
-        DATA_IN_K_ENABLE => data_in_k_enable_tensor_softmax,
-
-        DATA_I_ENABLE => data_i_enable_tensor_softmax_model,
-        DATA_J_ENABLE => data_j_enable_tensor_softmax_model,
-        DATA_K_ENABLE => data_k_enable_tensor_softmax_model,
-
-        DATA_OUT_I_ENABLE => data_out_i_enable_tensor_softmax_model,
-        DATA_OUT_J_ENABLE => data_out_j_enable_tensor_softmax_model,
-        DATA_OUT_K_ENABLE => data_out_k_enable_tensor_softmax_model,
-
-        -- DATA
-        SIZE_I_IN => size_i_in_tensor_softmax,
-        SIZE_J_IN => size_j_in_tensor_softmax,
-        SIZE_K_IN => size_k_in_tensor_softmax,
-        DATA_IN   => data_in_tensor_softmax,
-        DATA_OUT  => data_out_tensor_softmax_model
-        );
   end generate accelerator_tensor_softmax_test;
-
-  tensor_assertion : process (CLK, RST)
-    variable i : integer := 0;
-    variable j : integer := 0;
-    variable k : integer := 0;
-  begin
-    if rising_edge(CLK) then
-      if (ready_tensor_differentiation = '1' and data_out_i_enable_tensor_differentiation = '1' and data_out_j_enable_tensor_differentiation = '1' and data_out_k_enable_tensor_differentiation = '1') then
-        assert data_out_tensor_differentiation = data_out_tensor_differentiation_model
-          report "TENSOR DIFFERENTIATION: CALCULATED = " & to_string(data_out_tensor_differentiation) & "; CORRECT = " & to_string(data_out_tensor_differentiation_model)
-          severity error;
-
-        i := 0;
-        j := 0;
-        k := 0;
-      elsif (data_out_i_enable_tensor_differentiation = '1' and data_out_j_enable_tensor_differentiation = '1' and data_out_k_enable_tensor_softmax = '1' and not data_out_tensor_differentiation = EMPTY) then
-        assert data_out_tensor_differentiation = data_out_tensor_differentiation_model
-          report "TENSOR DIFFERENTIATION: CALCULATED = " & to_string(data_out_tensor_differentiation) & "; CORRECT = " & to_string(data_out_tensor_differentiation_model)
-          severity error;
-
-        i := i + 1;
-        j := 0;
-        k := 0;
-      elsif (data_out_j_enable_tensor_differentiation = '1' and data_out_k_enable_tensor_softmax = '1' and not data_out_tensor_differentiation = EMPTY) then
-        assert data_out_tensor_differentiation = data_out_tensor_differentiation_model
-          report "TENSOR DIFFERENTIATION: CALCULATED = " & to_string(data_out_tensor_differentiation) & "; CORRECT = " & to_string(data_out_tensor_differentiation_model)
-          severity error;
-
-        j := j + 1;
-        k := 0;
-      elsif (data_out_k_enable_tensor_softmax = '1' and not data_out_tensor_differentiation = EMPTY) then
-        assert data_out_tensor_differentiation = data_out_tensor_differentiation_model
-          report "TENSOR DIFFERENTIATION: CALCULATED = " & to_string(data_out_tensor_differentiation) & "; CORRECT = " & to_string(data_out_tensor_differentiation_model)
-          severity error;
-
-        k := k + 1;
-      end if;
-
-      if (ready_tensor_integration = '1' and data_out_i_enable_tensor_integration = '1' and data_out_j_enable_tensor_integration = '1' and data_out_k_enable_tensor_integration = '1') then
-        assert data_out_tensor_integration = data_out_tensor_integration_model
-          report "TENSOR INTEGRATION: CALCULATED = " & to_string(data_out_tensor_integration) & "; CORRECT = " & to_string(data_out_tensor_integration_model)
-          severity error;
-
-        i := 0;
-        j := 0;
-        k := 0;
-      elsif (data_out_i_enable_tensor_integration = '1' and data_out_j_enable_tensor_integration = '1' and data_out_k_enable_tensor_softmax = '1' and not data_out_tensor_integration = EMPTY) then
-        assert data_out_tensor_integration = data_out_tensor_integration_model
-          report "TENSOR INTEGRATION: CALCULATED = " & to_string(data_out_tensor_integration) & "; CORRECT = " & to_string(data_out_tensor_integration_model)
-          severity error;
-
-        i := i + 1;
-        j := 0;
-        k := 0;
-      elsif (data_out_j_enable_tensor_integration = '1' and data_out_k_enable_tensor_softmax = '1' and not data_out_tensor_integration = EMPTY) then
-        assert data_out_tensor_integration = data_out_tensor_integration_model
-          report "TENSOR INTEGRATION: CALCULATED = " & to_string(data_out_tensor_integration) & "; CORRECT = " & to_string(data_out_tensor_integration_model)
-          severity error;
-
-        j := j + 1;
-        k := 0;
-      elsif (data_out_k_enable_tensor_softmax = '1' and not data_out_tensor_integration = EMPTY) then
-        assert data_out_tensor_integration = data_out_tensor_integration_model
-          report "TENSOR INTEGRATION: CALCULATED = " & to_string(data_out_tensor_integration) & "; CORRECT = " & to_string(data_out_tensor_integration_model)
-          severity error;
-
-        k := k + 1;
-      end if;
-
-      if (ready_tensor_softmax = '1' and data_out_i_enable_tensor_softmax = '1' and data_out_j_enable_tensor_softmax = '1' and data_out_k_enable_tensor_softmax = '1') then
-        assert data_out_tensor_softmax = data_out_tensor_softmax_model
-          report "TENSOR SOFTMAX: CALCULATED = " & to_string(data_out_tensor_softmax) & "; CORRECT = " & to_string(data_out_tensor_softmax_model)
-          severity error;
-
-        i := 0;
-        j := 0;
-        k := 0;
-      elsif (data_out_i_enable_tensor_softmax = '1' and data_out_j_enable_tensor_softmax = '1' and data_out_k_enable_tensor_softmax = '1' and not data_out_tensor_softmax = EMPTY) then
-        assert data_out_tensor_softmax = data_out_tensor_softmax_model
-          report "TENSOR SOFTMAX: CALCULATED = " & to_string(data_out_tensor_softmax) & "; CORRECT = " & to_string(data_out_tensor_softmax_model)
-          severity error;
-
-        i := i + 1;
-        j := 0;
-        k := 0;
-      elsif (data_out_j_enable_tensor_softmax = '1' and data_out_k_enable_tensor_softmax = '1' and not data_out_tensor_softmax = EMPTY) then
-        assert data_out_tensor_softmax = data_out_tensor_softmax_model
-          report "TENSOR SOFTMAX: CALCULATED = " & to_string(data_out_tensor_softmax) & "; CORRECT = " & to_string(data_out_tensor_softmax_model)
-          severity error;
-
-        j := j + 1;
-        k := 0;
-      elsif (data_out_k_enable_tensor_softmax = '1' and not data_out_tensor_softmax = EMPTY) then
-        assert data_out_tensor_softmax = data_out_tensor_softmax_model
-          report "TENSOR SOFTMAX: CALCULATED = " & to_string(data_out_tensor_softmax) & "; CORRECT = " & to_string(data_out_tensor_softmax_model)
-          severity error;
-
-        k := k + 1;
-      end if;
-    end if;
-  end process tensor_assertion;
 
 end accelerator_calculus_testbench_architecture;

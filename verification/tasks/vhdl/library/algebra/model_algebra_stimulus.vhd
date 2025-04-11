@@ -44,7 +44,6 @@ use ieee.numeric_std.all;
 
 use work.model_arithmetic_vhdl_pkg.all;
 use work.model_math_vhdl_pkg.all;
-
 use work.model_algebra_pkg.all;
 
 entity model_algebra_stimulus is
@@ -1582,7 +1581,7 @@ begin
       if (STIMULUS_NTM_MATRIX_VECTOR_CONVOLUTION_CASE_1) then
 
         -------------------------------------------------------------------
-        MONITOR_CASE <= "STIMULUS_MODEL_MATRIX_VECTOR_CONVOL_CASE 1                            ";
+        MONITOR_CASE <= "STIMULUS_MODEL_MATRIX_VECTOR_CONVOLUTION_CASE 1                       ";
         -------------------------------------------------------------------
 
         -- INITIAL CONDITIONS
@@ -2869,7 +2868,7 @@ begin
       if (STIMULUS_NTM_TENSOR_MATRIX_CONVOLUTION_CASE_1) then
 
         -------------------------------------------------------------------
-        MONITOR_CASE <= "STIMULUS_MODEL_TENSOR_MATRIX_CONVOL_CASE 1                            ";
+        MONITOR_CASE <= "STIMULUS_MODEL_TENSOR_MATRIX_CONVOLUTION_CASE 1                       ";
         -------------------------------------------------------------------
 
         -- INITIAL CONDITIONS

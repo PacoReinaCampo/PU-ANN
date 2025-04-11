@@ -43,8 +43,8 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 use work.accelerator_arithmetic_vhdl_pkg.all;
+use work.accelerator_arithmetic_vhdl_pkg.all;
 use work.accelerator_math_vhdl_pkg.all;
-
 use work.accelerator_algebra_pkg.all;
 
 entity accelerator_algebra_stimulus is
@@ -984,7 +984,7 @@ begin
       if (STIMULUS_ACCELERATOR_VECTOR_MULTIPLICATION_CASE_0) then
 
         -------------------------------------------------------------------
-        MONITOR_CASE <= "STIMULUS_ACCELERATOR_VECTOR_MULTIPLICATION_CASE 0                     ";
+        MONITOR_CASE <= "STIMULUS_ACCELERATOR_VECTOR_MULTIPLICATIO_CASE 0                      ";
         -------------------------------------------------------------------
 
         -- INITIAL CONDITIONS
@@ -1799,7 +1799,7 @@ begin
       if (STIMULUS_ACCELERATOR_MATRIX_MULTIPLICATION_CASE_0) then
 
         -------------------------------------------------------------------
-        MONITOR_CASE <= "STIMULUS_ACCELERATOR_MATRIX_MULTIPLICATION_CASE 0                     ";
+        MONITOR_CASE <= "STIMULUS_ACCELERATOR_MATRIX_MULTIPLICATIO_CASE 0                      ";
         -------------------------------------------------------------------
 
         -- INITIAL CONDITIONS
