@@ -203,14 +203,28 @@ code
 │           ├── accelerator_output_gate_vector.sv
 │           └── accelerator_state_gate_vector.sv
 ├── pkg
-│   ├── accelerator_ann_controller_verilog_pkg.sv
-│   ├── accelerator_arithmetic_verilog_pkg.sv
-│   ├── accelerator_core_verilog_pkg.sv
-│   ├── accelerator_fnn_controller_verilog_pkg.sv
-│   ├── accelerator_lstm_controller_verilog_pkg.sv
-│   ├── accelerator_math_verilog_pkg.sv
-│   ├── accelerator_pnn_controller_verilog_pkg.sv
-│   └── accelerator_state_verilog_pkg.sv
+│   ├── accelerator
+│   │   ├── accelerator_ann_controller_verilog_pkg.sv
+│   │   ├── accelerator_arithmetic_verilog_pkg.sv
+│   │   ├── accelerator_core_verilog_pkg.sv
+│   │   ├── accelerator_fnn_controller_verilog_pkg.sv
+│   │   ├── accelerator_lstm_controller_verilog_pkg.sv
+│   │   ├── accelerator_math_verilog_pkg.sv
+│   │   ├── accelerator_pnn_controller_verilog_pkg.sv
+│   │   └── accelerator_state_verilog_pkg.sv
+│   └── peripheral
+│       ├── ahb3
+│       │   └── peripheral_ahb3_pkg.sv
+│       ├── apb4
+│       │   └── peripheral_apb4_pkg.sv
+│       ├── axi4
+│       │   └── peripheral_axi4_pkg.sv
+│       ├── bb
+│       │   └── peripheral_bb_pkg.sv
+│       ├── biu
+│       │   └── peripheral_biu_pkg.sv
+│       └── wb
+│           └── peripheral_wb_pkg.sv
 ├── state
 │   ├── feedback
 │   │   ├── accelerator_state_matrix_feedforward.sv
@@ -241,4 +255,4 @@ code
     └── pnn
         └── accelerator_trainer.sv
 
-65 directories, 176 files
+73 directories, 182 files
