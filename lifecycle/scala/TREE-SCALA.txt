@@ -59,82 +59,28 @@ library
 │   │       ├── ntm_controller.scala
 │   │       ├── ntm_decoder.scala
 │   │       └── ntm_encoder.scala
-│   ├── dnc
-│   │   ├── memory
-│   │   │   ├── dnc_addressing.scala
-│   │   │   ├── dnc_allocation_weighting.scala
-│   │   │   ├── dnc_backward_weighting.scala
-│   │   │   ├── dnc_forward_weighting.scala
-│   │   │   ├── dnc_matrix_content_based_addressing.scala
-│   │   │   ├── dnc_memory_matrix.scala
-│   │   │   ├── dnc_memory_retention_vector.scala
-│   │   │   ├── dnc_precedence_weighting.scala
-│   │   │   ├── dnc_sort_vector.scala
-│   │   │   ├── dnc_temporal_link_matrix.scala
-│   │   │   ├── dnc_usage_vector.scala
-│   │   │   └── dnc_vector_content_based_addressing.scala
-│   │   ├── read_heads
-│   │   │   ├── dnc_read_content_weighting.scala
-│   │   │   ├── dnc_read_vectors.scala
-│   │   │   └── dnc_read_weighting.scala
-│   │   ├── top
-│   │   │   ├── dnc_interface_matrix.scala
-│   │   │   ├── dnc_interface_top.scala
-│   │   │   ├── dnc_interface_vector.scala
-│   │   │   ├── dnc_output_vector.scala
-│   │   │   └── dnc_top.scala
-│   │   ├── trained
-│   │   │   └── dnc_trained_top.scala
-│   │   └── write_heads
-│   │       ├── dnc_write_content_weighting.scala
-│   │       └── dnc_write_weighting.scala
 │   ├── fnn
 │   │   ├── convolutional
 │   │   │   └── ntm_controller.scala
 │   │   └── standard
 │   │       └── ntm_controller.scala
-│   ├── lstm
-│   │   ├── convolutional
-│   │   │   ├── ntm_activation_gate_vector.scala
-│   │   │   ├── ntm_controller.scala
-│   │   │   ├── ntm_forget_gate_vector.scala
-│   │   │   ├── ntm_hidden_gate_vector.scala
-│   │   │   ├── ntm_input_gate_vector.scala
-│   │   │   ├── ntm_output_gate_vector.scala
-│   │   │   └── ntm_state_gate_vector.scala
-│   │   └── standard
-│   │       ├── ntm_activation_gate_vector.scala
-│   │       ├── ntm_controller.scala
-│   │       ├── ntm_forget_gate_vector.scala
-│   │       ├── ntm_hidden_gate_vector.scala
-│   │       ├── ntm_input_gate_vector.scala
-│   │       ├── ntm_output_gate_vector.scala
-│   │       └── ntm_state_gate_vector.scala
-│   └── ntm
-│       ├── memory
-│       │   ├── ntm_addressing.scala
-│       │   ├── ntm_matrix_content_based_addressing.scala
-│       │   └── ntm_vector_content_based_addressing.scala
-│       ├── read_heads
-│       │   └── ntm_reading.scala
-│       ├── top
-│       │   ├── ntm_interface_matrix.scala
-│       │   ├── ntm_interface_top.scala
-│       │   ├── ntm_interface_vector.scala
-│       │   ├── ntm_output_vector.scala
-│       │   └── ntm_top.scala
-│       ├── trained
-│       │   └── ntm_trained_top.scala
-│       └── write_heads
-│           ├── ntm_erasing.scala
-│           └── ntm_writing.scala
-├── state
-│   ├── feedback
-│   │   └── ntm_state_feedback.scala
-│   ├── outputs
-│   │   └── ntm_state_outputs.scala
-│   └── top
-│       └── ntm_state_top.scala
+│   └── lstm
+│       ├── convolutional
+│       │   ├── ntm_activation_gate_vector.scala
+│       │   ├── ntm_controller.scala
+│       │   ├── ntm_forget_gate_vector.scala
+│       │   ├── ntm_hidden_gate_vector.scala
+│       │   ├── ntm_input_gate_vector.scala
+│       │   ├── ntm_output_gate_vector.scala
+│       │   └── ntm_state_gate_vector.scala
+│       └── standard
+│           ├── ntm_activation_gate_vector.scala
+│           ├── ntm_controller.scala
+│           ├── ntm_forget_gate_vector.scala
+│           ├── ntm_hidden_gate_vector.scala
+│           ├── ntm_input_gate_vector.scala
+│           ├── ntm_output_gate_vector.scala
+│           └── ntm_state_gate_vector.scala
 └── trainer
     ├── differentiation
     │   ├── ntm_matrix_controller_differentiation.scala
@@ -181,4 +127,4 @@ library
             ├── ntm_lstm_output_v_trainer.scala
             └── ntm_lstm_output_w_trainer.scala
 
-53 directories, 128 files
+37 directories, 90 files

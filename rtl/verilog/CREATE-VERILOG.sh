@@ -163,15 +163,6 @@ touch code/pkg/peripheral/axi4/peripheral_axi4_pkg.sv
 touch code/pkg/peripheral/bb/peripheral_bb_pkg.sv
 touch code/pkg/peripheral/biu/peripheral_biu_pkg.sv
 touch code/pkg/peripheral/wb/peripheral_wb_pkg.sv
-touch code/state/feedback/accelerator_state_matrix_feedforward.sv
-touch code/state/feedback/accelerator_state_matrix_input.sv
-touch code/state/feedback/accelerator_state_matrix_output.sv
-touch code/state/feedback/accelerator_state_matrix_state.sv
-touch code/state/outputs/accelerator_state_vector_output.sv
-touch code/state/outputs/accelerator_state_vector_state.sv
-touch code/state/pnn/convolutional/accelerator_controller.sv
-touch code/state/pnn/standard/accelerator_controller.sv
-touch code/state/top/accelerator_state_top.sv
 touch code/trainer/differentiation/accelerator_trainer_matrix_differentiation.sv
 touch code/trainer/differentiation/accelerator_trainer_vector_differentiation.sv
 touch code/trainer/fnn/accelerator_trainer.sv

@@ -128,36 +128,6 @@ library
 │   │       ├── ntm_controller.rs
 │   │       ├── ntm_decoder.rs
 │   │       └── ntm_encoder.rs
-│   ├── dnc
-│   │   ├── dnc.rs
-│   │   ├── memory
-│   │   │   ├── dnc_addressing.rs
-│   │   │   ├── dnc_allocation_weighting.rs
-│   │   │   ├── dnc_backward_weighting.rs
-│   │   │   ├── dnc_forward_weighting.rs
-│   │   │   ├── dnc_matrix_content_based_addressing.rs
-│   │   │   ├── dnc_memory_matrix.rs
-│   │   │   ├── dnc_memory_retention_vector.rs
-│   │   │   ├── dnc_precedence_weighting.rs
-│   │   │   ├── dnc_sort_vector.rs
-│   │   │   ├── dnc_temporal_link_matrix.rs
-│   │   │   ├── dnc_usage_vector.rs
-│   │   │   └── dnc_vector_content_based_addressing.rs
-│   │   ├── read_heads
-│   │   │   ├── dnc_read_content_weighting.rs
-│   │   │   ├── dnc_read_vectors.rs
-│   │   │   └── dnc_read_weighting.rs
-│   │   ├── top
-│   │   │   ├── dnc_interface_matrix.rs
-│   │   │   ├── dnc_interface_top.rs
-│   │   │   ├── dnc_interface_vector.rs
-│   │   │   ├── dnc_output_vector.rs
-│   │   │   └── dnc_top.rs
-│   │   ├── trained
-│   │   │   └── dnc_trained_top.rs
-│   │   └── write_heads
-│   │       ├── dnc_write_content_weighting.rs
-│   │       └── dnc_write_weighting.rs
 │   ├── fnn
 │   │   ├── convolutional
 │   │   │   └── ntm_controller.rs
@@ -180,44 +150,8 @@ library
 │   │       ├── ntm_input_gate_vector.rs
 │   │       ├── ntm_output_gate_vector.rs
 │   │       └── ntm_state_gate_vector.rs
-│   ├── ntm
-│   │   ├── memory
-│   │   │   ├── ntm_addressing.rs
-│   │   │   ├── ntm_matrix_content_based_addressing.rs
-│   │   │   └── ntm_vector_content_based_addressing.rs
-│   │   ├── ntm.rs
-│   │   ├── read_heads
-│   │   │   └── ntm_reading.rs
-│   │   ├── top
-│   │   │   ├── ntm_interface_matrix.rs
-│   │   │   ├── ntm_interface_top.rs
-│   │   │   ├── ntm_interface_vector.rs
-│   │   │   ├── ntm_output_vector.rs
-│   │   │   └── ntm_top.rs
-│   │   ├── trained
-│   │   │   └── ntm_trained_top.rs
-│   │   └── write_heads
-│   │       ├── ntm_erasing.rs
-│   │       └── ntm_writing.rs
 │   ├── ntm_fnn_controller.rs
 │   └── ntm_lstm_controller.rs
-├── state
-│   └── src
-│       ├── feedback
-│       │   ├── mod.rs
-│       │   ├── ntm_state_matrix_feedforward.rs
-│       │   ├── ntm_state_matrix_input.rs
-│       │   ├── ntm_state_matrix_output.rs
-│       │   └── ntm_state_matrix_state.rs
-│       ├── lib.rs
-│       ├── ntm_state.rs
-│       ├── outputs
-│       │   ├── mod.rs
-│       │   ├── ntm_state_vector_output.rs
-│       │   └── ntm_state_vector_state.rs
-│       └── top
-│           ├── mod.rs
-│           └── ntm_state_top.rs
 └── trainer
     ├── differentiation
     │   ├── ntm_matrix_controller_differentiation.rs
@@ -266,4 +200,4 @@ library
     ├── ntm_fnn.rs
     └── ntm_lstm.rs
 
-57 directories, 209 files
+40 directories, 160 files

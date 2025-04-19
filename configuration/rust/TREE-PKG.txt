@@ -36,32 +36,12 @@ library
 │   │   ├── functions
 │   │   ├── inputs
 │   │   └── top
-│   ├── dnc
-│   │   ├── memory
-│   │   ├── read_heads
-│   │   ├── top
-│   │   ├── trained
-│   │   └── write_heads
 │   ├── fnn
 │   │   ├── convolutional
 │   │   └── standard
-│   ├── lstm
-│   │   ├── convolutional
-│   │   └── standard
-│   └── ntm
-│       ├── memory
-│       ├── read_heads
-│       ├── top
-│       ├── trained
-│       └── write_heads
-├── state
-│   └── src
-│       ├── feedback
-│       │   └── mod.rs
-│       ├── outputs
-│       │   └── mod.rs
-│       └── top
-│           └── mod.rs
+│   └── lstm
+│       ├── convolutional
+│       └── standard
 └── trainer
     ├── differentiation
     ├── fnn
@@ -71,4 +51,4 @@ library
         ├── input
         └── output
 
-57 directories, 14 files
+40 directories, 11 files

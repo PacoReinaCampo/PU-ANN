@@ -225,22 +225,6 @@ code
 │       │   └── peripheral_biu_pkg.vhd
 │       └── wb
 │           └── peripheral_wb_pkg.vhd
-├── state
-│   ├── feedback
-│   │   ├── accelerator_state_matrix_feedforward.vhd
-│   │   ├── accelerator_state_matrix_input.vhd
-│   │   ├── accelerator_state_matrix_output.vhd
-│   │   └── accelerator_state_matrix_state.vhd
-│   ├── outputs
-│   │   ├── accelerator_state_vector_output.vhd
-│   │   └── accelerator_state_vector_state.vhd
-│   ├── pnn
-│   │   ├── convolutional
-│   │   │   └── accelerator_controller.vhd
-│   │   └── standard
-│   │       └── accelerator_controller.vhd
-│   └── top
-│       └── accelerator_state_top.vhd
 └── trainer
     ├── differentiation
     │   ├── accelerator_trainer_matrix_differentiation.vhd
@@ -255,4 +239,4 @@ code
     └── pnn
         └── accelerator_trainer.vhd
 
-73 directories, 182 files
+66 directories, 173 files
