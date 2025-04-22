@@ -42,14 +42,33 @@ library
 │   │   ├── functions
 │   │   ├── inputs
 │   │   └── top
+│   ├── dnc
+│   │   ├── dnc_controller.hpp
+│   │   ├── memory
+│   │   ├── read_heads
+│   │   ├── top
+│   │   ├── trained
+│   │   └── write_heads
 │   ├── fnn
 │   │   ├── ntm_fnn_controller.hpp
 │   │   ├── convolutional
 │   │   └── standard
-│   └── lstm
-│       ├── ntm_lstm_controller.hpp
-│       ├── convolutional
-│       └── standard
+│   ├── lstm
+│   │   ├── ntm_lstm_controller.hpp
+│   │   ├── convolutional
+│   │   └── standard
+│   └── ntm
+│       ├── ntm_controller.hpp
+│       ├── memory
+│       ├── read_heads
+│       ├── top
+│       ├── trained
+│       └── write_heads
+├── state
+│   ├── ntm_state.hpp
+│   ├── feedback
+│   ├── outputs
+│   └── top
 └── trainer
     ├── ntm_differentiation.hpp
     ├── ntm_fnn.hpp
@@ -62,4 +81,4 @@ library
         ├── input
         └── output
 
-53 directories, 9 files
+69 directories, 12 files

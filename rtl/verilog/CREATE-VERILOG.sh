@@ -157,7 +157,7 @@ touch code/pkg/accelerator/accelerator_lstm_controller_verilog_pkg.sv
 touch code/pkg/accelerator/accelerator_math_verilog_pkg.sv
 touch code/pkg/accelerator/accelerator_pnn_controller_verilog_pkg.sv
 touch code/pkg/accelerator/accelerator_state_verilog_pkg.sv
-touch code/pkg/peripheral/ahb3/peripheral_ahb3_pkg.sv
+touch code/pkg/peripheral/ahb4/peripheral_ahb4_pkg.sv
 touch code/pkg/peripheral/apb4/peripheral_apb4_pkg.sv
 touch code/pkg/peripheral/axi4/peripheral_axi4_pkg.sv
 touch code/pkg/peripheral/bb/peripheral_bb_pkg.sv

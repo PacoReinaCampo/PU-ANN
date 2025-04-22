@@ -22,12 +22,28 @@ library
 │   │   ├── functions
 │   │   ├── inputs
 │   │   └── top
+│   ├── dnc
+│   │   ├── memory
+│   │   ├── read_heads
+│   │   ├── top
+│   │   ├── trained
+│   │   └── write_heads
 │   ├── fnn
 │   │   ├── convolutional
 │   │   └── standard
-│   └── lstm
-│       ├── convolutional
-│       └── standard
+│   ├── lstm
+│   │   ├── convolutional
+│   │   └── standard
+│   └── ntm
+│       ├── memory
+│       ├── read_heads
+│       ├── top
+│       ├── trained
+│       └── write_heads
+├── state
+│   ├── feedback
+│   ├── outputs
+│   └── top
 └── trainer
     ├── differentiation
     ├── fnn
@@ -37,4 +53,4 @@ library
         ├── input
         └── output
 
-37 directories, 0 files
+53 directories, 0 files

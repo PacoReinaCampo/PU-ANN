@@ -59,28 +59,82 @@ library
 │   │       ├── ntm_controller.java
 │   │       ├── ntm_decoder.java
 │   │       └── ntm_encoder.java
+│   ├── dnc
+│   │   ├── memory
+│   │   │   ├── dnc_addressing.java
+│   │   │   ├── dnc_allocation_weighting.java
+│   │   │   ├── dnc_backward_weighting.java
+│   │   │   ├── dnc_forward_weighting.java
+│   │   │   ├── dnc_matrix_content_based_addressing.java
+│   │   │   ├── dnc_memory_matrix.java
+│   │   │   ├── dnc_memory_retention_vector.java
+│   │   │   ├── dnc_precedence_weighting.java
+│   │   │   ├── dnc_sort_vector.java
+│   │   │   ├── dnc_temporal_link_matrix.java
+│   │   │   ├── dnc_usage_vector.java
+│   │   │   └── dnc_vector_content_based_addressing.java
+│   │   ├── read_heads
+│   │   │   ├── dnc_read_content_weighting.java
+│   │   │   ├── dnc_read_vectors.java
+│   │   │   └── dnc_read_weighting.java
+│   │   ├── top
+│   │   │   ├── dnc_interface_matrix.java
+│   │   │   ├── dnc_interface_top.java
+│   │   │   ├── dnc_interface_vector.java
+│   │   │   ├── dnc_output_vector.java
+│   │   │   └── dnc_top.java
+│   │   ├── trained
+│   │   │   └── dnc_trained_top.java
+│   │   └── write_heads
+│   │       ├── dnc_write_content_weighting.java
+│   │       └── dnc_write_weighting.java
 │   ├── fnn
 │   │   ├── convolutional
 │   │   │   └── ntm_controller.java
 │   │   └── standard
 │   │       └── ntm_controller.java
-│   └── lstm
-│       ├── convolutional
-│       │   ├── ntm_activation_gate_vector.java
-│       │   ├── ntm_controller.java
-│       │   ├── ntm_forget_gate_vector.java
-│       │   ├── ntm_hidden_gate_vector.java
-│       │   ├── ntm_input_gate_vector.java
-│       │   ├── ntm_output_gate_vector.java
-│       │   └── ntm_state_gate_vector.java
-│       └── standard
-│           ├── ntm_activation_gate_vector.java
-│           ├── ntm_controller.java
-│           ├── ntm_forget_gate_vector.java
-│           ├── ntm_hidden_gate_vector.java
-│           ├── ntm_input_gate_vector.java
-│           ├── ntm_output_gate_vector.java
-│           └── ntm_state_gate_vector.java
+│   ├── lstm
+│   │   ├── convolutional
+│   │   │   ├── ntm_activation_gate_vector.java
+│   │   │   ├── ntm_controller.java
+│   │   │   ├── ntm_forget_gate_vector.java
+│   │   │   ├── ntm_hidden_gate_vector.java
+│   │   │   ├── ntm_input_gate_vector.java
+│   │   │   ├── ntm_output_gate_vector.java
+│   │   │   └── ntm_state_gate_vector.java
+│   │   └── standard
+│   │       ├── ntm_activation_gate_vector.java
+│   │       ├── ntm_controller.java
+│   │       ├── ntm_forget_gate_vector.java
+│   │       ├── ntm_hidden_gate_vector.java
+│   │       ├── ntm_input_gate_vector.java
+│   │       ├── ntm_output_gate_vector.java
+│   │       └── ntm_state_gate_vector.java
+│   └── ntm
+│       ├── memory
+│       │   ├── ntm_addressing.java
+│       │   ├── ntm_matrix_content_based_addressing.java
+│       │   └── ntm_vector_content_based_addressing.java
+│       ├── read_heads
+│       │   └── ntm_reading.java
+│       ├── top
+│       │   ├── ntm_interface_matrix.java
+│       │   ├── ntm_interface_top.java
+│       │   ├── ntm_interface_vector.java
+│       │   ├── ntm_output_vector.java
+│       │   └── ntm_top.java
+│       ├── trained
+│       │   └── ntm_trained_top.java
+│       └── write_heads
+│           ├── ntm_erasing.java
+│           └── ntm_writing.java
+├── state
+│   ├── feedback
+│   │   └── ntm_state_feedback.java
+│   ├── outputs
+│   │   └── ntm_state_outputs.java
+│   └── top
+│       └── ntm_state_top.java
 └── trainer
     ├── differentiation
     │   ├── ntm_matrix_controller_differentiation.java
@@ -127,4 +181,4 @@ library
             ├── ntm_lstm_output_v_trainer.java
             └── ntm_lstm_output_w_trainer.java
 
-37 directories, 90 files
+53 directories, 128 files
