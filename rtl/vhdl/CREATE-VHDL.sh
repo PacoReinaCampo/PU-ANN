@@ -161,7 +161,7 @@ touch code/pkg/peripheral/ahb4/peripheral_ahb4_pkg.vhd
 touch code/pkg/peripheral/apb4/peripheral_apb4_pkg.vhd
 touch code/pkg/peripheral/axi4/peripheral_axi4_pkg.vhd
 touch code/pkg/peripheral/bb/peripheral_bb_pkg.vhd
-touch code/pkg/peripheral/biu/peripheral_biu_pkg.vhd
+touch code/pkg/peripheral/tl/peripheral_biu_pkg.vhd
 touch code/pkg/peripheral/wb/peripheral_wb_pkg.vhd
 touch code/trainer/differentiation/accelerator_trainer_matrix_differentiation.vhd
 touch code/trainer/differentiation/accelerator_trainer_vector_differentiation.vhd

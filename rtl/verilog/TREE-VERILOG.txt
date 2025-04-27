@@ -221,7 +221,7 @@ code
 │       │   └── peripheral_axi4_pkg.sv
 │       ├── bb
 │       │   └── peripheral_bb_pkg.sv
-│       ├── biu
+│       ├── tl
 │       │   └── peripheral_biu_pkg.sv
 │       └── wb
 │           └── peripheral_wb_pkg.sv
