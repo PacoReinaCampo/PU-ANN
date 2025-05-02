@@ -222,7 +222,7 @@ code
 │       ├── bb
 │       │   └── peripheral_bb_pkg.sv
 │       ├── tl
-│       │   └── peripheral_biu_pkg.sv
+│       │   └── peripheral_tl_pkg.sv
 │       └── wb
 │           └── peripheral_wb_pkg.sv
 └── trainer

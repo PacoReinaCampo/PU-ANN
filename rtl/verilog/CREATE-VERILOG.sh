@@ -161,7 +161,7 @@ touch code/pkg/peripheral/ahb4/peripheral_ahb4_pkg.sv
 touch code/pkg/peripheral/apb4/peripheral_apb4_pkg.sv
 touch code/pkg/peripheral/axi4/peripheral_axi4_pkg.sv
 touch code/pkg/peripheral/bb/peripheral_bb_pkg.sv
-touch code/pkg/peripheral/tl/peripheral_biu_pkg.sv
+touch code/pkg/peripheral/tl/peripheral_tl_pkg.sv
 touch code/pkg/peripheral/wb/peripheral_wb_pkg.sv
 touch code/trainer/differentiation/accelerator_trainer_matrix_differentiation.sv
 touch code/trainer/differentiation/accelerator_trainer_vector_differentiation.sv
