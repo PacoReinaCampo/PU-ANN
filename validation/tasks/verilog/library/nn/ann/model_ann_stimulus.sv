@@ -54,68 +54,68 @@ module model_ann_stimulus #(
   output RST,
 
   // CONTROL
-  output NTM_ann_START,
-  input  NTM_ann_READY,
+  output ACCELERATOR_ann_START,
+  input  ACCELERATOR_ann_READY,
 
-  output NTM_ann_W_IN_L_ENABLE,
-  output NTM_ann_W_IN_X_ENABLE,
+  output ACCELERATOR_ann_W_IN_L_ENABLE,
+  output ACCELERATOR_ann_W_IN_X_ENABLE,
 
-  output NTM_ann_K_IN_I_ENABLE,
-  output NTM_ann_K_IN_L_ENABLE,
-  output NTM_ann_K_IN_K_ENABLE,
+  output ACCELERATOR_ann_K_IN_I_ENABLE,
+  output ACCELERATOR_ann_K_IN_L_ENABLE,
+  output ACCELERATOR_ann_K_IN_K_ENABLE,
 
-  output NTM_ann_U_IN_L_ENABLE,
-  output NTM_ann_U_IN_P_ENABLE,
+  output ACCELERATOR_ann_U_IN_L_ENABLE,
+  output ACCELERATOR_ann_U_IN_P_ENABLE,
 
-  output NTM_ann_B_IN_ENABLE,
+  output ACCELERATOR_ann_B_IN_ENABLE,
 
-  output NTM_ann_X_IN_ENABLE,
+  output ACCELERATOR_ann_X_IN_ENABLE,
 
-  input NTM_ann_X_OUT_ENABLE,
+  input ACCELERATOR_ann_X_OUT_ENABLE,
 
-  output NTM_ann_R_IN_I_ENABLE,
-  output NTM_ann_R_IN_K_ENABLE,
+  output ACCELERATOR_ann_R_IN_I_ENABLE,
+  output ACCELERATOR_ann_R_IN_K_ENABLE,
 
-  input NTM_ann_R_OUT_I_ENABLE,
-  input NTM_ann_R_OUT_K_ENABLE,
+  input ACCELERATOR_ann_R_OUT_I_ENABLE,
+  input ACCELERATOR_ann_R_OUT_K_ENABLE,
 
-  output NTM_ann_H_IN_ENABLE,
+  output ACCELERATOR_ann_H_IN_ENABLE,
 
-  input NTM_ann_W_OUT_L_ENABLE,
-  input NTM_ann_W_OUT_X_ENABLE,
+  input ACCELERATOR_ann_W_OUT_L_ENABLE,
+  input ACCELERATOR_ann_W_OUT_X_ENABLE,
 
-  input NTM_ann_K_OUT_I_ENABLE,
-  input NTM_ann_K_OUT_L_ENABLE,
-  input NTM_ann_K_OUT_K_ENABLE,
+  input ACCELERATOR_ann_K_OUT_I_ENABLE,
+  input ACCELERATOR_ann_K_OUT_L_ENABLE,
+  input ACCELERATOR_ann_K_OUT_K_ENABLE,
 
-  input NTM_ann_U_OUT_L_ENABLE,
-  input NTM_ann_U_OUT_P_ENABLE,
+  input ACCELERATOR_ann_U_OUT_L_ENABLE,
+  input ACCELERATOR_ann_U_OUT_P_ENABLE,
 
-  input NTM_ann_B_OUT_ENABLE,
+  input ACCELERATOR_ann_B_OUT_ENABLE,
 
-  input NTM_ann_H_OUT_ENABLE,
+  input ACCELERATOR_ann_H_OUT_ENABLE,
 
   // DATA
-  output [DATA_SIZE-1:0] NTM_ann_SIZE_X_IN,
-  output [DATA_SIZE-1:0] NTM_ann_SIZE_W_IN,
-  output [DATA_SIZE-1:0] NTM_ann_SIZE_L_IN,
-  output [DATA_SIZE-1:0] NTM_ann_SIZE_R_IN,
+  output [DATA_SIZE-1:0] ACCELERATOR_ann_SIZE_X_IN,
+  output [DATA_SIZE-1:0] ACCELERATOR_ann_SIZE_W_IN,
+  output [DATA_SIZE-1:0] ACCELERATOR_ann_SIZE_L_IN,
+  output [DATA_SIZE-1:0] ACCELERATOR_ann_SIZE_R_IN,
 
-  output [DATA_SIZE-1:0] NTM_ann_W_IN,
-  output [DATA_SIZE-1:0] NTM_ann_K_IN,
-  output [DATA_SIZE-1:0] NTM_ann_U_IN,
-  output [DATA_SIZE-1:0] NTM_ann_B_IN,
+  output [DATA_SIZE-1:0] ACCELERATOR_ann_W_IN,
+  output [DATA_SIZE-1:0] ACCELERATOR_ann_K_IN,
+  output [DATA_SIZE-1:0] ACCELERATOR_ann_U_IN,
+  output [DATA_SIZE-1:0] ACCELERATOR_ann_B_IN,
 
-  output [DATA_SIZE-1:0] NTM_ann_X_IN,
-  output [DATA_SIZE-1:0] NTM_ann_R_IN,
-  output [DATA_SIZE-1:0] NTM_ann_H_IN,
+  output [DATA_SIZE-1:0] ACCELERATOR_ann_X_IN,
+  output [DATA_SIZE-1:0] ACCELERATOR_ann_R_IN,
+  output [DATA_SIZE-1:0] ACCELERATOR_ann_H_IN,
 
-  input [DATA_SIZE-1:0] NTM_ann_W_OUT,
-  input [DATA_SIZE-1:0] NTM_ann_K_OUT,
-  input [DATA_SIZE-1:0] NTM_ann_U_OUT,
-  input [DATA_SIZE-1:0] NTM_ann_B_OUT,
+  input [DATA_SIZE-1:0] ACCELERATOR_ann_W_OUT,
+  input [DATA_SIZE-1:0] ACCELERATOR_ann_K_OUT,
+  input [DATA_SIZE-1:0] ACCELERATOR_ann_U_OUT,
+  input [DATA_SIZE-1:0] ACCELERATOR_ann_B_OUT,
 
-  input [DATA_SIZE-1:0] NTM_ann_H_OUT
+  input [DATA_SIZE-1:0] ACCELERATOR_ann_H_OUT
 );
 
   //////////////////////////////////////////////////////////////////////////////
