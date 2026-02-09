@@ -32,9 +32,9 @@ digraph Project {
 
   // Accelerator Blocks
   subgraph "cluster AcceleratorBlocks" { label = "Accelerator Blocks";
-    MPSoC_DNC[label="MPSoC-DNC\nAccelerator\nrv64-pvt-cnn"];
-    SoC_DNC[label="SoC-DNC\nAccelerator\nrv64-pv-cnn"];
-    PU_DNC[label="PU-DNC\nAccelerator\nrv64-p-cnn"];
+    MPSoC_NTM[label="MPSoC-NTM\nAccelerator\nrv64-pvt-gcvwy"];
+    SoC_NTM[label="SoC-NTM\nAccelerator\nrv64-pv-gcvwy"];
+    PU_NTM[label="PU-NTM\nAccelerator\nrv64-p-gcvwy"];
   }
 
   // Target Blocks
@@ -90,28 +90,28 @@ digraph Project {
   MPSoC_RISCV -> MPSoC_DV;
 
   // Environment -> Accelerator
-  PU_DV -> PU_DNC;
+  PU_DV -> PU_NTM;
 
-  SoC_DV -> SoC_DNC;
+  SoC_DV -> SoC_NTM;
 
-  MPSoC_DV -> MPSoC_DNC;
+  MPSoC_DV -> MPSoC_NTM;
 
   // Accelerator -> Target
-  PU_DNC -> PU_EnergyTech;
+  PU_NTM -> PU_EnergyTech;
 
-  SoC_DNC -> SoC_EnergyTech;
+  SoC_NTM -> SoC_EnergyTech;
 
-  MPSoC_DNC -> MPSoC_EnergyTech;
+  MPSoC_NTM -> MPSoC_EnergyTech;
 
-  PU_DNC -> PU_FinTech;
+  PU_NTM -> PU_FinTech;
 
-  SoC_DNC -> SoC_FinTech;
+  SoC_NTM -> SoC_FinTech;
 
-  MPSoC_DNC -> MPSoC_FinTech;
+  MPSoC_NTM -> MPSoC_FinTech;
 
-  PU_DNC -> PU_DefenseTech;
+  PU_NTM -> PU_DefenseTech;
 
-  SoC_DNC -> SoC_DefenseTech;
+  SoC_NTM -> SoC_DefenseTech;
 
-  MPSoC_DNC -> MPSoC_DefenseTech;
+  MPSoC_NTM -> MPSoC_DefenseTech;
 }
