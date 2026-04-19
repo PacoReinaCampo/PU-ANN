@@ -48,76 +48,28 @@ library
 │   │       ├── accelerator_controller.go
 │   │       ├── accelerator_decoder.go
 │   │       └── accelerator_encoder.go
-│   ├── dnc
-│   │   ├── memory
-│   │   │   ├── accelerator_addressing.go
-│   │   │   ├── accelerator_allocation_weighting.go
-│   │   │   ├── accelerator_backward_weighting.go
-│   │   │   ├── accelerator_forward_weighting.go
-│   │   │   ├── accelerator_matrix_content_based_addressing.go
-│   │   │   ├── accelerator_memory_matrix.go
-│   │   │   ├── accelerator_memory_retention_vector.go
-│   │   │   ├── accelerator_precedence_weighting.go
-│   │   │   ├── accelerator_sort_vector.go
-│   │   │   ├── accelerator_temporal_link_matrix.go
-│   │   │   ├── accelerator_usage_vector.go
-│   │   │   └── accelerator_vector_content_based_addressing.go
-│   │   ├── read_heads
-│   │   │   ├── accelerator_read_content_weighting.go
-│   │   │   ├── accelerator_read_vectors.go
-│   │   │   └── accelerator_read_weighting.go
-│   │   ├── top
-│   │   │   ├── accelerator_interface_matrix.go
-│   │   │   ├── accelerator_interface_top.go
-│   │   │   ├── accelerator_interface_vector.go
-│   │   │   ├── accelerator_output_vector.go
-│   │   │   └── accelerator_top.go
-│   │   ├── trained
-│   │   │   └── accelerator_trained_top.go
-│   │   └── write_heads
-│   │       ├── accelerator_write_content_weighting.go
-│   │       └── accelerator_write_weighting.go
 │   ├── fnn
 │   │   ├── convolutional
 │   │   │   └── accelerator_controller.go
 │   │   └── standard
 │   │       └── accelerator_controller.go
-│   ├── lstm
-│   │   ├── convolutional
-│   │   │   ├── accelerator_activation_gate_vector.go
-│   │   │   ├── accelerator_controller.go
-│   │   │   ├── accelerator_forget_gate_vector.go
-│   │   │   ├── accelerator_hidden_gate_vector.go
-│   │   │   ├── accelerator_input_gate_vector.go
-│   │   │   ├── accelerator_output_gate_vector.go
-│   │   │   └── accelerator_state_gate_vector.go
-│   │   └── standard
-│   │       ├── accelerator_activation_gate_vector.go
-│   │       ├── accelerator_controller.go
-│   │       ├── accelerator_forget_gate_vector.go
-│   │       ├── accelerator_hidden_gate_vector.go
-│   │       ├── accelerator_input_gate_vector.go
-│   │       ├── accelerator_output_gate_vector.go
-│   │       └── accelerator_state_gate_vector.go
-│   └── ntm
-│       ├── memory
-│       │   ├── accelerator_addressing.go
-│       │   ├── accelerator_matrix_content_based_addressing.go
-│       │   └── accelerator_vector_content_based_addressing.go
-│       ├── ntm.go
-│       ├── read_heads
-│       │   └── accelerator_reading.go
-│       ├── top
-│       │   ├── accelerator_interface_matrix.go
-│       │   ├── accelerator_interface_top.go
-│       │   ├── accelerator_interface_vector.go
-│       │   ├── accelerator_output_vector.go
-│       │   └── accelerator_top.go
-│       ├── trained
-│       │   └── accelerator_trained_top.go
-│       └── write_heads
-│           ├── accelerator_erasing.go
-│           └── accelerator_writing.go
+│   └── lstm
+│       ├── convolutional
+│       │   ├── accelerator_activation_gate_vector.go
+│       │   ├── accelerator_controller.go
+│       │   ├── accelerator_forget_gate_vector.go
+│       │   ├── accelerator_hidden_gate_vector.go
+│       │   ├── accelerator_input_gate_vector.go
+│       │   ├── accelerator_output_gate_vector.go
+│       │   └── accelerator_state_gate_vector.go
+│       └── standard
+│           ├── accelerator_activation_gate_vector.go
+│           ├── accelerator_controller.go
+│           ├── accelerator_forget_gate_vector.go
+│           ├── accelerator_hidden_gate_vector.go
+│           ├── accelerator_input_gate_vector.go
+│           ├── accelerator_output_gate_vector.go
+│           └── accelerator_state_gate_vector.go
 └── trainer
     ├── differentiation
     │   ├── accelerator_matrix_controller_differentiation.go
@@ -164,4 +116,4 @@ library
             ├── accelerator_lstm_output_v_trainer.go
             └── accelerator_lstm_output_w_trainer.go
 
-49 directories, 115 files
+37 directories, 79 files

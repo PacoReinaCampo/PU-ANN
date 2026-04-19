@@ -99,75 +99,28 @@ library
 │   │       ├── accelerator_controller.psl
 │   │       ├── accelerator_decoder.psl
 │   │       └── accelerator_encoder.psl
-│   ├── dnc
-│   │   ├── memory
-│   │   │   ├── accelerator_addressing.psl
-│   │   │   ├── accelerator_allocation_weighting.psl
-│   │   │   ├── accelerator_backward_weighting.psl
-│   │   │   ├── accelerator_forward_weighting.psl
-│   │   │   ├── accelerator_matrix_content_based_addressing.psl
-│   │   │   ├── accelerator_memory_matrix.psl
-│   │   │   ├── accelerator_memory_retention_vector.psl
-│   │   │   ├── accelerator_precedence_weighting.psl
-│   │   │   ├── accelerator_sort_vector.psl
-│   │   │   ├── accelerator_temporal_link_matrix.psl
-│   │   │   ├── accelerator_usage_vector.psl
-│   │   │   └── accelerator_vector_content_based_addressing.psl
-│   │   ├── read_heads
-│   │   │   ├── accelerator_read_content_weighting.psl
-│   │   │   ├── accelerator_read_vectors.psl
-│   │   │   └── accelerator_read_weighting.psl
-│   │   ├── top
-│   │   │   ├── accelerator_interface_matrix.psl
-│   │   │   ├── accelerator_interface_top.psl
-│   │   │   ├── accelerator_interface_vector.psl
-│   │   │   ├── accelerator_output_vector.psl
-│   │   │   └── accelerator_top.psl
-│   │   ├── trained
-│   │   │   └── accelerator_trained_top.psl
-│   │   └── write_heads
-│   │       ├── accelerator_write_content_weighting.psl
-│   │       └── accelerator_write_weighting.psl
 │   ├── fnn
 │   │   ├── convolutional
 │   │   │   └── accelerator_controller.psl
 │   │   └── standard
 │   │       └── accelerator_controller.psl
-│   ├── lstm
-│   │   ├── convolutional
-│   │   │   ├── accelerator_activation_gate_vector.psl
-│   │   │   ├── accelerator_controller.psl
-│   │   │   ├── accelerator_forget_gate_vector.psl
-│   │   │   ├── accelerator_hidden_gate_vector.psl
-│   │   │   ├── accelerator_input_gate_vector.psl
-│   │   │   ├── accelerator_output_gate_vector.psl
-│   │   │   └── accelerator_state_gate_vector.psl
-│   │   └── standard
-│   │       ├── accelerator_activation_gate_vector.psl
-│   │       ├── accelerator_controller.psl
-│   │       ├── accelerator_forget_gate_vector.psl
-│   │       ├── accelerator_hidden_gate_vector.psl
-│   │       ├── accelerator_input_gate_vector.psl
-│   │       ├── accelerator_output_gate_vector.psl
-│   │       └── accelerator_state_gate_vector.psl
-│   └── ntm
-│       ├── memory
-│       │   ├── accelerator_addressing.psl
-│       │   ├── accelerator_matrix_content_based_addressing.psl
-│       │   └── accelerator_vector_content_based_addressing.psl
-│       ├── read_heads
-│       │   └── accelerator_reading.psl
-│       ├── top
-│       │   ├── accelerator_interface_matrix.psl
-│       │   ├── accelerator_interface_top.psl
-│       │   ├── accelerator_interface_vector.psl
-│       │   ├── accelerator_output_vector.psl
-│       │   └── accelerator_top.psl
-│       ├── trained
-│       │   └── accelerator_trained_top.psl
-│       └── write_heads
-│           ├── accelerator_erasing.psl
-│           └── accelerator_writing.psl
+│   └── lstm
+│       ├── convolutional
+│       │   ├── accelerator_activation_gate_vector.psl
+│       │   ├── accelerator_controller.psl
+│       │   ├── accelerator_forget_gate_vector.psl
+│       │   ├── accelerator_hidden_gate_vector.psl
+│       │   ├── accelerator_input_gate_vector.psl
+│       │   ├── accelerator_output_gate_vector.psl
+│       │   └── accelerator_state_gate_vector.psl
+│       └── standard
+│           ├── accelerator_activation_gate_vector.psl
+│           ├── accelerator_controller.psl
+│           ├── accelerator_forget_gate_vector.psl
+│           ├── accelerator_hidden_gate_vector.psl
+│           ├── accelerator_input_gate_vector.psl
+│           ├── accelerator_output_gate_vector.psl
+│           └── accelerator_state_gate_vector.psl
 └── trainer
     ├── differentiation
     │   ├── accelerator_matrix_controller_differentiation.psl
@@ -214,4 +167,4 @@ library
             ├── accelerator_lstm_output_v_trainer.psl
             └── accelerator_lstm_output_w_trainer.psl
 
-49 directories, 165 files
+37 directories, 130 files

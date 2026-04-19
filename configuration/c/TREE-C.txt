@@ -99,75 +99,28 @@ library
 │   │       ├── accelerator_controller.c
 │   │       ├── accelerator_decoder.c
 │   │       └── accelerator_encoder.c
-│   ├── dnc
-│   │   ├── memory
-│   │   │   ├── accelerator_addressing.c
-│   │   │   ├── accelerator_allocation_weighting.c
-│   │   │   ├── accelerator_backward_weighting.c
-│   │   │   ├── accelerator_forward_weighting.c
-│   │   │   ├── accelerator_matrix_content_based_addressing.c
-│   │   │   ├── accelerator_memory_matrix.c
-│   │   │   ├── accelerator_memory_retention_vector.c
-│   │   │   ├── accelerator_precedence_weighting.c
-│   │   │   ├── accelerator_sort_vector.c
-│   │   │   ├── accelerator_temporal_link_matrix.c
-│   │   │   ├── accelerator_usage_vector.c
-│   │   │   └── accelerator_vector_content_based_addressing.c
-│   │   ├── read_heads
-│   │   │   ├── accelerator_read_content_weighting.c
-│   │   │   ├── accelerator_read_vectors.c
-│   │   │   └── accelerator_read_weighting.c
-│   │   ├── top
-│   │   │   ├── accelerator_interface_matrix.c
-│   │   │   ├── accelerator_interface_top.c
-│   │   │   ├── accelerator_interface_vector.c
-│   │   │   ├── accelerator_output_vector.c
-│   │   │   └── accelerator_top.c
-│   │   ├── trained
-│   │   │   └── accelerator_trained_top.c
-│   │   └── write_heads
-│   │       ├── accelerator_write_content_weighting.c
-│   │       └── accelerator_write_weighting.c
 │   ├── fnn
 │   │   ├── convolutional
 │   │   │   └── accelerator_controller.c
 │   │   └── standard
 │   │       └── accelerator_controller.c
-│   ├── lstm
-│   │   ├── convolutional
-│   │   │   ├── accelerator_activation_gate_vector.c
-│   │   │   ├── accelerator_controller.c
-│   │   │   ├── accelerator_forget_gate_vector.c
-│   │   │   ├── accelerator_hidden_gate_vector.c
-│   │   │   ├── accelerator_input_gate_vector.c
-│   │   │   ├── accelerator_output_gate_vector.c
-│   │   │   └── accelerator_state_gate_vector.c
-│   │   └── standard
-│   │       ├── accelerator_activation_gate_vector.c
-│   │       ├── accelerator_controller.c
-│   │       ├── accelerator_forget_gate_vector.c
-│   │       ├── accelerator_hidden_gate_vector.c
-│   │       ├── accelerator_input_gate_vector.c
-│   │       ├── accelerator_output_gate_vector.c
-│   │       └── accelerator_state_gate_vector.c
-│   └── ntm
-│       ├── memory
-│       │   ├── accelerator_addressing.c
-│       │   ├── accelerator_matrix_content_based_addressing.c
-│       │   └── accelerator_vector_content_based_addressing.c
-│       ├── read_heads
-│       │   └── accelerator_reading.c
-│       ├── top
-│       │   ├── accelerator_interface_matrix.c
-│       │   ├── accelerator_interface_top.c
-│       │   ├── accelerator_interface_vector.c
-│       │   ├── accelerator_output_vector.c
-│       │   └── accelerator_top.c
-│       ├── trained
-│       │   └── accelerator_trained_top.c
-│       └── write_heads
-│           ├── accelerator_erasing.c
-│           └── accelerator_writing.c
+│   └── lstm
+│       ├── convolutional
+│       │   ├── accelerator_activation_gate_vector.c
+│       │   ├── accelerator_controller.c
+│       │   ├── accelerator_forget_gate_vector.c
+│       │   ├── accelerator_hidden_gate_vector.c
+│       │   ├── accelerator_input_gate_vector.c
+│       │   ├── accelerator_output_gate_vector.c
+│       │   └── accelerator_state_gate_vector.c
+│       └── standard
+│           ├── accelerator_activation_gate_vector.c
+│           ├── accelerator_controller.c
+│           ├── accelerator_forget_gate_vector.c
+│           ├── accelerator_hidden_gate_vector.c
+│           ├── accelerator_input_gate_vector.c
+│           ├── accelerator_output_gate_vector.c
+│           └── accelerator_state_gate_vector.c
 └── trainer
     ├── differentiation
     │   ├── accelerator_matrix_controller_differentiation.c
@@ -214,4 +167,4 @@ library
             ├── accelerator_lstm_output_v_trainer.c
             └── accelerator_lstm_output_w_trainer.c
 
-49 directories, 165 files
+37 directories, 130 files

@@ -48,75 +48,28 @@ library
 │   │       ├── accelerator_controller.adb
 │   │       ├── accelerator_decoder.adb
 │   │       └── accelerator_encoder.adb
-│   ├── dnc
-│   │   ├── memory
-│   │   │   ├── accelerator_addressing.adb
-│   │   │   ├── accelerator_allocation_weighting.adb
-│   │   │   ├── accelerator_backward_weighting.adb
-│   │   │   ├── accelerator_forward_weighting.adb
-│   │   │   ├── accelerator_matrix_content_based_addressing.adb
-│   │   │   ├── accelerator_memory_matrix.adb
-│   │   │   ├── accelerator_memory_retention_vector.adb
-│   │   │   ├── accelerator_precedence_weighting.adb
-│   │   │   ├── accelerator_sort_vector.adb
-│   │   │   ├── accelerator_temporal_link_matrix.adb
-│   │   │   ├── accelerator_usage_vector.adb
-│   │   │   └── accelerator_vector_content_based_addressing.adb
-│   │   ├── read_heads
-│   │   │   ├── accelerator_read_content_weighting.adb
-│   │   │   ├── accelerator_read_vectors.adb
-│   │   │   └── accelerator_read_weighting.adb
-│   │   ├── top
-│   │   │   ├── accelerator_interface_matrix.adb
-│   │   │   ├── accelerator_interface_top.adb
-│   │   │   ├── accelerator_interface_vector.adb
-│   │   │   ├── accelerator_output_vector.adb
-│   │   │   └── accelerator_top.adb
-│   │   ├── trained
-│   │   │   └── accelerator_trained_top.adb
-│   │   └── write_heads
-│   │       ├── accelerator_write_content_weighting.adb
-│   │       └── accelerator_write_weighting.adb
 │   ├── fnn
 │   │   ├── convolutional
 │   │   │   └── accelerator_controller.adb
 │   │   └── standard
 │   │       └── accelerator_controller.adb
-│   ├── lstm
-│   │   ├── convolutional
-│   │   │   ├── accelerator_activation_gate_vector.adb
-│   │   │   ├── accelerator_controller.adb
-│   │   │   ├── accelerator_forget_gate_vector.adb
-│   │   │   ├── accelerator_hidden_gate_vector.adb
-│   │   │   ├── accelerator_input_gate_vector.adb
-│   │   │   ├── accelerator_output_gate_vector.adb
-│   │   │   └── accelerator_state_gate_vector.adb
-│   │   └── standard
-│   │       ├── accelerator_activation_gate_vector.adb
-│   │       ├── accelerator_controller.adb
-│   │       ├── accelerator_forget_gate_vector.adb
-│   │       ├── accelerator_hidden_gate_vector.adb
-│   │       ├── accelerator_input_gate_vector.adb
-│   │       ├── accelerator_output_gate_vector.adb
-│   │       └── accelerator_state_gate_vector.adb
-│   └── ntm
-│       ├── memory
-│       │   ├── accelerator_addressing.adb
-│       │   ├── accelerator_matrix_content_based_addressing.adb
-│       │   └── accelerator_vector_content_based_addressing.adb
-│       ├── read_heads
-│       │   └── accelerator_reading.adb
-│       ├── top
-│       │   ├── accelerator_interface_matrix.adb
-│       │   ├── accelerator_interface_top.adb
-│       │   ├── accelerator_interface_vector.adb
-│       │   ├── accelerator_output_vector.adb
-│       │   └── accelerator_top.adb
-│       ├── trained
-│       │   └── accelerator_trained_top.adb
-│       └── write_heads
-│           ├── accelerator_erasing.adb
-│           └── accelerator_writing.adb
+│   └── lstm
+│       ├── convolutional
+│       │   ├── accelerator_activation_gate_vector.adb
+│       │   ├── accelerator_controller.adb
+│       │   ├── accelerator_forget_gate_vector.adb
+│       │   ├── accelerator_hidden_gate_vector.adb
+│       │   ├── accelerator_input_gate_vector.adb
+│       │   ├── accelerator_output_gate_vector.adb
+│       │   └── accelerator_state_gate_vector.adb
+│       └── standard
+│           ├── accelerator_activation_gate_vector.adb
+│           ├── accelerator_controller.adb
+│           ├── accelerator_forget_gate_vector.adb
+│           ├── accelerator_hidden_gate_vector.adb
+│           ├── accelerator_input_gate_vector.adb
+│           ├── accelerator_output_gate_vector.adb
+│           └── accelerator_state_gate_vector.adb
 └── trainer
     ├── differentiation
     │   ├── accelerator_matrix_controller_differentiation.adb
@@ -163,4 +116,4 @@ library
             ├── accelerator_lstm_output_v_trainer.adb
             └── accelerator_lstm_output_w_trainer.adb
 
-49 directories, 114 files
+37 directories, 79 files
