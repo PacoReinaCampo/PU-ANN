@@ -125,6 +125,72 @@ code
 │           ├── accelerator_vector_integer_divider.sv
 │           ├── accelerator_vector_integer_multiplier.sv
 │           └── accelerator_vector_integer_subtractor.sv
+├── intelligence
+│   ├── nn
+│   │   ├── ann
+│   │   │   ├── components
+│   │   │   │   ├── accelerator_masked_multi_head_attention.sv
+│   │   │   │   ├── accelerator_masked_scaled_dot_product_attention.sv
+│   │   │   │   ├── accelerator_multi_head_attention.sv
+│   │   │   │   └── accelerator_scaled_dot_product_attention.sv
+│   │   │   ├── controller
+│   │   │   │   ├── fnn
+│   │   │   │   │   ├── convolutional
+│   │   │   │   │   │   └── accelerator_fnn.sv
+│   │   │   │   │   └── standard
+│   │   │   │   │       └── accelerator_fnn.sv
+│   │   │   │   └── lstm
+│   │   │   │       ├── convolutional
+│   │   │   │       │   └── accelerator_lstm.sv
+│   │   │   │       └── standard
+│   │   │   │           └── accelerator_lstm.sv
+│   │   │   ├── functions
+│   │   │   │   ├── accelerator_layer_norm.sv
+│   │   │   │   └── accelerator_positional_encoding.sv
+│   │   │   ├── inputs
+│   │   │   │   ├── accelerator_inputs_vector.sv
+│   │   │   │   ├── accelerator_keys_vector.sv
+│   │   │   │   ├── accelerator_queries_vector.sv
+│   │   │   │   └── accelerator_values_vector.sv
+│   │   │   └── top
+│   │   │       ├── accelerator_controller.sv
+│   │   │       ├── accelerator_decoder.sv
+│   │   │       └── accelerator_encoder.sv
+│   │   ├── fnn
+│   │   │   ├── convolutional
+│   │   │   │   └── accelerator_controller.sv
+│   │   │   └── standard
+│   │   │       └── accelerator_controller.sv
+│   │   └── lstm
+│   │       ├── convolutional
+│   │       │   ├── accelerator_activation_gate_vector.sv
+│   │       │   ├── accelerator_controller.sv
+│   │       │   ├── accelerator_forget_gate_vector.sv
+│   │       │   ├── accelerator_hidden_gate_vector.sv
+│   │       │   ├── accelerator_input_gate_vector.sv
+│   │       │   ├── accelerator_output_gate_vector.sv
+│   │       │   └── accelerator_state_gate_vector.sv
+│   │       └── standard
+│   │           ├── accelerator_activation_gate_vector.sv
+│   │           ├── accelerator_controller.sv
+│   │           ├── accelerator_forget_gate_vector.sv
+│   │           ├── accelerator_hidden_gate_vector.sv
+│   │           ├── accelerator_input_gate_vector.sv
+│   │           ├── accelerator_output_gate_vector.sv
+│   │           └── accelerator_state_gate_vector.sv
+│   └── trainer
+│       ├── differentiation
+│       │   ├── accelerator_trainer_matrix_differentiation.sv
+│       │   └── accelerator_trainer_vector_differentiation.sv
+│       ├── fnn
+│       │   └── accelerator_trainer.sv
+│       ├── lstm
+│       │   ├── accelerator_activation_trainer.sv
+│       │   ├── accelerator_forget_trainer.sv
+│       │   ├── accelerator_input_trainer.sv
+│       │   └── accelerator_output_trainer.sv
+│       └── pnn
+│           └── accelerator_trainer.sv
 ├── math
 │   ├── matrix
 │   │   ├── accelerator_matrix_cosh_function.sv
@@ -150,93 +216,28 @@ code
 │       ├── accelerator_vector_oneplus_function.sv
 │       ├── accelerator_vector_sinh_function.sv
 │       └── accelerator_vector_tanh_function.sv
-├── nn
-│   ├── ann
-│   │   ├── components
-│   │   │   ├── accelerator_masked_multi_head_attention.sv
-│   │   │   ├── accelerator_masked_scaled_dot_product_attention.sv
-│   │   │   ├── accelerator_multi_head_attention.sv
-│   │   │   └── accelerator_scaled_dot_product_attention.sv
-│   │   ├── controller
-│   │   │   ├── fnn
-│   │   │   │   ├── convolutional
-│   │   │   │   │   └── accelerator_fnn.sv
-│   │   │   │   └── standard
-│   │   │   │       └── accelerator_fnn.sv
-│   │   │   └── lstm
-│   │   │       ├── convolutional
-│   │   │       │   └── accelerator_lstm.sv
-│   │   │       └── standard
-│   │   │           └── accelerator_lstm.sv
-│   │   ├── functions
-│   │   │   ├── accelerator_layer_norm.sv
-│   │   │   └── accelerator_positional_encoding.sv
-│   │   ├── inputs
-│   │   │   ├── accelerator_inputs_vector.sv
-│   │   │   ├── accelerator_keys_vector.sv
-│   │   │   ├── accelerator_queries_vector.sv
-│   │   │   └── accelerator_values_vector.sv
-│   │   └── top
-│   │       ├── accelerator_controller.sv
-│   │       ├── accelerator_decoder.sv
-│   │       └── accelerator_encoder.sv
-│   ├── fnn
-│   │   ├── convolutional
-│   │   │   └── accelerator_controller.sv
-│   │   └── standard
-│   │       └── accelerator_controller.sv
-│   └── lstm
-│       ├── convolutional
-│       │   ├── accelerator_activation_gate_vector.sv
-│       │   ├── accelerator_controller.sv
-│       │   ├── accelerator_forget_gate_vector.sv
-│       │   ├── accelerator_hidden_gate_vector.sv
-│       │   ├── accelerator_input_gate_vector.sv
-│       │   ├── accelerator_output_gate_vector.sv
-│       │   └── accelerator_state_gate_vector.sv
-│       └── standard
-│           ├── accelerator_activation_gate_vector.sv
-│           ├── accelerator_controller.sv
-│           ├── accelerator_forget_gate_vector.sv
-│           ├── accelerator_hidden_gate_vector.sv
-│           ├── accelerator_input_gate_vector.sv
-│           ├── accelerator_output_gate_vector.sv
-│           └── accelerator_state_gate_vector.sv
-├── pkg
-│   ├── accelerator
-│   │   ├── accelerator_ann_controller_verilog_pkg.sv
-│   │   ├── accelerator_arithmetic_verilog_pkg.sv
-│   │   ├── accelerator_core_verilog_pkg.sv
-│   │   ├── accelerator_fnn_controller_verilog_pkg.sv
-│   │   ├── accelerator_lstm_controller_verilog_pkg.sv
-│   │   ├── accelerator_math_verilog_pkg.sv
-│   │   ├── accelerator_pnn_controller_verilog_pkg.sv
-│   │   └── accelerator_state_verilog_pkg.sv
-│   └── peripheral
-│       ├── ahb4
-│       │   └── peripheral_ahb4_pkg.sv
-│       ├── apb4
-│       │   └── peripheral_apb4_pkg.sv
-│       ├── axi4
-│       │   └── peripheral_axi4_pkg.sv
-│       ├── bb
-│       │   └── peripheral_bb_pkg.sv
-│       ├── tl
-│       │   └── peripheral_tl_pkg.sv
-│       └── wb
-│           └── peripheral_wb_pkg.sv
-└── trainer
-    ├── differentiation
-    │   ├── accelerator_trainer_matrix_differentiation.sv
-    │   └── accelerator_trainer_vector_differentiation.sv
-    ├── fnn
-    │   └── accelerator_trainer.sv
-    ├── lstm
-    │   ├── accelerator_activation_trainer.sv
-    │   ├── accelerator_forget_trainer.sv
-    │   ├── accelerator_input_trainer.sv
-    │   └── accelerator_output_trainer.sv
-    └── pnn
-        └── accelerator_trainer.sv
+└── pkg
+    ├── accelerator
+    │   ├── accelerator_ann_controller_verilog_pkg.sv
+    │   ├── accelerator_arithmetic_verilog_pkg.sv
+    │   ├── accelerator_core_verilog_pkg.sv
+    │   ├── accelerator_fnn_controller_verilog_pkg.sv
+    │   ├── accelerator_lstm_controller_verilog_pkg.sv
+    │   ├── accelerator_math_verilog_pkg.sv
+    │   ├── accelerator_pnn_controller_verilog_pkg.sv
+    │   └── accelerator_state_verilog_pkg.sv
+    └── peripheral
+        ├── ahb4
+        │   └── peripheral_ahb4_pkg.sv
+        ├── apb4
+        │   └── peripheral_apb4_pkg.sv
+        ├── axi4
+        │   └── peripheral_axi4_pkg.sv
+        ├── bb
+        │   └── peripheral_bb_pkg.sv
+        ├── tl
+        │   └── peripheral_tl_pkg.sv
+        └── wb
+            └── peripheral_wb_pkg.sv
 
-66 directories, 173 files
+67 directories, 173 files
