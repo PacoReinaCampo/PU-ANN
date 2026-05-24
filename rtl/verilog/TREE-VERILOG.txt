@@ -126,7 +126,7 @@ code
 │           ├── accelerator_vector_integer_multiplier.sv
 │           └── accelerator_vector_integer_subtractor.sv
 ├── intelligence
-│   ├── nn
+│   ├── model
 │   │   ├── ann
 │   │   │   ├── components
 │   │   │   │   ├── accelerator_masked_multi_head_attention.sv

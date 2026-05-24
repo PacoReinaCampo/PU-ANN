@@ -210,7 +210,7 @@ library
 │           ├── accelerator_model.vhd
 │           └── accelerator_testbench.vhd
 ├── intelligence
-│   ├── nn
+│   ├── model
 │   │   ├── ann
 │   │   │   ├── components
 │   │   │   │   ├── accelerator_masked_multi_head_attention
