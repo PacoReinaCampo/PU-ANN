@@ -80,7 +80,7 @@ library
 │           ├── accelerator_vector_subtractor.rs
 │           └── mod.rs
 ├── intelligence
-│   ├── model
+│   ├── modeling
 │   │   ├── accelerator_fnn_controller.rs
 │   │   ├── accelerator_lstm_controller.rs
 │   │   ├── ann
@@ -129,7 +129,7 @@ library
 │   │           ├── accelerator_input_gate_vector.rs
 │   │           ├── accelerator_output_gate_vector.rs
 │   │           └── accelerator_state_gate_vector.rs
-│   └── trainer
+│   └── training
 │       ├── accelerator_fnn.rs
 │       ├── accelerator_lstm.rs
 │       ├── differentiation

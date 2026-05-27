@@ -84,7 +84,7 @@ library
 │       └── subtractor
 │           └── accelerator_vector_subtractor.cpp
 ├── intelligence
-│   ├── model
+│   ├── modeling
 │   │   ├── ann
 │   │   │   ├── ann_controller.cpp
 │   │   │   ├── components
@@ -133,7 +133,7 @@ library
 │   │           ├── accelerator_input_gate_vector.cpp
 │   │           ├── accelerator_output_gate_vector.cpp
 │   │           └── accelerator_state_gate_vector.cpp
-│   └── trainer
+│   └── training
 │       ├── accelerator_differentiation.cpp
 │       ├── accelerator_fnn.cpp
 │       ├── accelerator_lstm.cpp
