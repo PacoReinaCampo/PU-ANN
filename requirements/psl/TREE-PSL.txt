@@ -84,28 +84,75 @@ library
 │   │   │       ├── accelerator_controller.psl
 │   │   │       ├── accelerator_decoder.psl
 │   │   │       └── accelerator_encoder.psl
+│   │   ├── dnc
+│   │   │   ├── memory
+│   │   │   │   ├── accelerator_addressing.psl
+│   │   │   │   ├── accelerator_allocation_weighting.psl
+│   │   │   │   ├── accelerator_backward_weighting.psl
+│   │   │   │   ├── accelerator_forward_weighting.psl
+│   │   │   │   ├── accelerator_matrix_content_based_addressing.psl
+│   │   │   │   ├── accelerator_memory_matrix.psl
+│   │   │   │   ├── accelerator_memory_retention_vector.psl
+│   │   │   │   ├── accelerator_precedence_weighting.psl
+│   │   │   │   ├── accelerator_sort_vector.psl
+│   │   │   │   ├── accelerator_temporal_link_matrix.psl
+│   │   │   │   ├── accelerator_usage_vector.psl
+│   │   │   │   └── accelerator_vector_content_based_addressing.psl
+│   │   │   ├── read_heads
+│   │   │   │   ├── accelerator_read_content_weighting.psl
+│   │   │   │   ├── accelerator_read_vectors.psl
+│   │   │   │   └── accelerator_read_weighting.psl
+│   │   │   ├── top
+│   │   │   │   ├── accelerator_interface_matrix.psl
+│   │   │   │   ├── accelerator_interface_top.psl
+│   │   │   │   ├── accelerator_interface_vector.psl
+│   │   │   │   ├── accelerator_output_vector.psl
+│   │   │   │   └── accelerator_top.psl
+│   │   │   ├── trained
+│   │   │   │   └── accelerator_trained_top.psl
+│   │   │   └── write_heads
+│   │   │       ├── accelerator_write_content_weighting.psl
+│   │   │       └── accelerator_write_weighting.psl
 │   │   ├── fnn
 │   │   │   ├── convolutional
 │   │   │   │   └── accelerator_controller.psl
 │   │   │   └── standard
 │   │   │       └── accelerator_controller.psl
-│   │   └── lstm
-│   │       ├── convolutional
-│   │       │   ├── accelerator_activation_gate_vector.psl
-│   │       │   ├── accelerator_controller.psl
-│   │       │   ├── accelerator_forget_gate_vector.psl
-│   │       │   ├── accelerator_hidden_gate_vector.psl
-│   │       │   ├── accelerator_input_gate_vector.psl
-│   │       │   ├── accelerator_output_gate_vector.psl
-│   │       │   └── accelerator_state_gate_vector.psl
-│   │       └── standard
-│   │           ├── accelerator_activation_gate_vector.psl
-│   │           ├── accelerator_controller.psl
-│   │           ├── accelerator_forget_gate_vector.psl
-│   │           ├── accelerator_hidden_gate_vector.psl
-│   │           ├── accelerator_input_gate_vector.psl
-│   │           ├── accelerator_output_gate_vector.psl
-│   │           └── accelerator_state_gate_vector.psl
+│   │   ├── lstm
+│   │   │   ├── convolutional
+│   │   │   │   ├── accelerator_activation_gate_vector.psl
+│   │   │   │   ├── accelerator_controller.psl
+│   │   │   │   ├── accelerator_forget_gate_vector.psl
+│   │   │   │   ├── accelerator_hidden_gate_vector.psl
+│   │   │   │   ├── accelerator_input_gate_vector.psl
+│   │   │   │   ├── accelerator_output_gate_vector.psl
+│   │   │   │   └── accelerator_state_gate_vector.psl
+│   │   │   └── standard
+│   │   │       ├── accelerator_activation_gate_vector.psl
+│   │   │       ├── accelerator_controller.psl
+│   │   │       ├── accelerator_forget_gate_vector.psl
+│   │   │       ├── accelerator_hidden_gate_vector.psl
+│   │   │       ├── accelerator_input_gate_vector.psl
+│   │   │       ├── accelerator_output_gate_vector.psl
+│   │   │       └── accelerator_state_gate_vector.psl
+│   │   └── ntm
+│   │       ├── memory
+│   │       │   ├── accelerator_addressing.psl
+│   │       │   ├── accelerator_matrix_content_based_addressing.psl
+│   │       │   └── accelerator_vector_content_based_addressing.psl
+│   │       ├── read_heads
+│   │       │   └── accelerator_reading.psl
+│   │       ├── top
+│   │       │   ├── accelerator_interface_matrix.psl
+│   │       │   ├── accelerator_interface_top.psl
+│   │       │   ├── accelerator_interface_vector.psl
+│   │       │   ├── accelerator_output_vector.psl
+│   │       │   └── accelerator_top.psl
+│   │       ├── trained
+│   │       │   └── accelerator_trained_top.psl
+│   │       └── write_heads
+│   │           ├── accelerator_erasing.psl
+│   │           └── accelerator_writing.psl
 │   └── training
 │       ├── differentiation
 │       │   ├── accelerator_matrix_controller_differentiation.psl
@@ -118,39 +165,50 @@ library
 │       │   ├── accelerator_fnn_u_trainer.psl
 │       │   ├── accelerator_fnn_v_trainer.psl
 │       │   └── accelerator_fnn_w_trainer.psl
-│       └── lstm
-│           ├── activation
-│           │   ├── accelerator_lstm_activation_b_trainer.psl
-│           │   ├── accelerator_lstm_activation_d_trainer.psl
-│           │   ├── accelerator_lstm_activation_k_trainer.psl
-│           │   ├── accelerator_lstm_activation_trainer.psl
-│           │   ├── accelerator_lstm_activation_u_trainer.psl
-│           │   ├── accelerator_lstm_activation_v_trainer.psl
-│           │   └── accelerator_lstm_activation_w_trainer.psl
-│           ├── forget
-│           │   ├── accelerator_lstm_forget_b_trainer.psl
-│           │   ├── accelerator_lstm_forget_d_trainer.psl
-│           │   ├── accelerator_lstm_forget_k_trainer.psl
-│           │   ├── accelerator_lstm_forget_trainer.psl
-│           │   ├── accelerator_lstm_forget_u_trainer.psl
-│           │   ├── accelerator_lstm_forget_v_trainer.psl
-│           │   └── accelerator_lstm_forget_w_trainer.psl
-│           ├── input
-│           │   ├── accelerator_lstm_input_b_trainer.psl
-│           │   ├── accelerator_lstm_input_d_trainer.psl
-│           │   ├── accelerator_lstm_input_k_trainer.psl
-│           │   ├── accelerator_lstm_input_trainer.psl
-│           │   ├── accelerator_lstm_input_u_trainer.psl
-│           │   ├── accelerator_lstm_input_v_trainer.psl
-│           │   └── accelerator_lstm_input_w_trainer.psl
-│           └── output
-│               ├── accelerator_lstm_output_b_trainer.psl
-│               ├── accelerator_lstm_output_d_trainer.psl
-│               ├── accelerator_lstm_output_k_trainer.psl
-│               ├── accelerator_lstm_output_trainer.psl
-│               ├── accelerator_lstm_output_u_trainer.psl
-│               ├── accelerator_lstm_output_v_trainer.psl
-│               └── accelerator_lstm_output_w_trainer.psl
+│       ├── lstm
+│       │   ├── activation
+│       │   │   ├── accelerator_lstm_activation_b_trainer.psl
+│       │   │   ├── accelerator_lstm_activation_d_trainer.psl
+│       │   │   ├── accelerator_lstm_activation_k_trainer.psl
+│       │   │   ├── accelerator_lstm_activation_trainer.psl
+│       │   │   ├── accelerator_lstm_activation_u_trainer.psl
+│       │   │   ├── accelerator_lstm_activation_v_trainer.psl
+│       │   │   └── accelerator_lstm_activation_w_trainer.psl
+│       │   ├── forget
+│       │   │   ├── accelerator_lstm_forget_b_trainer.psl
+│       │   │   ├── accelerator_lstm_forget_d_trainer.psl
+│       │   │   ├── accelerator_lstm_forget_k_trainer.psl
+│       │   │   ├── accelerator_lstm_forget_trainer.psl
+│       │   │   ├── accelerator_lstm_forget_u_trainer.psl
+│       │   │   ├── accelerator_lstm_forget_v_trainer.psl
+│       │   │   └── accelerator_lstm_forget_w_trainer.psl
+│       │   ├── input
+│       │   │   ├── accelerator_lstm_input_b_trainer.psl
+│       │   │   ├── accelerator_lstm_input_d_trainer.psl
+│       │   │   ├── accelerator_lstm_input_k_trainer.psl
+│       │   │   ├── accelerator_lstm_input_trainer.psl
+│       │   │   ├── accelerator_lstm_input_u_trainer.psl
+│       │   │   ├── accelerator_lstm_input_v_trainer.psl
+│       │   │   └── accelerator_lstm_input_w_trainer.psl
+│       │   └── output
+│       │       ├── accelerator_lstm_output_b_trainer.psl
+│       │       ├── accelerator_lstm_output_d_trainer.psl
+│       │       ├── accelerator_lstm_output_k_trainer.psl
+│       │       ├── accelerator_lstm_output_trainer.psl
+│       │       ├── accelerator_lstm_output_u_trainer.psl
+│       │       ├── accelerator_lstm_output_v_trainer.psl
+│       │       └── accelerator_lstm_output_w_trainer.psl
+│       └── state
+│           ├── feedback
+│           │   ├── accelerator_state_matrix_feedforward.psl
+│           │   ├── accelerator_state_matrix_input.psl
+│           │   ├── accelerator_state_matrix_output.psl
+│           │   └── accelerator_state_matrix_state.psl
+│           ├── outputs
+│           │   ├── accelerator_state_vector_output.psl
+│           │   └── accelerator_state_vector_state.psl
+│           └── top
+│               └── accelerator_state_top.psl
 └── math
     ├── matrix
     │   ├── accelerator_matrix_deviation_function.psl
@@ -168,4 +226,4 @@ library
         ├── accelerator_vector_mean_function.psl
         └── accelerator_vector_oneplus_function.psl
 
-38 directories, 130 files
+54 directories, 172 files

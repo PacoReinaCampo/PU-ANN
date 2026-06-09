@@ -42,28 +42,76 @@ library
 │   │   │       ├── accelerator_controller.go
 │   │   │       ├── accelerator_decoder.go
 │   │   │       └── accelerator_encoder.go
+│   │   ├── dnc
+│   │   │   ├── memory
+│   │   │   │   ├── accelerator_addressing.go
+│   │   │   │   ├── accelerator_allocation_weighting.go
+│   │   │   │   ├── accelerator_backward_weighting.go
+│   │   │   │   ├── accelerator_forward_weighting.go
+│   │   │   │   ├── accelerator_matrix_content_based_addressing.go
+│   │   │   │   ├── accelerator_memory_matrix.go
+│   │   │   │   ├── accelerator_memory_retention_vector.go
+│   │   │   │   ├── accelerator_precedence_weighting.go
+│   │   │   │   ├── accelerator_sort_vector.go
+│   │   │   │   ├── accelerator_temporal_link_matrix.go
+│   │   │   │   ├── accelerator_usage_vector.go
+│   │   │   │   └── accelerator_vector_content_based_addressing.go
+│   │   │   ├── read_heads
+│   │   │   │   ├── accelerator_read_content_weighting.go
+│   │   │   │   ├── accelerator_read_vectors.go
+│   │   │   │   └── accelerator_read_weighting.go
+│   │   │   ├── top
+│   │   │   │   ├── accelerator_interface_matrix.go
+│   │   │   │   ├── accelerator_interface_top.go
+│   │   │   │   ├── accelerator_interface_vector.go
+│   │   │   │   ├── accelerator_output_vector.go
+│   │   │   │   └── accelerator_top.go
+│   │   │   ├── trained
+│   │   │   │   └── accelerator_trained_top.go
+│   │   │   └── write_heads
+│   │   │       ├── accelerator_write_content_weighting.go
+│   │   │       └── accelerator_write_weighting.go
 │   │   ├── fnn
 │   │   │   ├── convolutional
 │   │   │   │   └── accelerator_controller.go
 │   │   │   └── standard
 │   │   │       └── accelerator_controller.go
-│   │   └── lstm
-│   │       ├── convolutional
-│   │       │   ├── accelerator_activation_gate_vector.go
-│   │       │   ├── accelerator_controller.go
-│   │       │   ├── accelerator_forget_gate_vector.go
-│   │       │   ├── accelerator_hidden_gate_vector.go
-│   │       │   ├── accelerator_input_gate_vector.go
-│   │       │   ├── accelerator_output_gate_vector.go
-│   │       │   └── accelerator_state_gate_vector.go
-│   │       └── standard
-│   │           ├── accelerator_activation_gate_vector.go
-│   │           ├── accelerator_controller.go
-│   │           ├── accelerator_forget_gate_vector.go
-│   │           ├── accelerator_hidden_gate_vector.go
-│   │           ├── accelerator_input_gate_vector.go
-│   │           ├── accelerator_output_gate_vector.go
-│   │           └── accelerator_state_gate_vector.go
+│   │   ├── lstm
+│   │   │   ├── convolutional
+│   │   │   │   ├── accelerator_activation_gate_vector.go
+│   │   │   │   ├── accelerator_controller.go
+│   │   │   │   ├── accelerator_forget_gate_vector.go
+│   │   │   │   ├── accelerator_hidden_gate_vector.go
+│   │   │   │   ├── accelerator_input_gate_vector.go
+│   │   │   │   ├── accelerator_output_gate_vector.go
+│   │   │   │   └── accelerator_state_gate_vector.go
+│   │   │   └── standard
+│   │   │       ├── accelerator_activation_gate_vector.go
+│   │   │       ├── accelerator_controller.go
+│   │   │       ├── accelerator_forget_gate_vector.go
+│   │   │       ├── accelerator_hidden_gate_vector.go
+│   │   │       ├── accelerator_input_gate_vector.go
+│   │   │       ├── accelerator_output_gate_vector.go
+│   │   │       └── accelerator_state_gate_vector.go
+│   │   └── ntm
+│   │       ├── memory
+│   │       │   ├── accelerator_addressing.go
+│   │       │   ├── accelerator_matrix_content_based_addressing.go
+│   │       │   └── accelerator_vector_content_based_addressing.go
+│   │       ├── ntm.go
+│   │       ├── read_heads
+│   │       │   └── accelerator_reading.go
+│   │       ├── top
+│   │       │   ├── accelerator_interface_matrix.go
+│   │       │   ├── accelerator_interface_top.go
+│   │       │   ├── accelerator_interface_vector.go
+│   │       │   ├── accelerator_output_vector.go
+│   │       │   └── accelerator_top.go
+│   │       ├── trained
+│   │       │   └── accelerator_trained_top.go
+│   │       └── write_heads
+│   │           ├── accelerator_erasing.go
+│   │           └── accelerator_writing.go
 │   └── training
 │       ├── differentiation
 │       │   ├── accelerator_matrix_controller_differentiation.go
@@ -76,39 +124,50 @@ library
 │       │   ├── accelerator_fnn_u_trainer.go
 │       │   ├── accelerator_fnn_v_trainer.go
 │       │   └── accelerator_fnn_w_trainer.go
-│       └── lstm
-│           ├── activation
-│           │   ├── accelerator_lstm_activation_b_trainer.go
-│           │   ├── accelerator_lstm_activation_d_trainer.go
-│           │   ├── accelerator_lstm_activation_k_trainer.go
-│           │   ├── accelerator_lstm_activation_trainer.go
-│           │   ├── accelerator_lstm_activation_u_trainer.go
-│           │   ├── accelerator_lstm_activation_v_trainer.go
-│           │   └── accelerator_lstm_activation_w_trainer.go
-│           ├── forget
-│           │   ├── accelerator_lstm_forget_b_trainer.go
-│           │   ├── accelerator_lstm_forget_d_trainer.go
-│           │   ├── accelerator_lstm_forget_k_trainer.go
-│           │   ├── accelerator_lstm_forget_trainer.go
-│           │   ├── accelerator_lstm_forget_u_trainer.go
-│           │   ├── accelerator_lstm_forget_v_trainer.go
-│           │   └── accelerator_lstm_forget_w_trainer.go
-│           ├── input
-│           │   ├── accelerator_lstm_input_b_trainer.go
-│           │   ├── accelerator_lstm_input_d_trainer.go
-│           │   ├── accelerator_lstm_input_k_trainer.go
-│           │   ├── accelerator_lstm_input_trainer.go
-│           │   ├── accelerator_lstm_input_u_trainer.go
-│           │   ├── accelerator_lstm_input_v_trainer.go
-│           │   └── accelerator_lstm_input_w_trainer.go
-│           └── output
-│               ├── accelerator_lstm_output_b_trainer.go
-│               ├── accelerator_lstm_output_d_trainer.go
-│               ├── accelerator_lstm_output_k_trainer.go
-│               ├── accelerator_lstm_output_trainer.go
-│               ├── accelerator_lstm_output_u_trainer.go
-│               ├── accelerator_lstm_output_v_trainer.go
-│               └── accelerator_lstm_output_w_trainer.go
+│       ├── lstm
+│       │   ├── activation
+│       │   │   ├── accelerator_lstm_activation_b_trainer.go
+│       │   │   ├── accelerator_lstm_activation_d_trainer.go
+│       │   │   ├── accelerator_lstm_activation_k_trainer.go
+│       │   │   ├── accelerator_lstm_activation_trainer.go
+│       │   │   ├── accelerator_lstm_activation_u_trainer.go
+│       │   │   ├── accelerator_lstm_activation_v_trainer.go
+│       │   │   └── accelerator_lstm_activation_w_trainer.go
+│       │   ├── forget
+│       │   │   ├── accelerator_lstm_forget_b_trainer.go
+│       │   │   ├── accelerator_lstm_forget_d_trainer.go
+│       │   │   ├── accelerator_lstm_forget_k_trainer.go
+│       │   │   ├── accelerator_lstm_forget_trainer.go
+│       │   │   ├── accelerator_lstm_forget_u_trainer.go
+│       │   │   ├── accelerator_lstm_forget_v_trainer.go
+│       │   │   └── accelerator_lstm_forget_w_trainer.go
+│       │   ├── input
+│       │   │   ├── accelerator_lstm_input_b_trainer.go
+│       │   │   ├── accelerator_lstm_input_d_trainer.go
+│       │   │   ├── accelerator_lstm_input_k_trainer.go
+│       │   │   ├── accelerator_lstm_input_trainer.go
+│       │   │   ├── accelerator_lstm_input_u_trainer.go
+│       │   │   ├── accelerator_lstm_input_v_trainer.go
+│       │   │   └── accelerator_lstm_input_w_trainer.go
+│       │   └── output
+│       │       ├── accelerator_lstm_output_b_trainer.go
+│       │       ├── accelerator_lstm_output_d_trainer.go
+│       │       ├── accelerator_lstm_output_k_trainer.go
+│       │       ├── accelerator_lstm_output_trainer.go
+│       │       ├── accelerator_lstm_output_u_trainer.go
+│       │       ├── accelerator_lstm_output_v_trainer.go
+│       │       └── accelerator_lstm_output_w_trainer.go
+│       └── state
+│           ├── feedback
+│           │   ├── accelerator_state_matrix_feedforward.go
+│           │   ├── accelerator_state_matrix_input.go
+│           │   ├── accelerator_state_matrix_output.go
+│           │   └── accelerator_state_matrix_state.go
+│           ├── outputs
+│           │   ├── accelerator_state_vector_output.go
+│           │   └── accelerator_state_vector_state.go
+│           └── top
+│               └── accelerator_state_top.go
 └── math
     ├── MatrixMath
     │   └── MatrixMath.go
@@ -117,4 +176,4 @@ library
     └── VectorMath
         └── VectorMath.go
 
-38 directories, 79 files
+54 directories, 122 files

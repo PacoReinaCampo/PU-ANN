@@ -19,23 +19,39 @@ library
 │   │   │   ├── functions
 │   │   │   ├── inputs
 │   │   │   └── top
+│   │   ├── dnc
+│   │   │   ├── memory
+│   │   │   ├── read_heads
+│   │   │   ├── top
+│   │   │   ├── trained
+│   │   │   └── write_heads
 │   │   ├── fnn
 │   │   │   ├── convolutional
 │   │   │   └── standard
-│   │   └── lstm
-│   │       ├── convolutional
-│   │       └── standard
+│   │   ├── lstm
+│   │   │   ├── convolutional
+│   │   │   └── standard
+│   │   └── ntm
+│   │       ├── memory
+│   │       ├── read_heads
+│   │       ├── top
+│   │       ├── trained
+│   │       └── write_heads
 │   └── training
 │       ├── differentiation
 │       ├── fnn
-│       └── lstm
-│           ├── activation
-│           ├── forget
-│           ├── input
-│           └── output
+│       ├── lstm
+│       │   ├── activation
+│       │   ├── forget
+│       │   ├── input
+│       │   └── output
+│       └── state
+│           ├── feedback
+│           ├── outputs
+│           └── top
 └── math
     ├── MatrixMath
     ├── ScalarMath
     └── VectorMath
 
-38 directories, 0 files
+54 directories, 0 files

@@ -38,29 +38,48 @@ library
 │   │   │   ├── functions
 │   │   │   ├── inputs
 │   │   │   └── top
+│   │   ├── dnc
+│   │   │   ├── accelerator_controller.hpp
+│   │   │   ├── memory
+│   │   │   ├── read_heads
+│   │   │   ├── top
+│   │   │   ├── trained
+│   │   │   └── write_heads
 │   │   ├── fnn
 │   │   │   ├── accelerator_fnn_controller.hpp
 │   │   │   ├── convolutional
 │   │   │   └── standard
-│   │   └── lstm
-│   │       ├── accelerator_lstm_controller.hpp
-│   │       ├── convolutional
-│   │       └── standard
+│   │   ├── lstm
+│   │   │   ├── accelerator_lstm_controller.hpp
+│   │   │   ├── convolutional
+│   │   │   └── standard
+│   │   └── ntm
+│   │       ├── accelerator_controller.hpp
+│   │       ├── memory
+│   │       ├── read_heads
+│   │       ├── top
+│   │       ├── trained
+│   │       └── write_heads
 │   └── training
 │       ├── accelerator_differentiation.hpp
 │       ├── accelerator_fnn.hpp
 │       ├── accelerator_lstm.hpp
 │       ├── differentiation
 │       ├── fnn
-│       └── lstm
-│           ├── activation
-│           ├── forget
-│           ├── input
-│           └── output
+│       ├── lstm
+│       │   ├── activation
+│       │   ├── forget
+│       │   ├── input
+│       │   └── output
+│       └── state
+│           ├── accelerator_state.hpp
+│           ├── feedback
+│           ├── outputs
+│           └── top
 └── math
     ├── accelerator_math.hpp
     ├── matrix
     ├── scalar
     └── vector
 
-54 directories, 9 files
+70 directories, 12 files

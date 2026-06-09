@@ -29,20 +29,40 @@ library
 │   │   │   ├── functions
 │   │   │   ├── inputs
 │   │   │   └── top
+│   │   ├── dnc
+│   │   │   ├── memory
+│   │   │   ├── read_heads
+│   │   │   ├── top
+│   │   │   ├── trained
+│   │   │   └── write_heads
 │   │   ├── fnn
 │   │   │   ├── convolutional
 │   │   │   └── standard
-│   │   └── lstm
-│   │       ├── convolutional
-│   │       └── standard
+│   │   ├── lstm
+│   │   │   ├── convolutional
+│   │   │   └── standard
+│   │   └── ntm
+│   │       ├── memory
+│   │       ├── read_heads
+│   │       ├── top
+│   │       ├── trained
+│   │       └── write_heads
 │   └── training
 │       ├── differentiation
 │       ├── fnn
-│       └── lstm
-│           ├── activation
-│           ├── forget
-│           ├── input
-│           └── output
+│       ├── lstm
+│       │   ├── activation
+│       │   ├── forget
+│       │   ├── input
+│       │   └── output
+│       └── state
+│           └── src
+│               ├── feedback
+│               │   └── mod.rs
+│               ├── outputs
+│               │   └── mod.rs
+│               └── top
+│                   └── mod.rs
 └── math
     └── src
         ├── matrix
@@ -52,4 +72,4 @@ library
         └── vector
             └── mod.rs
 
-41 directories, 11 files
+58 directories, 14 files
